@@ -1,0 +1,61 @@
+Options -Indexes
+ErrorDocument 404 /404.php
+
+<IfModule mod_php5.c>
+  php_flag allow_call_time_pass_reference 1
+  php_flag session.use_trans_sid off
+
+  php_value display_errors 0
+
+  #php_value mbstring.func_overload 2
+  #php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_php7.c>
+  php_flag session.use_trans_sid off
+  php_value display_errors 1
+
+  #php_flag default_charset UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+
+  RedirectMatch 404 /\.git
+  RedirectMatch 404 /webpack\.config\.js
+  RedirectMatch 404 /yarn.*
+  RedirectMatch 404 /package\.json
+  RedirectMatch 404 /node_modules
+  RedirectMatch 404 /\.editorconfig
+
+ #del www
+  RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+  RewriteRule ^(.*)$ https://elektrik.ru/$1 [R=301,L]
+
+  #del multiple //
+  RewriteCond %{REQUEST_URI} ^(.*)/{2,}(.*)$
+  RewriteRule (.*) %1/%2 [R=301,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+  RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+  RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 3 day"
+  ExpiresByType image/gif "access plus 3 day"
+  ExpiresByType image/png "access plus 3 day"
+  ExpiresByType text/css "access plus 3 day"
+  ExpiresByType application/javascript "access plus 3 day"
+</IfModule>
+
+

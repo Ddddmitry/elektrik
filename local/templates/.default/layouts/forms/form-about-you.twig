@@ -1,0 +1,169 @@
+{% extends 'forms.twig' %}
+
+{% block leftSlider %}
+    {{ includeComponent("electric:form.banner", "", {
+        "CODE": "INFO",
+    }) }}
+{% endblock %} {#leftSlider#}
+
+{% block formSoloToggler %}
+{% endblock %} {#formSoloToggler#}
+{% block formSoloInfo %}
+    <h1 class="formSolo-workarea__title left-align">Информация о вас</h1>
+    <p>
+        Заполните свои данные для того, чтобы вас могли найти
+    </p>
+{% endblock %} {#formSoloInfo#}
+{% block formSoloMain %}
+    <div class="formSolo-workarea-main js-tabs">
+        <div class="formSolo-workarea-toggler js-tabs-buttons">
+            <div class="formSolo-workarea-toggler__single js-tabs-buttons-single">
+                <a href="#individual"
+                   class="formSolo-workarea-toggler__single-inner
+                                   button2
+                                   button2_large
+                                   js-tabs-buttons-single-inner
+                                   active">
+                    Физическое лицо
+                </a>
+            </div>
+            <div class="formSolo-workarea-toggler__single js-tabs-buttons-single">
+                <a href="#entity"
+                   class="formSolo-workarea-toggler__single-inner
+                                   button2
+                                   button2_large
+                                   js-tabs-buttons-single-inner">
+                    Юридическое лицо
+                </a>
+            </div>
+        </div>
+        <div class="formSolo-workarea-content js-slider-tabs js-tabs-content">
+            <div data-id="individual" class="formSolo-workarea-content-inner js-tabs-content-single">
+                <form action="/" id="individual">
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <label for="individual-name">ФИО</label>
+                            <input type="text" value="" id="individual-name" name="individual-name" maxlength="255" required>
+                        </div>
+                    </div>
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <label for="individual-phone">Телефон</label>
+                            <input type="tel" value="" id="individual-phone" name="individual-phone" required>
+                        </div>
+                    </div>
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <label for="individual-adress">Адрес</label>
+                            <input type="text" value="" id="individual-adress" name="individual-adress" maxlength="255" required>
+                        </div>
+                    </div>
+                    <div class="formGroup">
+                        <div class="formGroup-inner">
+                            <div class="custFile js-custFile">
+                                <label for="individual-photo" class="custLabel button2">Загрузить фото</label>
+                                <input type="file"
+                                       value=""
+                                       id="individual-photo"
+                                       name="individual-photo"
+                                       accept="image/jpg,image/jpeg,image/png,image/bmp"
+                                       data-max-size="10485760">
+                                <div class="custFile-list js-custFile-list">
+                                    <div class="custFile-list-single js-custFile-list-single"></div>
+                                </div>
+                                <div class="custFile-response js-custFile-response">
+                                    Размер файла превышает 10Мб
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <div class="custCheckbox">
+                                <input type="checkbox" value="1" id="individual-personalData" name="individual-personalData" required>
+                                <label for="individual-personalData" class="custLabel">
+                                    Настоящим я даю согласие на обработку
+                                    моих персональных данных на указанных
+                                    ниже условиях <a href="/terms/" class="inhLink" target="_blank">обработки персональных данных</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formGroup formGroup__bottom">
+                        <div class="formGroup-inner">
+                            <button type="submit" name="individual-submit">
+                                Сохранить
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div data-id="entity" class="formSolo-workarea-content-inner js-tabs-content-single">
+                <form action="/" id="entity">
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <label for="entity-name">Название</label>
+                            <input type="text" value="" id="entity-name" name="entity-name" maxlength="512" required>
+                        </div>
+                    </div>
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <label for="entity-phone">Телефон</label>
+                            <input type="tel" value="" id="entity-phone" name="entity-phone" required>
+                        </div>
+                    </div>
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <label for="entity-adress">Адрес</label>
+                            <input type="text" value="" id="entity-adress" name="entity-adress" maxlength="255" required>
+                        </div>
+                    </div>
+                    <div class="formGroup">
+                        <div class="formGroup-inner">
+                            <label for="entity-site">Сайт (если есть)</label>
+                            <input type="text" value="" id="entity-site" name="entity-site" maxlength="255">
+                        </div>
+                    </div>
+                    <div class="formGroup">
+                        <div class="formGroup-inner">
+                            <div class="custFile js-custFile">
+                                <label for="entity-photo" class="custLabel button2">Загрузить логотип компании</label>
+                                <input type="file"
+                                       value=""
+                                       id="entity-photo"
+                                       name="entity-photo"
+                                       accept="image/jpg,image/jpeg,image/png,image/bmp"
+                                       data-max-size="10485760">
+                                <div class="custFile-list js-custFile-list">
+                                    <div class="custFile-list-single js-custFile-list-single"></div>
+                                </div>
+                                <div class="custFile-response js-custFile-response">
+                                    Размер файла превышает 10Мб
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formGroup required">
+                        <div class="formGroup-inner">
+                            <div class="custCheckbox">
+                                <input type="checkbox" value="1" id="entity-personalData" name="entity-personalData" required>
+                                <label for="entity-personalData" class="custLabel">
+                                    Настоящим я даю согласие на обработку
+                                    моих персональных данных на указанных
+                                    ниже условиях <a href="/terms/" class="inhLink" target="_blank">обработки персональных данных</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formGroup formGroup__bottom">
+                        <div class="formGroup-inner">
+                            <button type="submit" name="entity-submit">
+                                Сохранить
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %} {#formSoloMain#}

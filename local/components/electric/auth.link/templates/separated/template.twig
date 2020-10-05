@@ -1,0 +1,41 @@
+{% set authData = result %}
+
+{% if authData["IS_AUTHORIZED"] %}
+
+    {% if (authData["IS_CONTRACTOR"]) %}
+        <a href="/backoffice/news_and_statistics/">
+            {{ authData["USER"]["NAME"] }} {{ authData["USER"]["LAST_NAME"] }}
+        </a>
+    {% else %}
+        <a href="#" class="header-person__functions-name js-header-user">
+            <span class="header-person__functions-name-inner">
+                {{ authData["USER"]["NAME"] }} {{ authData["USER"]["LAST_NAME"] }}
+            </span>
+            {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+        </a>
+        <div class="header-person-menu header-person-menu_zak js-header-person-menu">
+            <div class="header-person-menu-inner">
+                <div class="header-person-menu__single">
+                    <a href="#edit_fio" data-fancybox="" data-src="#edit_fio">
+                        Редактировать ФИО
+                    </a>
+                </div>
+                <div class="header-person-menu__single">
+                    <a href="#edit_password" data-fancybox="" data-src="#edit_password">
+                        Сменить пароль
+                    </a>
+                </div>
+                <div class="header-person-menu__single header-person-menu__single_logout">
+                    <a href="/logout/">
+                        Выйти
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% else %}
+    <a href="/auth/">
+        Авторизация/Регистрация
+    </a>
+{% endif %}

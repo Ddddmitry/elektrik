@@ -1,0 +1,12 @@
+a.education-list__title {
+    color: #113865;
+    text-decoration: underline; }
+a.education-list__title:hover, a.education-list__title:focus, a.education-list__title:active {
+    color: #113865;
+    text-decoration: none; }
+
+@media only screen and (max-width: 500px){
+    .education-list__content{
+        padding: 20px 0;
+    }
+}

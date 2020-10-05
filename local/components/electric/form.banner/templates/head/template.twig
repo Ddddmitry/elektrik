@@ -1,0 +1,32 @@
+{% set banners = result["BANNERS"] %}
+
+<div class="formSolo-info">
+    <div class="formSolo-info-logo">
+        <a href="/">
+            <img src="/local/templates/.default/img/logo.png"
+                 srcset="/local/templates/.default/img/logo@2x.png 2x,
+                                                         /local/templates/.default/img/logo@3x.png 3x"
+                 alt="электрик.ру" class="formSolo-info-logo-img">
+        </a>
+    </div>
+    <div class="formSolo-info-slider js-slider-formSolo">
+        {% for banner in banners %}
+            <div class="formSolo-info-slider__single">
+                <div class="formSolo-info-slider__img"
+                     style="background-image: url('{{ banner["SRC"] }}');">
+                </div>
+                <div class="formSolo-info-slider__text">
+                    <div class="formSolo-info-slider__comm">
+                        <div class="formSolo-info-slider__comm-img">
+                            {% include './includes/icon.twig' with {icon: {name: 'comm', class: ''}} %}
+                        </div>
+                        {{ banner["TITLE"] }}
+                    </div>
+                    <div class="formSolo-info-slider__author">
+                        {{ banner["SUBTITLE"] }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

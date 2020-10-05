@@ -1,0 +1,4 @@
+.articles__filter-sticky{
+    position: sticky;
+    top: 128px;
+}

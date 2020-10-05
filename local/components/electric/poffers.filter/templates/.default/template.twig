@@ -1,0 +1,62 @@
+{% set filterData = result["FILTER_DATA"] %}
+{% set folder = result["SEF_FOLDER"] %}
+
+<div class="articlesPage-helper-filters js-showhide">
+    <div class="articlesPage-helper__showFilters">
+        <a href="#" class="articlesPage-helper__showFilters-button js-showhide-toggler inhLink">
+            Фильтр {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+        </a>
+        <a href="#" class="articlesPage-helper__showFilters-clean js-articles-filter-clear js-articles-filter-clear-block">
+            Очистить все
+            {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+        </a>
+    </div>
+    <div class="articlesPage-helper-filters-inner js-showhide-content" data-articles-filter data-filter-params="">
+        <div class="articlesPage-helper-category articlesPage-helper__block">
+            <div class="articlesPage-helper__title">
+                Тип статьи
+            </div>
+            <div class="articlesPage-helper-category-list">
+                {% for typeID, typeName in filterData["TYPES"] %}
+                    <div class="articlesPage-helper-category-list__single js-articles-filter-type" data-type="{{ typeID }}">
+                        <a href="{{ folder }}?type={{ typeID }}" class="button2 articlesPage-helper-category-list__single-button ">
+                            {{ typeName }}
+                            {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="articlesPage__separator"></div>
+
+        <div class="articlesPage-helper-themes articlesPage-helper__block">
+            <div class="articlesPage-helper__title">
+                Темы
+            </div>
+            <div class="articlesPage-helper-themes-list">
+                {% for tag in filterData["TAGS"] %}
+                    <div class="articlesPage-helper-themes-list__single js-articles-filter-tag" data-tag="{{ tag }}">
+                        <a href="#" data-code="{{ tag }}" class="inhLink articlesPage-helper-themes-list__single-button">
+                            {{ tag }}
+                            {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="articlesPage-helper-themes articlesPage-helper-themes--clear articlesPage-helper__block js-articles-filter-clear-block">
+            <div class="articlesPage__separator"></div>
+            <div class="articlesPage-helper-themes-list">
+                <div class="articlesPage-helper-themes-list__single active">
+                    <a href="#" class="inhLink articlesPage-helper-themes-list__single-button js-articles-filter-clear">
+                        Очистить всё
+                        {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,135 @@
+{% set ajaxMode = result["AJAX_MODE"] %}
+{% set folder = result["SEF_FOLDER"] %}
+{% set selectedData = result["SELECTED_DATA"] %}
+{% set filterData = result["FILTER_DATA"] %}
+{% set banner = result["BANNER"] %}
+{% set userCity = result["USER_CITY"] %}
+{% set show = result["SHOW"] %}
+{% set noContractors = result["NO_CONTRACTORS"] %}
+{% set closestCities = result["CLOSEST_CITIES"] %}
+{% set hints = result["HINTS"] %}
+
+<div class="search {{ banner["FORMAT"] }} fromTemplate">
+    <div class="search-inner typicalBlock typicalBlock_one" style="height: {{ banner["HEIGHT"] }}px">
+        <div class="search__back">
+            <img src="{{ banner["SRC"] }}"
+                 alt="{{ banner["TITLE"] }}"
+                 class="search__back-img">
+        </div>
+        <div class="search__title">
+            {% if banner["TITLE"] %}
+                {{ banner["TITLE"] }} {% if userCity["NAME"] %} в <a href="#city_change" data-fancybox="" data-src="#city_change" class="search__title-accent">г. {{ userCity["NAME"] }}</a>{% endif %}
+            {% endif %}
+        </div>
+        <div class="search__action">
+            {% if noContractors %}
+                <p>
+                    К сожалению, в вашем городе пока нет зарегистрированных специалистов.<br>
+                    Попробуйте найти специалиста в ближайшем к вам городе.
+                </p>
+                <div class="search__example search__example_inline">
+                    <div class="search__example-title">
+                        Ближайшие города:
+                    </div>
+                    <div class="search__example-list">
+                        {% for city in closestCities %}
+                            <a href="#" class="search__example-single button2 js-set-closest-city" data-id="{{ city["ID"] }}">
+                                {{ city["NAME"] }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% else %}
+
+                <form action="{% if not ajaxMode %}{{ folder }}{% else %}/marketplace/{% endif %}" class="search__form" data-filter-params="" data-sort-params="" data-contractors-filter="{% if ajaxMode %}ajax{% endif %}">
+                    <div class="formGroup formGroup_search">
+                        <div class="formGroup-inner">
+                            <label for="contractors-service">
+                                Услуга и специалист
+                            </label>
+                            <input type="hidden" name="contractors-search-id" id="contractors-service-id" class="js-popupSearchResult-inputHidden">
+                            <input type="text" name="contractors-search" id="contractors-service" class="js-popupSearchResult-input" autocomplete="NoAutocomplete"
+                                   {% if selectedData["contractors-search"] %}value="{{ selectedData["contractors-search"] }}"{% endif %} placeholder="Услуга и специалист">
+                            <div class="popupSearchResult js-popupSearchResult"></div>
+                        </div>
+                    </div>
+                    <div class="formGroup formGroup_search">
+                        <div class="formGroup-inner">
+                            <label for="contractors-location">
+                                Укажите улицу или станцию метро
+                            </label>
+                            <input type="hidden" name="contractors-location-id" id="contractors-location-id" class="js-popupSearchResult-inputHidden"
+                                   {% if selectedData["contractors-location-id"] %}value="{{ selectedData["contractors-location-id"] }}"{% endif %}>
+                            <input type="text" name="contractors-location" id="contractors-location" class="js-popupSearchResult-input" autocomplete="NoAutocomplete" data-restricted="{{ userCity["ID"] }}"
+                                   {% if selectedData["contractors-location"] %}value="{{ selectedData["contractors-location"] }}"{% endif %} placeholder="Улица или станция метро">
+                            <div class="popupSearchResult js-popupSearchResult"></div>
+                        </div>
+                    </div>
+                    <div class="formGroup formGroup_submit">
+                        <div class="formGroup-inner">
+                            <button type="submit" id="contractors-submit" name="contractors-submit">
+                                Поиск
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                {% if show["HINTS"] %}
+                    <div class="search__example">
+                        <div class="search__example-title">
+                            Например:
+                        </div>
+                        <div class="search__example-list">
+                            {% for item in hints %}
+                                <a href="#" class="search__example-single js-substitution-button button2"
+                                   data-input="contractors-service"
+                                   data-value="{{ item.value }}">
+                                    {{ item.value }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if show["FILTER"] %}
+                    <div class="search__filter">
+                        <form action="#" class="search__filter-list" id="filter" data-contractors-filter-details>
+                            <div class="search__filter-single">
+                                <select name="type" id="filter-service-person" data-placeholder="Исполнитель" class="js-chosen">
+                                    <option value=""></option>
+                                    <option value="">Все исполнители</option>
+                                    <option value="individual" {% if selectedData["type"] == "individual" %}selected{% endif %}>Частное лицо</option>
+                                    <option value="legal" {% if selectedData["type"] == "legal" %}selected{% endif %}>Компания</option>
+                                </select>
+                            </div>
+                            <div class="search__filter-single">
+                                <select name="skill" id="filter-qualification" data-placeholder="Квалификация" class="js-chosen">
+                                    <option value=""></option>
+                                    <option value="">Все</option>
+                                    {% for skill in filterData["SKILLS"] %}
+                                        <option value="{{ skill["ID"] }}" {% if selectedData["skill"] == skill["ID"] %}selected{% endif %}>{{ skill["NAME"] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="search__filter-single">
+                                <select name="room" id="filter-house" data-placeholder="Тип помещения" class="js-chosen">
+                                    <option value=""></option>
+                                    {% for room in filterData["ROOMS"] %}
+                                        <option value="{{ room["ID"] }}" {% if selectedData["room"] == room["ID"] %}selected{% endif %}>{{ room["NAME"] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </form>
+                        <a href="#" class="search__filter-clean js-contractors-filter-clean">
+                            Очистить
+                            {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+                        </a>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>

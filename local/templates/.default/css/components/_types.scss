@@ -1,0 +1,72 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.types {
+    padding: 0 0 54px 0;
+    @include respond-to(lg) {
+        padding-bottom: 64px;
+    }
+    @include respond-to(sm) {
+        padding-bottom: 47px;
+        padding-top: 9px;
+    }
+    &-inner {}
+    &__title {}
+    &__list {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+        @include respond-to(sm) {
+            display: block;
+        }
+        &-single {
+            width: 33.33333333%;
+            padding: 20px 30px 30px 15px;
+            @include respond-to(md) {
+                padding-bottom: 24px;
+            }
+            @include respond-to(sm) {
+                width: 100%;
+                text-align: center;
+                padding-top: 15px;
+                padding-bottom: 0px;
+                margin-bottom: -6px;
+            }
+        }
+        &-title {
+            font-size: 24px;
+            line-height: 1.25;
+            font-weight: 500;
+            margin: 0 0 27px 0;
+            @include respond-to(md) {
+                font-size: 20px;
+                line-height: 1.5;
+                margin-bottom: 24px;
+            }
+        }
+        &-subTypes {
+            &-single {
+                margin: 10px 0;
+                @include respond-to(md) {
+                    margin-top: 12px;
+                    margin-bottom: 16px;
+                }
+                @include respond-to(sm) {
+                    margin-top: 13px;
+                    margin-bottom: 23px;
+                }
+            }
+        }
+    }
+    &__bottom {
+        text-align: center;
+        margin: 6px 0 0 0;
+        @include respond-to(sm) {
+            margin-top: 42px;
+        }
+        &-button {}
+    }
+}

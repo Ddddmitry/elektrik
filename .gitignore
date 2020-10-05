@@ -1,0 +1,70 @@
+# BITRIX
+/bitrix/
+/bitrix
+/local/managed_cache
+/local/stack_cache
+/local/cache
+/local/html_pages
+/upload/
+/upload
+/local/components/bitrix
+/local/activities/bitrix
+# /local/templates/.default/assets
+sitemap*
+mailer.log
+/robots.txt
+/integration_log.txt
+/log.txt
+
+
+# NODE
+/node_modules
+/local/templates/.default/backoffice/node_modules
+/local/templates/.default/backoffice-client/node_modules
+/yarn-error.log
+/npm-debug.log
+
+# COMPOSER
+/local/vendor
+/local/logs
+
+# CONFIG
+/www/local/php_interface/dbconn.php
+
+# IDE - VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OTHER
+/sandbox/
+/sandbox
+/.idea
+/.bash_history
+/.bash_logout
+/.bash_profile
+/.bashrc
+/.cache
+/.config
+/.local
+/.ssh
+.sql
+.DS_Store
+.orig
+.rej
+.conflict
+.core
+.swp
+.tar
+.gz
+.log
+.sql
+.zip
+.rar
+.7z
+.directory
+.bak
+[Tt]humbs\.db
+.DS_Store

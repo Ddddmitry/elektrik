@@ -1,0 +1,135 @@
+<div class="search search_{{ data.size }}">
+    <div class="search-inner typicalBlock typicalBlock_one" style="height: {{ data.banner.size.height }}px">
+        <div class="search__back">
+            <img src="{{ data.banner.src }}"
+                 alt="{{ data.banner.name }}"
+                 class="search__back-img">
+            <div class="search__back-gradient"></div>
+        </div>
+        {% if (data.title) %}
+            <div class="search__title">
+                {{ data.title }}
+            </div>
+        {% endif %}
+        <div class="search__action">
+            <form action="{{ data.search.action }}" class="search__form" id="{{ data.search.code }}">
+                {% for field in data.search.items %}
+                    {% if (field.type != 'submit') %}
+                        <div class="formGroup {% if (field.type == 'search') %}formGroup_search{% endif %}">
+                            <div class="formGroup-inner">
+                                {% if (field.type == 'select') %}
+                                    <select name="{{ data.search.code }}-{{ field.name }}"
+                                            id="{{ data.search.code }}-{{ field.name }}"
+                                            data-placeholder="{{ field.title }}"
+                                            class="js-chosen">
+                                        <option></option>
+                                        {% for option in field.items %}
+                                            <option value="{{ option.value }}" {% if (option.selected == 'selected') %}selected{% endif %}>
+                                                {{ option.title }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                {% else %}
+                                    {% if (field.type == 'search') %}
+                                        {% include './includes/icon.twig' with {icon: {name: 'search', class: 'findIcon'}} %}
+                                    {% endif %}
+                                    <label for="{{ data.search.code }}-{{ field.name }}" class="search__label">
+                                        {% if (field.type == 'search') %}
+                                            {% include './includes/icon.twig' with {icon: {name: 'search', class: 'findIcon'}} %}
+                                        {% endif %}
+                                        {{ field.title }}
+                                    </label>
+                                    <input type="{{ field.type }}"
+                                           name="{{ data.search.code }}-{{ field.name }}"
+                                           id="{{ data.search.code }}-{{ field.name }}">
+                                    {% if (field.type == 'search') %}
+                                        {% include './includes/icon.twig' with {icon: {name: 'close', class: 'js-cleanIcon closeIcon'}} %}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if field.type == 'submit' %}
+                        <div class="formGroup formGroup_submit">
+                            <div class="formGroup-inner">
+                                <button type="{{ field.type }}" id="{{ data.search.code }}-{{ field.name }}" name="{{ data.search.code }}-{{ field.name }}">
+                                {{ field.title }}
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </form>
+            {% if data.show_example == true %}
+                {% set search_example = [{
+                    name: 'servise_person',
+                    value: '1',
+                    title: 'Установка проводки'
+                },{
+                    name: 'servise_person',
+                    value: '2',
+                    title: 'Ремонт проводки на заводе'
+                },{
+                    name: 'servise_person',
+                    value: '3',
+                    title: 'Установка счётчиков'
+                }] %}
+                <div class="search__example">
+                    <div class="search__example-title">
+                        Например:
+                    </div>
+                    <div class="search__example-list">
+                        {% for item in search_example %}
+                            <a href="#" class="search__example-single js-substitution-button button2"
+                               data-input="{{ search.code }}-{{ item.name }}"
+                               data-value="{{ item.value }}">
+                                {{ item.title }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            {% if data.show_filter == true %}
+                <div class="search__filter">
+                    <form action="#" class="search__filter-list" id="filter">
+                        <div class="search__filter-single">
+                            <select name="filter-service-person" id="filter-service-person" data-placeholder="Исполнитель" class="js-chosen">
+                                <option value=""></option>
+                                <option value="1">Все исполнители</option>
+                                <option value="2">Частное лицо</option>
+                                <option value="3">Компания</option>
+                            </select>
+                        </div>
+                        <div class="search__filter-single">
+                            <select name="filter-qualification" id="filter-qualification" data-placeholder="Квалификация" class="js-chosen">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10000000000000000000000000</option>
+                            </select>
+                        </div>
+                        <div class="search__filter-single">
+                            <select name="filter-house" id="filter-house" data-placeholder="Тип помещения" class="js-chosen">
+                                <option value=""></option>
+                                <option value="1">Дом</option>
+                                <option value="2">Офис</option>
+                                <option value="3">Квартира</option>
+                            </select>
+                        </div>
+                    </form>
+                    {#<a href="#" class="search__filter-clean">#}
+                        {#Очистить все#}
+                        {#{% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}#}
+                    {#</a>#}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

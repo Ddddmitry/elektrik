@@ -1,0 +1,714 @@
+{% extends 'marketplace.twig' %}
+
+{% block notification %}
+{% endblock %} {#notification#}
+{% block search %}
+    {% set search = {
+        code: 'search',
+        action: '?layout=marketplace',
+        items: [{
+            title: 'Услуга и специалист',
+            name: 'servise_person',
+            type: 'select',
+            items: [{
+                value: '1',
+                title: 'Установка проводки',
+                selected: 'selected'
+            },{
+                value: '2',
+                title: 'Ремонт проводки на заводе'
+            },{
+                value: '3',
+                title: 'Установка счётчиков'
+            }]
+        },{
+            title: 'Метро район или город',
+            name: 'place',
+            type: 'select',
+            items: [{
+                value: '1',
+                title: 'Алабинская',
+                selected: 'selected'
+            },{
+                value: '2',
+                title: 'Победа'
+            },{
+                value: '3',
+                title: 'Безымянка'
+            }]
+        },{
+            title: 'Поиск',
+            name: 'submit',
+            type: 'submit',
+        }]
+    } %}
+    {% include './includes/search.twig' with {data: {
+        size: 'xs',
+        banner: {
+            src: '/local/templates/.default/img/trash/banner2.jpg',
+            name: 'Баннер2',
+            size: {
+                width: 1440,
+                height: 400
+            }
+        },
+        search: search,
+    }} %}
+{% endblock %} {#search#}
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-inner typicalBlock typicalBlock_two">
+            <div class="breadcrumbs-list">
+                <a href="/?layout=marketplace"
+                   class="breadcrumbs-list__single">
+                    {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                    <span class="breadcrumbs-list__single-text">К списку исполнителей</span>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %} {#breadcrumbs#}
+{% block marketplace %}
+<div class="marketplace">
+    <div class="marketplace-inner typicalBlock typicalBlock_two">
+        {% set master = {
+            img: {
+                src: '/local/templates/.default/img/trash/marketplace1.jpg',
+            },
+            name: 'Михаил Балезин',
+            position: {
+                adress: 'Москва, 3-я ул. Ямского Поля, 20, стр. 1',
+                coords: [55.684758, 37.738521],
+            },
+            qualification: '3 уровень',
+            languages: {
+                0: 'Русский родной',
+                1: 'Английский готов вести переговоры',
+            },
+            about: 'Высоконадежная активно развивающаяся компания
+            с большим опытом решения задач по электромонтажу
+            на объектах различной сложности: от крупных
+            промышленных объектов до квартиры или коттеджа коттеджа.',
+            services: [{
+                name: 'Проектирование',
+                items: [{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности',
+                    price: '3 200',
+                },{
+                    name: 'Прокладка наружных сетей электроснабжения напряжением до 1000 В',
+                    price: '3 670',
+                },{
+                    name: 'Прокладка кабеля в земле',
+                    price: '2 400',
+                },{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности2',
+                    price: '3 200',
+                },{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности33',
+                    price: '3 200',
+                },]
+            },{
+                name: 'Монтаж',
+                items: [{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности',
+                    price: '3 200',
+                },{
+                    name: 'Прокладка наружных сетей электроснабжения напряжением до 1000 В',
+                    price: '3 670',
+                },{
+                    name: 'Прокладка кабеля в земле',
+                    price: '2 400',
+                },{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности2',
+                    price: '3 200',
+                },{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности33',
+                    price: '3 200',
+                },]
+            },{
+                name: 'Ремонт',
+                items: [{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности',
+                    price: '3 200',
+                },{
+                    name: 'Прокладка наружных сетей электроснабжения напряжением до 1000 В',
+                    price: '3 670',
+                },{
+                    name: 'Прокладка кабеля в земле',
+                    price: '2 400',
+                },{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности2',
+                    price: '3 200',
+                },{
+                    name: 'Монтаж силовых и осветительных электрических
+                    сетей, компьютерных сетей, сетей связи и безопасности33',
+                    price: '3 200',
+                },]
+            }],
+            works: [{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/articles1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            },{
+                preview_img: '/local/templates/.default/img/trash/works1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Пример работ',
+            }],
+            contacts: {
+                tel: '+7 (999) 432-76-67',
+                email: 'mikhail-balezin@mail.ru',
+            },
+            raiting: '4,8',
+            reviews_number: 16,
+            docs: [{
+                preview_img: '/local/templates/.default/img/trash/docs1.jpg',
+                detail_img: '/local/templates/.default/img/trash/banner1.jpg',
+                title: 'Описание',
+            },{
+                preview_img: '/local/templates/.default/img/trash/docs1.jpg',
+                detail_img: '/local/templates/.default/img/trash/articles1.jpg',
+                title: 'Описание',
+            }],
+        } %}
+        <div class="marketDetail">
+            <div class="marketDetail-about">
+                <div class="marketDetail-about__main">
+                    <div class="marketDetail-about__main-block marketDetail-about__main-block_top">
+                        <div class="marketDetail-about__img">
+                            <img src="{{ master.img.src }}"
+                                 alt="{{ master.name }}" class="marketDetail-about__img-tag">
+                        </div>
+                        <div class="marketDetail-about__text">
+                            <h1 class="marketDetail-about__title">{{ master.name }}</h1>
+                            <div class="marketDetail-about__properties">
+                                {% if (master.position and (master.position is empty) == false) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Адрес:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block">
+                                            {% if (master.position.adress != '') %}
+                                                {{ master.position.adress }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            {% endif %}
+                                            <br class="marketDetail-about__properties-block-br">
+                                            <a href="#on-map" data-fancybox data-src="#on-map" class="marketDetail-about__properties-block-link">На карте</a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if (master.qualification and master.qualification != '') %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Квалификация:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block">
+                                            {{ master.qualification }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if (master.languages and (master.languages is empty) == false) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Языки:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block_language
+                                        marketDetail-about__properties-block">
+                                            {% for language in master.languages %}
+                                                {{ language }}{% if (loop.index != master.languages|length) %}, {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if (master.contacts and (master.contacts is empty) == false) %}
+                        <div class="marketDetail-about__helper-block_contacts
+                        marketDetail-about__helper-block
+                        marketDetail-about__helper-block_mobile">
+                            <div class="marketDetail-about__helper-block_contacts-inner
+                                js-marketDetail-about-helper-contacts_mobile">
+                                <div class="marketDetail__title">
+                                    Контакты:
+                                </div>
+                                <div class="marketDetail-about__contacts-info">
+                                    {% if (master.contacts.tel and master.contacts.tel != '') %}
+                                        <div class="marketDetail-about__contacts-tel">
+                                            <a href="tel:{{ master.contacts.tel }}"
+                                               class="marketDetail-about__contacts-tel-inner inhLink">
+                                                {{ master.contacts.tel }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    <div class="marketDetail-about__contacts-mail">
+                                        <a href="mailto:{{ master.contacts.email }}"
+                                           class="marketDetail-about__contacts-mail-inner">
+                                            {{ master.contacts.email }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="marketDetail-about__contactsButton
+                            js-marketDetail-about-helper-contactsButton_mobile
+                            button3">
+                                Показать контакты
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if ((master.reviews_number and master.reviews_number != '') or
+                        (master.raiting and master.raiting != '')) %}
+                        <div class="marketDetail-about__helper-block_numbers
+                        marketDetail-about__helper-block
+                        marketDetail-about__helper-block_mobile">
+                            <div class="marketDetail-about-numbersList">
+                                {% if (master.raiting and master.raiting != '') %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Рейтинг
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ master.raiting }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if (master.reviews_number and master.reviews_number != '') %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Отзывов
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ master.reviews_number }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if (master.about and master.about != '') %}
+                        <div class="marketDetail-about__main-block marketDetail-about__main-block_master">
+                            <div class="marketDetail__title">
+                                О исполнителе:
+                            </div>
+                            <p>
+                                {{ master.about }}
+                            </p>
+                        </div>
+                    {% endif %}
+                    {% if (master.services and (master.services is empty) == false) %}
+                        <div class="marketDetail-about__main-block marketDetail-about__main-block_services">
+                            <div class="marketDetail__title">
+                                Услуги:
+                            </div>
+                            <div class="marketDetail-about-serviceList">
+                                {% for service in master.services %}
+                                    <div class="marketDetail-about-serviceList__single
+                                    js-marketDetail-about-serviceList__single">
+                                        <div class="marketDetail-about-serviceList__title">
+                                            {{ service.name }}:
+                                        </div>
+                                        <div class="marketDetail-about-serviceList__separator"></div>
+                                        <div class="marketDetail-about-serviceList__sublist
+                                        js-marketDetail-about-serviceList__sublist">
+                                            {% for subService in service.items %}
+                                                <div class="marketDetail-about-serviceList__sublist-single
+                                                js-marketDetail-about-serviceList__sublist-single">
+                                                    <div class="marketDetail-about-serviceList__sublist-block_text
+                                                    marketDetail-about-serviceList__sublist-block">
+                                                        <span class="marketDetail-about-serviceList__sublist-text">
+                                                            {{ subService.name }}
+                                                        </span>
+                                                        <div class="marketDetail-about-serviceList__sublist-text-line"></div>
+                                                    </div>
+                                                    <div class="marketDetail-about-serviceList__sublist-block_value
+                                                    marketDetail-about-serviceList__sublist-block">
+                                                        от {{ subService.price }} ₽
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="marketDetail__more
+                                        js-marketDetail-about-serviceList__more">
+                                            Ещё
+                                            {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="marketDetail-about__helper">
+                    {% if (master.contacts and (master.contacts is empty) == false) %}
+                        <div class="marketDetail-about__helper-block_contacts
+                        js-marketDetail-about-helper-contacts
+                        marketDetail-about__helper-block">
+                            <div class="marketDetail__title">
+                                Контакты:
+                            </div>
+                            <div class="marketDetail-about__contacts-info">
+                                {% if (master.contacts.tel and master.contacts.tel != '') %}
+                                    <div class="marketDetail-about__contacts-tel">
+                                        <a href="tel:{{ master.contacts.tel }}"
+                                           class="marketDetail-about__contacts-tel-inner inhLink">
+                                            {{ master.contacts.tel }}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                <div class="marketDetail-about__contacts-mail">
+                                    <a href="mailto:{{ master.contacts.email }}"
+                                       class="marketDetail-about__contacts-mail-inner">
+                                        {{ master.contacts.email }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="marketDetail-about__contactsButton
+                        js-marketDetail-about-helper-contactsButton
+                        button3">
+                            Показать контакты
+                        </a>
+                    {% endif %}
+                    {% if ((master.reviews_number and master.reviews_number != '') or
+                        (master.raiting and master.raiting != '')) %}
+                        <div class="marketDetail-about__helper-block_numbers
+                        marketDetail-about__helper-block">
+                            <div class="marketDetail-about-numbersList">
+                                {% if (master.raiting and master.raiting != '') %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Рейтинг
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ master.raiting }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if (master.reviews_number and master.reviews_number != '') %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Отзывов
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ master.reviews_number }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if (master.docs and (master.docs is empty) == false) %}
+                        <div class="marketDetail-about__helper-block_docs
+                        marketDetail-about__helper-block">
+                            <div class="marketDetail__title">
+                                Документы и сертификаты:
+                            </div>
+                            <div class="marketDetail-about-docsList">
+                                {% for doc in master.docs %}
+                                    <div class="marketDetail-about-docsList__single">
+                                        <a href="{{ doc.detail_img }}"
+                                           data-fancybox="gallery-docs"
+                                           data-fancybox-img
+                                           class="marketDetail-about-docsList__single-inner"
+                                           data-caption="{{ doc.title }}">
+                                            <img src="{{ doc.preview_img }}"
+                                                 alt="{{ doc.title }}"
+                                                 class="marketDetail-about-docsList__img">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% if (master.works and (master.works is empty) == false) %}
+                <div class="marketDetail-works js-marketDetail-works">
+                    <div class="marketDetail__title">
+                        Примеры работ:
+                        <span class="marketDetail__title-accent">
+                            {{ master.works|length }}
+                        </span>
+                    </div>
+                    <div class="marketDetail-works-list js-marketDetail-works-list">
+                        {% for work in master.works %}
+                            <div class="marketDetail-works-list__single js-marketDetail-works-list__single">
+                                <a href="{{ work.detail_img }}"
+                                   class="marketDetail-works-list__single-inner"
+                                   data-fancybox="gallery-works"
+                                   data-fancybox-img
+                                   data-caption="{{ work.title }}">
+                                    <img src="{{ work.preview_img }}"
+                                         alt="{{ work.title }}"
+                                         class="marketDetail-works-list__img">
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="marketDetail__more js-marketDetail-works-more">
+                        Ещё примеры
+                        {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="marketDetail-reviews" id="master-reviews">
+                <div class="marketDetail__title">
+                    Отзывы:
+                    <span class="marketDetail__title-accent">
+                        5
+                    </span>
+                </div>
+                <div class="marketDetail-reviews-inner">
+                    <div class="marketDetail-reviews__main">
+                        <div class="marketDetail-reviews__comment">
+                            {#<div class="marketDetail-reviews__comment-lock">#}
+                                {#Чтобы оставить комментарий, необходимо#}
+                                {#<a href="?layout=forms/form-registration">зарегистрироваться</a> или <a href="?layout=forms/form-autorization">войти</a>#}
+                            {#</div>#}
+                            <div class="marketDetail-reviews__comment-unlock">
+                                <form action="#" class="marketDetail-reviews__comment-form" id="review">
+                                    <div class="formGroup required formGroup_raiting">
+                                        <div class="formGroup-inner formGroup-inner_line">
+                                            <div class="formGroup-inner-title">
+                                                Оценка работы мастера:
+                                            </div>
+                                            <div class="raitRadio js-raitRadio">
+                                                {% include './includes/raiting.twig' with {raitNumber: '0', class: 'raitRadio__raiting'} %}
+                                                <div class="raitRadio__radio">
+                                                    <input type="radio" name="review-raiting" value="1" class="js-raitRadio__radio-tag" required>
+                                                    <input type="radio" name="review-raiting" value="2" class="js-raitRadio__radio-tag">
+                                                    <input type="radio" name="review-raiting" value="3" class="js-raitRadio__radio-tag">
+                                                    <input type="radio" name="review-raiting" value="4" class="js-raitRadio__radio-tag">
+                                                    <input type="radio" name="review-raiting" value="5" class="js-raitRadio__radio-tag">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="formGroup required">
+                                        <div class="formGroup-inner">
+                                            <label for="review-text">
+                                                Ваш отзыв
+                                            </label>
+                                            <textarea name="review-text" id="review-text" required
+                                                      class="marketDetail-reviews__comment-textarea js-textarea-sm" maxlength="2048" placeholder="Ваш отзыв"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="formGroup formGroup__bottom disabled">
+                                        <div class="formGroup-inner">
+                                            <button type="submit" name="review-submit" disabled>
+                                                Отправить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        {% set reviews = [{
+                            author: 'natalia_petrova',
+                            date: '28 мая 2019',
+                            raiting: '5',
+                            text: 'Необходимо было сделать электропроводку на 3-х уровнях в
+                            частном загородном доме. Сделал заявку в "Электромонтаж ПРО".
+                            Всё сделано на ОТЛИЧНО! Необходимо отметить профессиональный
+                            подход к организации работ. ',
+                            answer: 'Наталья, спасибо за отзыв!',
+                        },{
+                            author: 'pavel_ignatev',
+                            date: '3 мая 2019',
+                            raiting: '4',
+                            text: 'Благодарю мастера за очень оперативную
+                            и профессиональную работу. Он быстро разобрался в технически
+                            непростой неисправности - нестабильной температуре воды
+                            в смесителях - выявил общую причину и легко устранил её.
+                            Опыт! Был и мелкий ремонт смесителей и кранов, тоже
+                            качественно и быстро. С удовольствием порекомендую мастера.',
+                        },{
+                            author: 'anastasia',
+                            date: '17 апреля 2019',
+                            raiting: '1',
+                            text: 'Заказ был сделан на мелкий ремонт.
+                            Необходимо было навесить карниз в 1 комнате и вынести
+                            старый ковер. Мастер приехал вовремя. С поставленной
+                            задачей справился. Довольна!',
+                        }] %}
+                        <div class="marketDetail-reviews-list">
+                            {% for review in reviews %}
+                                <div class="marketDetail-reviews-list__single">
+                                    <div class="marketDetail-reviews-list__top">
+                                        <div class="marketDetail-reviews-list__author">
+                                            {{ review.author }}
+                                        </div>
+                                        <div class="marketDetail-reviews-list__date">
+                                            {{ review.date }}
+                                        </div>
+                                    </div>
+                                    {% include './includes/raiting.twig' with {raitNumber: review.raiting, class: 'marketDetail-reviews-list__rait'} %}
+                                    <div class="marketDetail-reviews-list__text">
+                                        {{ review.text }}
+                                    </div>
+                                    {% if (review.answer and review.answer != '') %}
+                                        <div class="marketDetail-reviews-list__answer">
+                                            <div class="marketDetail-reviews-list__answer-top">
+                                                <div class="marketDetail-reviews-list__author">
+                                                    {{ master.name }}
+                                                </div>
+                                            </div>
+
+                                            <div class="marketDetail-reviews-list__answer-text">
+                                                {{ review.answer }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="marketDetail-reviews-bottom">
+                            <a href="#" class="button">
+                                Показать ещё
+                            </a>
+                        </div>
+                    </div>
+                    <div class="marketDetail-reviews__helper">
+                        <div class="marketDetail-reviews__helper-top">
+                            <div class="marketDetail-reviews__helper-title">
+                                Общий рейтинг:
+                            </div>
+                            <div class="marketDetail-reviews__numbers">
+                                <div class="marketDetail-reviews__numbers-current">
+                                    4,8&nbsp;
+                                </div>
+                                <div class="marketDetail-reviews__numbers-max">
+                                    /5
+                                </div>
+                            </div>
+                        </div>
+                        <div class="marketDetail-reviews__filter">
+                            <div class="marketDetail-reviews__filter-single">
+                                {% include './includes/raiting.twig' with {raitNumber: '5', class: 'marketDetail-reviews__filter-rait'} %}
+                                <div class="marketDetail-reviews__filter-amount">
+                                    <a href="#" data-rait="5"
+                                       class="marketDetail-reviews__filter-amount-action">
+                                        9 отзывов
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="marketDetail-reviews__filter-single">
+                                {% include './includes/raiting.twig' with {raitNumber: '4', class: 'marketDetail-reviews__filter-rait'} %}
+                                <div class="marketDetail-reviews__filter-amount">
+                                    <a href="#" data-rait="4"
+                                       class="marketDetail-reviews__filter-amount-action">
+                                        4 отзыва
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="marketDetail-reviews__filter-single">
+                                {% include './includes/raiting.twig' with {raitNumber: '3', class: 'marketDetail-reviews__filter-rait'} %}
+                                <div class="marketDetail-reviews__filter-amount">
+                                    <a href="#" data-rait="3"
+                                       class="marketDetail-reviews__filter-amount-action">
+                                        2 отзыва
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="marketDetail-reviews__filter-single">
+                                {% include './includes/raiting.twig' with {raitNumber: '2', class: 'marketDetail-reviews__filter-rait'} %}
+                                <div class="marketDetail-reviews__filter-amount">
+                                    <a href="#" data-rait="2"
+                                       class="marketDetail-reviews__filter-amount-action">
+                                        1 отзыв
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="marketDetail-reviews__filter-single">
+                                {% include './includes/raiting.twig' with {raitNumber: '1', class: 'marketDetail-reviews__filter-rait'} %}
+                                <div class="marketDetail-reviews__filter-amount">
+                                    <span data-rait="1"
+                                       class="marketDetail-reviews__filter-amount-action">
+                                        0 отзывов
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <div id="on-map" class="fancyBlock">
+        <div class="fancybox-title">Адрес</div>
+        <div id="ymap" class="ymap"></div>
+        <script>
+            ymaps.ready(init);
+            function init() {
+                var myMap = new ymaps.Map("ymap", {
+                        center: [{{ master.position.coords[0]|json_encode() }}, {{ master.position.coords[1]|json_encode() }}],
+                        zoom: 12,
+                        controls: ['zoomControl']
+                    }, {
+                        searchControlProvider: 'yandex#search'
+                    });
+
+                myMap.geoObjects
+                    .add(new ymaps.Placemark([{{ master.position.coords[0]|json_encode() }}, {{ master.position.coords[1]|json_encode() }}], {
+                        balloonContent: '{{ master.position.adress|json_encode() }}'
+                    }, {
+                        preset: 'islands#icon',
+                        iconColor: '#d70926'
+                    }));
+
+            }
+
+        </script>
+    </div>
+
+{% endblock %} {#marketplace#}

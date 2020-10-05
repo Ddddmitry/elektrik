@@ -1,0 +1,11 @@
+{% set authData = result["AUTH_DATA"] %}
+
+<div class="formSolo-workarea-content-social-list">
+    {% for service in authData %}
+        <div class="formSolo-workarea-content-social-list__single">
+            <a href="javascript:void(0)" onclick="{{ service["ONCLICK"] }}">
+                {% include './includes/icon.twig' with {icon: {name: service["ICON"], class: ''}} %}
+            </a>
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,77 @@
+{% set isAjax = result['IS_AJAX'] %}
+{% set services = result['ITEMS'] %}
+{% set serviceTypes = result['TYPES'] %}
+{% set folder = result["SEF_FOLDER"] %}
+
+{% if not isAjax %}
+
+<div class="articlesPage-helper-category-list" data-service-filter filter-params="">
+
+    <div class="articlesPage-helper-category-list__single">
+        <a href="" class="button2 articlesPage-helper-category-list__single-button js-service-filter-type" data-type="">
+            Все
+        </a>
+    </div>
+
+    {% for key, type in serviceTypes %}
+        <div class="articlesPage-helper-category-list__single">
+            <a href="?type={{ key }}" class="button2 articlesPage-helper-category-list__single-button js-service-filter-type" data-type="{{ key }}">
+                {{ type }}
+            </a>
+        </div>
+    {% endfor %}
+
+</div>
+
+<div class="articles-list articles-list_serv js-service-list">
+{% endif %}
+    {% for service in services %}
+        <div class="articles-list__single">
+            <a href="#arend_site_{{ service["ID"] }}"
+               data-fancybox=""
+               data-src="#arend_site_{{ service["ID"] }}"
+               class="articles-list__single-inner"
+               {% if (service["PREVIEW_PICTURE"]) %}
+               style="background-image: url({{ service["PREVIEW_PICTURE"]["SRC"] }});"
+               {% endif %}
+            >
+            </a>
+            <div class="articles-list__single-text">
+                <div class="articles-list__single-category">
+                    {% if (service["PROPERTIES"]["TYPE"]["VALUE_NAME"]) %}
+                        <span class="button2">
+                            {{ service["PROPERTIES"]["TYPE"]["VALUE_NAME"] }}
+                        </span>
+                    {% endif %}
+                </div>
+                <a href="#arend_site_{{ service["ID"] }}"
+                   data-fancybox=""
+                   data-src="#arend_site_{{ service["ID"] }}"
+                   class="articles-list__single-title inhLink">
+                    {{ service["NAME"] }}
+                </a>
+            </div>
+            <div id="arend_site_{{ service["ID"] }}" class="fancyBlock">
+                <div class="fancybox-title">{{ service["NAME"] }}</div>
+                {% if (service["DETAIL_PICTURE"]) %}
+                    <p>
+                        <img src="{{ service["DETAIL_PICTURE"]["SRC"] }}" alt="">
+                    </p>
+                {% endif %}
+                {{ service["DETAIL_TEXT"]|raw }}
+                {% if service["PROPERTIES"]["LINK"]["VALUE"] and service["PROPERTIES"]["BUTTON"]["VALUE"] %}
+                    <br>
+                    <p>
+                        <a href="{{ service["PROPERTIES"]["LINK"]["VALUE"] }}" class="button3" target="_blank">
+                            {{ service["PROPERTIES"]["BUTTON"]["VALUE"] }}
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+{% if not isAjax %}
+</div>
+{% endif %}
+

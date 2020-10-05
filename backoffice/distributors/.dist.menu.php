@@ -1,0 +1,52 @@
+<?
+$aMenuLinks = Array(
+    Array(
+        "Анкета",
+        "/backoffice/distributors/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Мероприятия",
+        "/backoffice/distributors/events/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Обучение",
+        "/backoffice/distributors/educations/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Статьи",
+        "/backoffice/distributors/articles/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "-Статистика",
+        "/backoffice/distributors/statistic/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Акции",
+        "/backoffice/distributors/sales/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Служба поддержки",
+        "/backoffice/distributors/help/",
+        Array(),
+        Array("ADDITIONAL"=>true),
+        ""
+    )
+);

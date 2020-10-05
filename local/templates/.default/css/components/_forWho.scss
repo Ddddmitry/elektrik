@@ -1,0 +1,40 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.forWho {
+    @include respond-to(md) {
+        padding-bottom: 30px;
+    }
+    &-inner {}
+    &-list {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: 0 -19px 0 -12px;
+        @include respond-to(md) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        &__single {
+            width: 50%;
+            padding: 0 19px 40px 12px;
+            @include respond-to(md) {
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 11px;
+            }
+            @include respond-to(sm) {
+                padding-bottom: 0px;
+            }
+            &-title {}
+            &-text {
+                @include respond-to(sm) {
+                    line-height: 1.77;
+                }
+            }
+        }
+    }
+}

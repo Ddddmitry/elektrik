@@ -1,0 +1,47 @@
+.articleEditor__submit-button {
+    margin-top: 20px
+}
+
+.backofficeMain input:not([type=submit]):not([type=checkbox]):not([type=radio]).articlesPage-list__title-input {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: .94;
+    padding: 0 16px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+    background: transparent
+}
+
+.ql-container.ql-snow, .ql-toolbar.ql-snow {
+    border: 1px solid #e5e5e5
+}
+
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+    height: auto
+}
+
+.ql-editor {
+    font: normal 18px/1.67 Gilroy, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #000
+}
+
+.ql-editor p {
+    margin-bottom: 10px
+}
+
+.ql-editor strong {
+    font-weight: 500
+}
+
+.ql-editor em {
+    font-style: italic
+}
+
+.ql-editor u {
+    text-decoration: underline
+}
+.hide{
+    display: none!important;
+}

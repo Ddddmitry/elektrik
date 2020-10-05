@@ -1,0 +1,201 @@
+{% set article = result['ARTICLE'] %}
+{% set folder = result['SEF_FOLDER'] %}
+{% set backURL = result['BACK_URL'] %}
+
+<div class="breadcrumbs breadcrumbs_padding">
+    <div class="breadcrumbs-inner typicalBlock typicalBlock_two">
+        <div class="breadcrumbs-list">
+            <a href="{{ backURL }}"
+               class="breadcrumbs-list__single">
+                {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                <span class="breadcrumbs-list__single-text">К списку статей</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="articlesPage articlesPage_detail">
+    <div class="articlesPage-inner typicalBlock typicalBlock_two">
+
+        <div class="articlesPage-main">
+            <h1 class="articlesPage__title">
+                {{ article["NAME"] }}
+            </h1>
+            <div class="htmlArea">
+                {{ article["DETAIL_TEXT"]|raw }}
+            </div>
+            <div class="articlesPage-helper articlesPage-helper_detail articlesPage-helper_mobile">
+                <div class="articlesPage-helper-articles articlesPage-helper__block">
+                    <div class="articlesPage-helper__title">
+                        Похожие статьи
+                    </div>
+                    <div class="articlesPage-helper-articles-list js-articlesPage-helper-articles">
+                        {% for relatedArticle in article["RELATED_ARTICLES"] %}
+                            <div class="articlesPage-helper-articles-list__single">
+                                <a href="{{ folder }}?type={{ relatedArticle["PROPERTY_TYPE_VALUE"] }}"
+                                   class="button2">
+                                    {{ relatedArticle["PROPERTY_TYPE_VALUE_NAME"] }}
+                                </a>
+                                <div class="articlesPage-helper-articles-list__title">
+                                    <a href="{{ relatedArticle["DETAIL_PAGE_LINK"] }}" class="inhLink">
+                                        {{ relatedArticle["NAME"] }}
+                                    </a>
+                                </div>
+                                {% if (relatedArticle["PREVIEW_TEXT"]) %}
+                                    <div class="articlesPage-helper-articles-list__description">
+                                        {% set preview_text = relatedArticle["PREVIEW_TEXT"] %}
+                                        {% if preview_text|length > constant('RELATED_ARTICLE_PREVIEW_TEXT_LIMIT') %}
+                                            {% set preview_text_array = preview_text|split(' ') %}
+                                            {% set preview_text_word_count = 0 %}
+                                            {% for ta in preview_text_array %}
+                                                {% set word_count = ta|length %}
+                                                {% if preview_text_word_count < constant('RELATED_ARTICLE_PREVIEW_TEXT_LIMIT') %}
+                                                    {% set preview_text_word_count = preview_text_word_count + word_count %}
+                                                    {{ ta }}
+                                                {% endif %}
+                                            {% endfor %}
+                                            ...
+                                        {% else %}
+                                            {{ preview_text }}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                <div class="articlesPage-helper-articles-list__author">
+                                    {{ relatedArticle["PROPERTY_USER_VALUE_NAME"] }}
+                                </div>
+                                <div class="articlesPage-helper-articles-list__date">
+                                    {{ relatedArticle["DATE"] }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            {% if article["BANNER"] %}
+                <div class="articlesPage-list__banner">
+                    {% if article["BANNER"]["LINK"] %}<a target="_blank" href="{{ article["BANNER"]["LINK"] }}">{% endif %}
+                        <img src="{{ article["BANNER"]["SRC"] }}" alt="">
+                    {% if article["BANNER"]["LINK"] %}</a>{% endif %}
+                </div>
+            {% endif %}
+
+            <div class="articlesPage-comments" id="comments">
+
+                <div class="articlesPage-comments-top">
+                    <div class="marketDetail__title">
+                        Комментарии
+                        <span class="marketDetail__title-accent">
+                            {{ article["COMMENTS"]["COUNT"] }}
+                        </span>
+                    </div>
+
+                    {{ includeComponent('electric:form.comment', '', {
+                        'ARTICLE': article["ID"],
+                    }) }}
+
+                </div>
+
+                {{ includeComponent('electric:articles.comments', '', {
+                    'ARTICLE': article["ID"],
+                    'PAGE_SIZE': constant('ARTICLE_COMMENTS_PAGE_SIZE'),
+                }) }}
+
+            </div>
+
+        </div>
+
+
+        <div class="articlesPage-helper articlesPage-helper_detail">
+            <div class="articlesPage-helper-category articlesPage-helper-category_detail articlesPage-helper__block">
+                <div class="articlesPage-helper__title">
+                    Тип статьи
+                </div>
+                <div class="articlesPage-helper-category-list">
+                    <div class="articlesPage-helper-category-list__single">
+                        <a href="{{ folder }}?type={{ article["PROPERTIES"]["TYPE"]["VALUE"] }}"
+                           class="button2 articlesPage-helper-category-list__single-button">
+                            {{ article["PROPERTIES"]["TYPE"]["VALUE_NAME"] }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="articlesPage__separator"></div>
+            <div class="articlesPage-helper-themes articlesPage-helper-themes_detail articlesPage-helper__block">
+                <div class="articlesPage-helper__title">
+                    Темы
+                </div>
+                <div class="articlesPage-helper-themes-list">
+                    {% for tag in article["PROPERTIES"]["TAGS"]["VALUE"] %}
+                        <div class="articlesPage-helper-themes-list__single">
+                            <span class="articlesPage-helper-themes-list__single-button">
+                                {{ tag }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="articlesPage__separator"></div>
+            <div class="articlesPage-helper-data articlesPage-helper__block">
+                <div class="articlesPage-helper-data__author">
+                    {{ article["PROPERTIES"]["USER"]["VALUE_NAME"] }}
+                </div>
+                <div class="articlesPage-helper-data__date">
+                    {{ article["DATE"] }}
+                </div>
+                <div class="clear articlesPage-helper-data__clear"></div>
+                <div class="articlesPage-helper-data__comment">
+                    <a href="#comments" class="inhLink">
+                        {% include './includes/icon.twig' with {icon: {name: 'comment', class: ''}} %}
+                        {{ article["COMMENTS"]["COUNT"] }} <span class="articlesPage-helper-data__comment-text">{{ article["COMMENTS"]["COUNT_WORD"] }}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            {% if  article["RELATED_ARTICLES"] %}
+                <div class="articlesPage-helper-articles articlesPage-helper__block">
+                    <div class="articlesPage-helper__title">
+                        Похожие статьи
+                    </div>
+                    <div class="articlesPage-helper-articles-list">
+                        {% for relatedArticle in article["RELATED_ARTICLES"] %}
+                            <div class="articlesPage-helper-articles-list__single">
+                                <a href="{{ folder }}?type={{ relatedArticle["PROPERTY_TYPE_VALUE"] }}" class="button2">
+                                    {{ relatedArticle["PROPERTY_TYPE_VALUE_NAME"] }}
+                                </a>
+                                <div class="articlesPage-helper-articles-list__title">
+                                    <a href="{{ relatedArticle["DETAIL_PAGE_LINK"] }}">{{ relatedArticle["NAME"] }}</a>
+                                </div>
+                                <div class="articlesPage-helper-articles-list__description">
+                                    {% set preview_text = relatedArticle["PREVIEW_TEXT"] %}
+                                    {% if preview_text|length > constant('MARKETPLACE_LIST_REVIEW_TEXT_LIMIT') %}
+                                        {% set preview_text_array = preview_text|split(' ') %}
+                                        {% set preview_text_word_count = 0 %}
+                                        {% for ta in preview_text_array %}
+                                            {% set word_count = ta|length %}
+                                            {% if preview_text_word_count < constant('MARKETPLACE_LIST_REVIEW_TEXT_LIMIT') %}
+                                                {% set preview_text_word_count = preview_text_word_count + word_count %}
+                                                {{ ta }}
+                                            {% endif %}
+                                        {% endfor %}
+                                        ...
+                                    {% else %}
+                                        {{ preview_text }}
+                                    {% endif %}
+                                </div>
+                                <div class="articlesPage-helper-articles-list__author">
+                                    {{ relatedArticle["PROPERTY_USER_VALUE_NAME"] }}
+                                </div>
+                                <div class="articlesPage-helper-articles-list__date">
+                                    {{ relatedArticle["DATE"] }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>

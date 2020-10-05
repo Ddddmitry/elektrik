@@ -1,0 +1,59 @@
+<div id="edit_password" class="fancyBlock">
+    <div class="fancybox-title js-form-title">Сменить пароль</div>
+    <div class="js-form-text">Пароль должен содержать как минимум одну заглавную букву, цифру и специальный символ.</div>
+    <form action="/api/user.change.password/" class="js-form-content" id="edpassword" data-form-change-password>
+        <div class="js-form-error"></div>
+        <div class="formGroup required">
+            <div class="formGroup-inner">
+                <div class="showPass js-showPassButton" title="Скрыть/показать пароль">
+                    <img src="/local/templates/.default/img/no-visible.png"
+                         srcset="/local/templates/.default/img/no-visible@2x.png 2x,
+                                 /local/templates/.default/img/no-visible@3x.png 3x"
+                         width="24" height="24" alt="">
+                </div>
+
+                <label for="edpassword-oldpassword">Старый пароль</label>
+                <input type="password"
+                       value=""
+                       id="edpassword-oldpassword"
+                       name="edpassword-oldpassword"
+                       minlength="6"
+                       maxlength="15"
+                       data-pass-set="yes"
+                       required
+                       class="passwordField" placeholder="Старый пароль">
+                <div class="formGroup__error js-errorInput"></div>
+            </div>
+        </div>
+        <div class="formGroup required">
+            <div class="formGroup-inner">
+                <div class="showPass js-showPassButton" title="Скрыть/показать пароль">
+                    <img src="/local/templates/.default/img/no-visible.png"
+                         srcset="/local/templates/.default/img/no-visible@2x.png 2x,
+                                                         /local/templates/.default/img/no-visible@3x.png 3x"
+                         width="24" height="24" alt="">
+                </div>
+                <label for="edpassword-newpassword">Новый пароль</label>
+                <input type="password"
+                       value=""
+                       id="edpassword-newpassword"
+                       name="edpassword-newpassword"
+                       minlength="6"
+                       maxlength="15"
+                       required
+                       class="passwordField" placeholder="Новый пароль">
+                <div class="formGroup__error js-errorInput"></div>
+            </div>
+        </div>
+        <div class="formGroup formGroup__bottom">
+            <div class="formGroup-inner">
+                <button type="submit" name="edpassword-submit">
+                    Сменить пароль
+                </button>
+                <div class="formGroup__action" data-fancybox-close>
+                    Отменить
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

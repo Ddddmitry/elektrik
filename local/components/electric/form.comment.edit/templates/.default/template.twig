@@ -1,0 +1,28 @@
+{% set userID = result["USER"] %}
+{% set articleID = result["ARTICLE"] %}
+{% set commentID = result["COMMENT"] %}
+{% set text = result["TEXT"] %}
+
+<a href="#" class="marketDetail-reviews-list__bottom-button js-marketDetail-reviews-list__edit-toggler">
+    Отмена
+</a>
+<form action="/api/comments.edit/" class="marketDetail-reviews__comment-form articlesPage-comments__form" id="comment-{{ result["COMMENT"] }}" data-form-comment-edit>
+    {% if commentID %}
+        <input hidden name="comment" value="{{ commentID }}">
+    {% endif %}
+    <div class="formGroup required">
+        <div class="formGroup-inner">
+            <textarea name="comment-text" id="comment-text-{{ result["COMMENT"] }}" required
+                      class="marketDetail-reviews__comment-textarea js-textarea-sm" maxlength="2048" placeholder="Редактировать комментарий">{{ text }}</textarea>
+        </div>
+    </div>
+    <div class="formGroup formGroup__bottom disabled">
+        <div class="formGroup-inner">
+            <button type="submit" name="comment-submit" disabled>
+                Сохранить
+            </button>
+        </div>
+    </div>
+</form>
+
+

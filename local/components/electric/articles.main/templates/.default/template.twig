@@ -1,0 +1,36 @@
+{% set articles = result['ITEMS'] %}
+{% set typeVideoID = result["TYPE_VIDEO_ID"] %}
+
+<div class="articles">
+    <div class="articles-inner typicalBlock typicalBlock_two">
+        <div class="articles-list">
+            {% for article in articles %}
+                <div class="articles-list__single{% if (article["PROPERTY_TYPE_VALUE"] == typeVideoID) %} articles-list__single_video{% endif %}">
+                    <a href="{{ article["DETAIL_PAGE_URL"] }}" class="articles-list__single-inner"
+                    {% if article["PREVIEW_PICTURE_SRC"] %}
+                        style="background-image: url({{ article["PREVIEW_PICTURE_SRC"] }});"
+                    {% else %}
+                        style="background-image: url(/local/templates/.default/img/article-empty.png);"
+                            {% endif %}>
+                        {% if (article["PROPERTY_TYPE_VALUE"] == typeVideoID) %}
+                            <div class="articles-list__single-mark">
+                                {% include './includes/icon.twig' with {icon: {name: 'video', class: ''}} %}
+                            </div>
+                        {% endif %}
+                    </a>
+                    <div class="articles-list__single-text">
+                        <div class="articles-list__single-category">
+                            <span class="button2">
+                                {{ article["PROPERTY_TYPE_NAME"] }}
+                            </span>
+                            {#<div class="articles-list__single-separator"></div>#}
+                        </div>
+                        <a class="articles-list__single-title inhLink" href="{{ article["DETAIL_PAGE_URL"] }}">
+                            {{ article["NAME"] }}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

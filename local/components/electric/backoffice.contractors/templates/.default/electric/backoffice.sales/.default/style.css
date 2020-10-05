@@ -1,0 +1,15 @@
+.fancybox-content {
+    padding: 64px 56px;
+    width: 100%;
+    max-width: 500px;
+}
+.main__text.main__text--md a{
+    color: #000;
+}
+
+.fancyBlock.fancybox-content{
+    max-width: 550px;
+}
+.fancyBlock.fancybox-content img{
+    max-width: 100%;
+}

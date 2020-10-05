@@ -1,0 +1,58 @@
+
+<div id="new_article" class="fancyBlock">
+    <div class="fancybox-title">Предложить статью</div>
+    <form action="/api/articles.propose/" id="newart" data-form-article>
+        <div class="formGroup required">
+            <div class="formGroup-inner">
+                <label for="newart-title">Заголовок статьи</label>
+                <input type="text"
+                       value=""
+                       id="newart-title"
+                       name="newart-title"
+                       minlength="1"
+                       maxlength="255"
+                       required placeholder="Заголовок статьи">
+                <div class="formGroup__error js-errorInput"></div>
+            </div>
+        </div>
+        <div class="formGroup">
+            <div class="formGroup-inner">
+                <label for="newart-comm">Комментарий</label>
+                <textarea name="newart-comm" id="newart-comm" placeholder="Комментарий"></textarea>
+                <div class="formGroup__error js-errorInput"></div>
+            </div>
+        </div>
+        <div class="formGroup required">
+            <p>
+                Добавьте файл с расширением doc, docx или odt. <br>Размером не более 10 мб.
+            </p>
+            <div class="formGroup-inner">
+                <div class="backofficeCustFile js-custFile">
+                    <label for="newart-file" class="custLabel">
+                        {% include './includes/icon.twig' with {icon: {name: 'download', class: ''}} %}
+                        Загрузить статью
+                    </label>
+                    <input type="file" value="" name="newart-file"
+                           id="newart-file"
+                           accept=".doc,.docx,.odt" required>
+                    <div class="custFile-list js-custFile-list">
+                        <div class="custFile-list-single js-custFile-list-single"></div>
+                    </div>
+                    <div class="custFile-response js-custFile-response">
+                        Размер файла превышает 10Мб
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formGroup formGroup__bottom">
+            <div class="formGroup-inner">
+                <button type="submit" name="newart-submit">
+                    Отправить
+                </button>
+                <div class="formGroup__action" data-fancybox-close>
+                    Отменить
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

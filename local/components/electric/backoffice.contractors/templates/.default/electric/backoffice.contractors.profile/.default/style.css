@@ -1,0 +1,166 @@
+.backofficeExperience__new {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    color: #7f7f7f;
+    font-weight: 600;
+    margin: 13px 0 29px 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.backofficeExperience__new:last-child {
+    margin-bottom: 0px;
+}
+.backofficeExperience__new .svg-icon {
+    font-size: 24px;
+    color: #7f7f7f;
+    stroke: #7f7f7f;
+    margin: 0 8px 0 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.backofficeExperience__new-inner {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.cabinet__form-field .select2-container--default .select2-selection--single .select2-selection__rendered{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #dfdfdf;
+}
+.backofficeServices-cityList__delete{
+    cursor: pointer;
+}
+
+.backofficeWorks-list__img {
+    width: 270px;
+    height: 170px;
+    margin: 0 24px 0 0;
+    overflow: hidden;
+    position: relative;
+}
+.backofficeWorks-list__img-file {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dfdfdf;
+    padding: 16px 24px 14px 24px;
+}
+.backofficeWorks-list__img-note {
+    font-size: 14px;
+    line-height: 1.71;
+    color: #7f7f7f;
+}
+.backofficeCustFile label {
+    display: inline-block;
+    color: #7f7f7f;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    cursor: pointer;
+}
+.backofficeMain input:not([type=submit]):not([type=checkbox]):not([type=radio]), .backofficeMain textarea, .backofficeMain select, .backofficeMain .selectWrapper-placeholder, .backofficeMain .multiselect__single, .backofficeMain .multiselect__placeholder {
+    font-size: 14px;
+    line-height: 2.14;
+    width: 100%;
+    padding: 13px 16px 12px 16px;
+    background-color: #f8f7f7;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+}
+.backofficeCustFile label .svg-icon {
+    color: #7f7f7f;
+    stroke: #7f7f7f;
+    font-size: 24px;
+    margin: -4px 4px 0 0;
+}
+.backofficeCustFile input[type=file] {
+    display: none;
+}
+.backofficeWorks-list__img-tag.hide{
+    display: none;
+}
+
+.pasportList {
+    display: none;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin: 0 0 40px 0;
+}
+.pasportList__single {
+    width: 100px;
+    margin: 0 10px 10px 0;
+    position: relative;
+}
+.pasportList__single:first-child {
+    display: none;
+}
+.pasportList__single-delete {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    display: block;
+    box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+.pasportList__single img {
+    width: 100%;
+}
+.pasportList__single-delete-line {
+    width: 10px;
+    height: 2px;
+    background-color: #7f7f7f;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.pasportList__single-delete-line:first-child {
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.backofficeCustFile_alone{
+    display: none;
+}
+.fancybox-content form.fullForm_two {
+    margin-top: 20px;
+}
+.fancyBlock-img {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    width: 288px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.fancybox-content img {
+    max-width: 100%;
+}
+.fancyBlock-inner {
+    padding-left: 288px;
+}
+
+.confirmRaekFancyBlock.fancybox-content {
+    /* vertical-align: top; */
+    padding: 64px 56px;
+    width: 100% ;
+    max-width: 970px ;
+}
+

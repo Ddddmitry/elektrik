@@ -1,0 +1,112 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.notification {
+    background-color: $color3;
+    color: #fff;
+    padding: 29px 0 27px 0;
+    @include respond-to(lg) {
+        padding-bottom: 23px;
+        padding-top: 26px;
+    }
+    @include respond-to(sm) {
+        padding-bottom: 29px;
+        padding-top: 22px;
+    }
+    &-inner {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        position: relative;
+        @include respond-to(sm) {
+            display: block;
+        }
+    }
+    &__text {
+        margin: 18px 0 0 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        max-width: 734px;
+        padding: 0 0 4px 0;
+        @include respond-to(sm) {
+            display: block;
+            max-width: 100%;
+            font-size: 14px;
+            line-height: 1.71;
+            margin-bottom: 32px;
+        }
+        .svg-icon {
+            margin: 0 29px 0 0;
+            width: 71px;
+            max-width: 71px;
+            height: 28px;
+            line-height: 28px;
+            flex-shrink: 0;
+            @include respond-to(md) {
+                margin-top: 20px;
+                width: 64px;
+                max-width: 64px;
+                height: 25px;
+                line-height: 25px;
+                margin-right: 19px;
+            }
+            @include respond-to(sm) {
+                margin-top: 0;
+                margin-bottom: 22px;
+            }
+        }
+        &-inner {}
+    }
+    &__button {
+        flex-shrink: 0;
+        margin: 11px 40px 0 40px;
+        @include respond-to(md) {
+            margin-left: 31px;
+            margin-right: 31px;
+        }
+        @include respond-to(sm) {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+    &__close {
+        margin: 15px -5px 0 0;
+        flex-shrink: 0;
+        @include respond-to(sm) {
+            position: absolute;
+            top: 0;
+            right: $padding3;
+            margin-top: -5px;
+        }
+        @include respond-to(sm) {
+            right: $padding4;
+        }
+        &-inner {
+            width: 34px;
+            height: 34px;
+            position: relative;
+            display: block;
+            &-line {
+                height: 3px;
+                width: 28px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%) rotate(45deg);
+                background-color: #fff;
+                @include respond-to(sm) {
+                    height: 2px;
+                    width: 26px;
+                }
+                &:first-child {
+                    transform: translate(-50%,-50%) rotate(-45deg);
+                }
+            }
+            &:hover &-line, &:active &-line, &:focus &-line {
+                background-color: darken(#fff, 20%);
+            }
+        }
+    }
+}

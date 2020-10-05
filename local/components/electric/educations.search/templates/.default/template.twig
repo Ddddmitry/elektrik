@@ -1,0 +1,42 @@
+{% set searchData = result["SEARCH_DATA"] %}
+{% set banner = result["BANNER"] %}
+
+<div class="search search_">
+    <div class="search-inner typicalBlock typicalBlock_one" style="height: 346px">
+        <div class="search__back">
+            <img src="{{ banner["SRC"] }}" alt="Баннер3" class="search__back-img">
+            <div class="search__back-gradient"></div>
+        </div>
+        <h1 class="search__title">
+            {{ banner["TITLE"] }}
+        </h1>
+        <div class="search__action">
+            <form action="#" class="search__form" id="search_articles" data-articles-search>
+                <div class="formGroup formGroup_search required">
+                    <div class="formGroup-inner">
+                        {% include './includes/icon.twig' with {icon: {name: 'search', class: 'findIcon'}} %}
+                        <label class="search__label">
+                            {% include './includes/icon.twig' with {icon: {name: 'search', class: 'findIcon'}} %}
+                            Поиск статьи
+                        </label>
+                        <input value="{{ searchData["SEARCH_PHRASE"] }}" type="search"
+                               name="search" id="search_articles-search"
+                               data-min-length="3" data-padding-right="16.5px"
+                               maxlength="255"
+                               required
+                               style="padding-right: 16.5px;" placeholder="Поиск статьи"
+                        >
+                        {% include './includes/icon.twig' with {icon: {name: 'close', class: 'js-cleanIcon closeIcon'}} %}
+                    </div>
+                </div>
+                <div class="formGroup formGroup_submit">
+                    <div class="formGroup-inner">
+                        <button type="submit" id="search_articles-submit" name="submit" disabled>
+                            Поиск
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

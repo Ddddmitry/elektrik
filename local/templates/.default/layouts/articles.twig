@@ -1,0 +1,275 @@
+{% extends 'layout.twig' %}
+
+{% block search %}
+    {% set search = {
+        code: 'search_articles',
+        action: '?layout=articles',
+        items: [{
+            title: 'Поиск статьи',
+            name: 'search',
+            type: 'search',
+        },{
+            title: 'Поиск',
+            name: 'submit',
+            type: 'submit',
+        }]
+    } %}
+    {% include './includes/search.twig' with {data: {
+        title: 'Статьи',
+        banner: {
+            src: '/local/templates/.default/img/trash/banner3.jpg',
+            name: 'Баннер3',
+            size: {
+                width: 1440,
+                height: 346
+            }
+        },
+        search: search,
+    }} %}
+{% endblock %} {#search#}
+
+{% block main %}
+    {% block breadcrumbs %}
+    {% endblock %} {#breadcrumbs#}
+    <div class="articlesPage">
+        <div class="articlesPage-inner typicalBlock typicalBlock_two">
+            <div class="articlesPage-main">
+                {% set articles = [{
+                    title: 'Замена электросчетчика',
+                    link: '?layout=articles/detail',
+                    preview_text: 'Замена электросчетчика в квартире или доме у людей далеких
+                    от электричества, может вызвать определенные сложности. Поэтому в данной
+                    статье я расскажу, как самостоятельно заменить электросчетчик в квартире
+                    или доме, не прибегая к услугам электриков. Замена электросчетчика,
+                    как правило происходит, после выхода из строя старого электросчетчика,
+                    окончания срока поверки, перехода с однотарифного на многотарифный,
+                    либо по иным известным только вам причинам.',
+                    author: 'Иван Константинов',
+                    date: '28 мая 2019',
+                    category: {
+                        code: 'opinion',
+                        name: 'Мнение',
+                    },
+                    themes: [{
+                        code: 'zamena',
+                        name: 'Замена счетчиков',
+                    },{
+                        code: 'ystel',
+                        name: 'Установка электроприборов',
+                    }]
+                },{
+                    title: 'Когда нужно менять счетчики?',
+                    link: '?layout=articles/detail',
+                    img: {
+                        src: '/local/templates/.default/img/trash/videoPrev.jpg'
+                    },
+                    author: 'Наталья Петрова',
+                    date: '2 мая 2019',
+                    category: {
+                        code: 'video',
+                        name: 'Видео',
+                    },
+                    themes: [{
+                        code: 'ystel',
+                        name: 'Установка электроприборов',
+                    }]
+                },{
+                    title: 'Замена электросчетчика',
+                    link: '?layout=articles/detail',
+                    preview_text: 'Замена электросчетчика в квартире или доме у людей далеких
+                    от электричества, может вызвать определенные сложности. Поэтому в данной
+                    статье я расскажу, как самостоятельно заменить электросчетчик в квартире
+                    или доме, не прибегая к услугам электриков. Замена электросчетчика,
+                    как правило происходит, после выхода из строя старого электросчетчика,
+                    окончания срока поверки, перехода с однотарифного на многотарифный,
+                    либо по иным известным только вам причинам.',
+                    img: {
+                        src: '/local/templates/.default/img/trash/videoPrev.jpg'
+                    },
+                    author: 'Александр Лаптев',
+                    date: '17 марта 2019',
+                    category: {
+                        code: 'advices',
+                        name: 'Полезные советы',
+                    },
+                    themes: [{
+                        code: 'zamena',
+                        name: 'Замена счетчиков',
+                    },{
+                        code: 'ystel',
+                        name: 'Установка электроприборов',
+                    }]
+                }] %}
+                <div class="articlesPage-list">
+                    {% for article in articles %}
+                        <div class="articlesPage-list__single" onclick="document.location.href = '{{ article.link }}'">
+                            <div class="articlesPage-list__single-inner">
+                                {% if ((article.category and (article.category is empty) == false) and
+                                    (article.themes and (article.themes is empty) == false)) %}
+                                    <div class="articlesPage-list__navigation">
+                                        {% if (article.category and (article.category is empty) == false) %}
+                                            <a href="?layout=articles/{{ article.category.code }}"
+                                               class="articlesPage-list__type button2">
+                                                {{ article.category.name }}
+                                            </a>
+                                        {% endif %}
+                                        {% if (article.themes and (article.themes is empty) == false) %}
+                                            <div class="articlesPage-list-themes">
+                                                {% for theme in article.themes %}
+                                                    <div class="articlesPage-list-themes__single">
+                                                        {{ theme.name }}
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                <div class="articlesPage-list__title">
+                                    {{ article.title }}
+                                </div>
+                                {% if (article.preview_text and article.preview_text != '') %}
+                                    <div class="articlesPage-list__description">
+                                        {{ article.preview_text }}
+                                    </div>
+                                {% endif %}
+                                {% if (article.img and (article.img is empty) == false) %}
+                                    <div class="articlesPage-list__img">
+                                        {% if (article.category.code == 'video') %}
+                                            {% include './includes/icon.twig' with {icon: {name: 'video', class: ''}} %}
+                                        {% endif %}
+                                        <img src="{{ article.img.src }}" alt="{{ article.title }}"
+                                             class="articlesPage-list__img-tag">
+                                    </div>
+                                {% endif %}
+                                <div class="articlesPage-list__info">
+                                    <div class="articlesPage-list__author">
+                                        {{ article.author }}
+                                    </div>
+                                    <div class="articlesPage-list__date">
+                                        {{ article.date }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="articlesPage__button">
+                    <a href="#" class="button">
+                        Показать ещё
+                    </a>
+                </div>
+            </div>
+            <div class="articlesPage-helper">
+                <a href="#new_article" data-fancybox data-src="#new_article" class="articlesPage-helper__button button3">
+                    Предложить статью
+                </a>
+                <div class="clear"></div>
+                <div class="articlesPage-helper-filters js-showhide">
+                    <div class="articlesPage-helper__showFilters">
+                        <a href="#" class="articlesPage-helper__showFilters-button js-showhide-toggler inhLink">
+                            Фильтр {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                        </a>
+                        <a href="#" class="articlesPage-helper__showFilters-clean">
+                            Очистить все
+                            {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+                        </a>
+                    </div>
+                    <div class="articlesPage-helper-filters-inner js-showhide-content">
+                        <div class="articlesPage-helper-category articlesPage-helper__block">
+                            <div class="articlesPage-helper__title">
+                                Тип статьи
+                            </div>
+                            {% set categories = [{
+                                code: 'opinion',
+                                name: 'Мнение',
+                            },{
+                                code: 'int',
+                                name: 'Интервью',
+                            },{
+                                code: 'sov',
+                                name: 'Полезные советы',
+                            },{
+                                code: 'video',
+                                name: 'Видео',
+                            },{
+                                code: 'fable',
+                                name: 'Истории',
+                            },{
+                                code: 'obych',
+                                name: 'Обучение',
+                            },]%}
+                            <div class="articlesPage-helper-category-list">
+                                {% for category in categories %}
+                                    <div class="articlesPage-helper-category-list__single{% if loop.index == 1 %} active{% endif %}">
+                                        <a href="#" data-code="{{ category.code }}"
+                                           class="button2 articlesPage-helper-category-list__single-button">
+                                            {{ category.name }}
+                                            {% if loop.index == 1 %}
+                                                {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="articlesPage__separator"></div>
+                        <div class="articlesPage-helper-themes articlesPage-helper__block">
+                            <div class="articlesPage-helper__title">
+                                Темы
+                            </div>
+                            {% set themes = [{
+                                code: 'zamena',
+                                name: 'Замена счетчиков',
+                            },{
+                                code: 'yst',
+                                name: 'Установка приборов учета',
+                            },{
+                                code: 'provod',
+                                name: 'Проведение проводки',
+                            },{
+                                code: 'zamena',
+                                name: 'Замена счетчиков',
+                            },{
+                                code: 'yst',
+                                name: 'Установка приборов учета',
+                            },{
+                                code: 'provod',
+                                name: 'Проведение проводки',
+                            },{
+                                code: 'zamena',
+                                name: 'Замена счетчиков',
+                            },{
+                                code: 'yst',
+                                name: 'Установка приборов учета',
+                            },{
+                                code: 'provod',
+                                name: 'Проведение проводки',
+                            },{
+                                code: 'zamena',
+                                name: 'Замена счетчиков',
+                            },{
+                                code: 'yst',
+                                name: 'Установка приборов учета',
+                            },{
+                                code: 'provod',
+                                name: 'Проведение проводки',
+                            },]%}
+                            <div class="articlesPage-helper-themes-list">
+                                {% for theme in themes %}
+                                    <div class="articlesPage-helper-themes-list__single{% if loop.index == 1 %} active{% endif %}">
+                                        <a href="#" data-code="{{ theme.code }}" class="inhLink articlesPage-helper-themes-list__single-button">
+                                            {{ theme.name }}
+                                            {% if loop.index == 1 %}
+                                                {% include './includes/icon.twig' with {icon: {name: 'red-cross', class: ''}} %}
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} {#main#}

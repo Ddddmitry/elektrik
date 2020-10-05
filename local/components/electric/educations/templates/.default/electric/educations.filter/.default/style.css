@@ -1,0 +1,10 @@
+.edu-right-sticky{
+    position: sticky;
+    top: 128px;
+}
+@media only screen and (max-width: 900px){
+    .edu-right-sticky{
+        position: relative;
+        top: inherit;
+    }
+}

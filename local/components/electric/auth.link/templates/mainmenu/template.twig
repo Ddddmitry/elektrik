@@ -1,0 +1,19 @@
+{% set authData = result %}
+
+{% if authData["IS_AUTHORIZED"] %}
+
+    <div class="mainMenu-nav__separator"></div>
+    <div class="backofficeMenu-functions">
+        <div class="backofficeMenu-functions__single">
+            <a href="#edit_password" data-fancybox="" data-src="#edit_password" class="backofficeMenu-functions__single-link">
+                Сменить пароль
+            </a>
+        </div>
+        <div class="backofficeMenu-functions__single backofficeMenu-functions__single_logout">
+            <a href="/logout/" class="backofficeMenu-functions__single-link">
+                Выйти
+            </a>
+        </div>
+    </div>
+
+{% endif %}

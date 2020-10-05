@@ -1,0 +1,23 @@
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();?>
+<div class="notification js-notification">
+    <div class="notification-inner typicalBlock typicalBlock_two">
+        <div class="notification__text">
+            {% include './includes/icon.twig' with {icon: {name: 'notification', class: ''}} %}
+            <div class="notification__text-inner">
+                Пройдите сертификацию Электрик.ру, чтобы появиться
+                в каталоге специалистов и иметь возможность публиковать статьи
+            </div>
+        </div>
+        <div class="notification__button">
+            <a href="#make_sertificate_electric" data-fancybox="" data-src="#make_sertificate_electric" class="button button_white button_md">
+                Пройти сертификацию
+            </a>
+        </div>
+        <div class="notification__close js-notification-close">
+            <a href="#" class="notification__close-inner">
+                <span class="notification__close-inner-line"></span>
+                <span class="notification__close-inner-line"></span>
+            </a>
+        </div>
+    </div>
+</div>

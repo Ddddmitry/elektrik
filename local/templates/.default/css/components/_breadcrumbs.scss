@@ -1,0 +1,73 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.breadcrumbs {
+    padding: 22px 0 0 0;
+    &-inner {}
+    &-list {
+        font-size: 14px;
+        line-height: 1.75;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 1.85;
+        }
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 1.67;
+        }
+        &__single {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: #000;
+            text-decoration: none;
+            padding: 0 0 0 1px;
+            margin: 0 10px 0 0;
+            .svg-icon {
+                color: $color8;
+                stroke: currentColor;
+                transform: rotate(90deg);
+                margin: 0 11px 0 0;
+                @include respond-to(md) {
+                    margin-right: 13px;
+                    font-size: 15px;
+                }
+                @include respond-to(sm) {
+                    margin-right: 8px;
+                    font-size: 15px;
+                }
+            }
+            &:hover, &:focus, &:active {
+                color: lighten(#000, 40%);
+                text-decoration: none;
+                .svg-icon {
+                    stroke: lighten(#000, 40%);
+                }
+            }
+            &-text {}
+        }
+    }
+    &_padding {
+        padding-top: 40px;
+        @include respond-to(md) {
+            padding-top: 23px;
+        }
+        @include respond-to(sm) {
+            padding-top: 22px;
+        }
+    }
+    &_backoffice {
+        width: 100%;
+        display: none;
+        padding-top: 0;
+        padding-bottom: 31px;
+        @include respond-to(md) {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "\u042d\u043b\u0435\u043a\u0442\u0440\u0438\u043a.\u0440\u0443",
+  "short_name": "\u042d\u043b\u0435\u043a\u0442\u0440\u0438\u043a.\u0440\u0443",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#d70926",
+  "orientation": "natural",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "\/local\/templates\/elektrik\/apple-touch-icon-36x36.png",
+      "sizes": "36x36",
+      "type": "image\/png",
+      "density": "0.75"
+    },
+    {
+      "src": "\/local\/templates\/elektrik\/apple-touch-icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image\/png",
+      "density": "1.00"
+    },
+    {
+      "src": "\/local\/templates\/elektrik\/apple-touch-icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image\/png",
+      "density": "1.50"
+    },
+    {
+      "src": "\/local\/templates\/elektrik\/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image\/png",
+      "density": "2.00"
+    },
+    {
+      "src": "\/local\/templates\/elektrik\/apple-touch-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image\/png",
+      "density": "3.00"
+    },
+    {
+      "src": "\/local\/templates\/elektrik\/apple-touch-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image\/png",
+      "density": "4.00"
+    }
+  ]
+}

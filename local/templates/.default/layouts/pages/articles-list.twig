@@ -1,0 +1,24 @@
+{% extends 'layout.twig' %}
+
+{% block main %}
+
+    {{ includeComponent('electric:articles.search', '', {
+        "CODE": "ARTICLES",
+    }) }}
+
+    <div class="articlesPage">
+
+        <div class="articlesPage-inner typicalBlock typicalBlock_two">
+
+            {{ content|raw }}
+
+            <div class="articlesPage-helper">
+                {{ includeComponent('electric:articles.propose.button', '', {}) }}
+                {{ includeComponent('electric:articles.filter', '', {
+                    "CODE": "ARTICLES",
+                }) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %} {#main#}

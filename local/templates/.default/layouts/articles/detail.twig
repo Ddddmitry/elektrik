@@ -1,0 +1,530 @@
+{% extends 'layout.twig' %}
+
+{% block search %}
+{% endblock %} {#search#}
+{% block main %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs breadcrumbs_padding">
+            <div class="breadcrumbs-inner typicalBlock typicalBlock_two">
+                <div class="breadcrumbs-list">
+                    <a href="/?layout=articles"
+                       class="breadcrumbs-list__single">
+                        {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                        <span class="breadcrumbs-list__single-text">К списку статей</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endblock %} {#breadcrumbs#}
+    <div class="articlesPage articlesPage_detail">
+        <div class="articlesPage-inner typicalBlock typicalBlock_two">
+            <div class="articlesPage-main">
+                {% set article = {
+                    title: 'Замена электросчетчика',
+                    detail_text: '<p>
+                        Замена электросчетчика в квартире или доме у людей
+                        далеких от электричества, может вызвать определенные сложности.
+                        Поэтому в данной статье я расскажу, как самостоятельно заменить
+                        электросчетчик в квартире или доме, не прибегая к услугам электриков.
+                    </p>
+                    <p>
+                        Замена электросчетчика, как правило происходит, после выхода из
+                        строя старого электросчетчика, окончания срока поверки, перехода
+                        с однотарифного на многотарифный, либо по иным известным только
+                        вам причинам.
+                    </p>
+                    <p>
+                        Чтобы не ошибиться и приобрести электросчетчик, подходящий вам
+                        по параметрам, функциям и габаритам, прочитайте статью "Как
+                        правильно выбрать электросчетчик". Иначе, вы можете создать
+                        себе проблемы. Например, купите электросчетчик, который крепиться
+                        на дин-рейку, а у вас для него не хватает места в электрощите,
+                        купите электросчетчик у которого дата выпуска (поверки) была несколько
+                        лет назад, и его не примут в эксплуатацию и заставят заново поверять
+                        или покупать новый электросчетчик.
+                    </p>
+                    <p>
+                        <img src="/local/templates/.default/img/trash/articleDetail1.jpg" alt="">
+                    </p>
+                    <p>
+                        В нашем случае нужна замена электросчетчика СО-505 (индукционнный,
+                        однофазный) на счетчик Меркурий 201. Необходима модернизация
+                        квартирного щитка, в части замены счетчика СО-505 на счетчик
+                        Меркурий 201 и замена автоматических выключателей по следующим причинам:
+                    </p>
+                    <ul>
+                        <li>
+                            Нельзя ставить для защиты розеточных линий автомат на 25 А,
+                            т.к. бытовые розетки рассчитаны на ток не более 16 А;
+                        </li>
+                        <li>
+                            Нельзя защищать провод сечением 4 кв.мм автоматом 40А,
+                            должен быть установлен автомат на 25 А, это можно сверить
+                            с таблицами по выбору сечений проводов;
+                        </li>
+                        <li>
+                            Производитель китайских автоматов IEK не заслуживает
+                            доверия, поменяем на надежные ABB;
+                        </li>
+                        <li>
+                            Необходима замена электросчетчика СО-505 с классом
+                            точности 2, на электросчетчик Меркурий 201 с классом точности 1.​
+                        </li>
+                    </ul>
+                    <div class="htmlArea__note">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 28" class="svg-icon">
+                            <path fill="#D70926" fill-rule="nonzero" d="M0 6.172V26.05a1.2 1.2 0 0 0 1.644 1.115L31.206 15.38a1.2 1.2 0 0 1 1.645 1.115v4.188a1.2 1.2 0 0 0 1.715 1.084L69.427 5.199a1.2 1.2 0 0 0-.703-2.27L34.24 8.394a1.2 1.2 0 0 1-1.388-1.185V2.125a1.2 1.2 0 0 0-1.358-1.19L1.042 4.983A1.2 1.2 0 0 0 0 6.172z"/>
+                        </svg>
+                        Прежде, чем приступить к замене электросчетчика, необходимо
+                        позвонить в сетевую организацию и сообщить им о своем желании
+                        установить новый электросчетчик. В нашем случае —
+                        это многоквартирный дом, который обслуживает управляющая компания.
+                        Сделать это нужно обязательно, т.к. электросчетчик опломбирован,
+                        и самовольно сорванная пломба, может привести к большому
+                        штрафу (забыл сделать хорошее фото счетчика СО-505 с нетронутой пломбой).
+                    </div>
+                    <div class="htmlArea-slider js-htmlArea-slider">
+                        <div class="htmlArea-slider__single">
+                            <img src="/local/templates/.default/img/trash/articleDetail1.jpg" alt="">
+                        </div>
+                        <div class="htmlArea-slider__single">
+                            <img src="/local/templates/.default/img/trash/articles1.jpg" alt="">
+                        </div>
+                        <div class="htmlArea-slider__single">
+                            <img src="/local/templates/.default/img/trash/articleDetail1.jpg" alt="">
+                        </div>
+                        <div class="htmlArea-slider__single">
+                            <img src="/local/templates/.default/img/trash/articleDetail1.jpg" alt="">
+                        </div>
+                    </div>
+                    <ol>
+                        <li>
+                            Нельзя ставить для защиты розеточных линий автомат на
+                            25 А, т.к. бытовые розетки рассчитаны на ток не более 16 А;
+                        </li>
+                        <li>
+                            Нельзя защищать провод сечением 4 кв.мм автоматом
+                            40А, должен быть установлен автомат на 25 А, это можно
+                            сверить с таблицами по выбору сечений проводов;
+                        </li>
+                        <li>
+                            Производитель китайских автоматов IEK не
+                            заслуживает доверия, поменяем на надежные ABB;
+                        </li>
+                        <li>
+                            Необходима замена электросчетчика СО-505 с
+                            классом точности 2, на электросчетчик Меркурий 201 с классом точности 1.​
+                        </li>
+                    </ol>
+
+                    <div class="htmlArea_youtube">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/DruYNHN4FYY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="htmlArea__quote">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 33" class="svg-icon">
+                            <g fill="#D70926" fill-rule="nonzero">
+                                <path d="M3.328 0h10.987c.564 0 1.022.377 1.022.842 0 .105-.025.21-.071.308L8.643 15.013c-.207.433.051.921.577 1.092.119.038.246.058.374.058h1.524c.565 0 1.022.377 1.022.842a.72.72 0 0 1-.097.357l-8.63 15.154c-.24.42-.848.602-1.359.404-.411-.159-.646-.522-.576-.892l2.828-14.893c.087-.46-.295-.89-.852-.962a1.237 1.237 0 0 0-.158-.01H1.022c-.564 0-1.022-.377-1.022-.842 0-.036.003-.073.009-.11L2.314.733C2.381.313 2.814 0 3.328 0zM23.328 0h10.987c.564 0 1.022.377 1.022.842 0 .105-.025.21-.071.308l-6.623 13.863c-.207.433.051.921.577 1.092.119.038.246.058.374.058h1.524c.565 0 1.022.377 1.022.842a.72.72 0 0 1-.097.357l-8.63 15.154c-.24.42-.848.602-1.359.404-.411-.159-.646-.522-.576-.892l2.828-14.893c.087-.46-.295-.89-.852-.962a1.237 1.237 0 0 0-.158-.01h-2.274c-.564 0-1.022-.377-1.022-.842 0-.036.003-.073.009-.11L22.314.733c.067-.419.5-.732 1.014-.732z"/>
+                            </g>
+                        </svg>
+                        Прежде, чем приступить к замене электросчетчика, необходимо позвонить
+                        в сетевую организацию и сообщить им о своем желании установить новый
+                        электросчетчик. В нашем случае — это многоквартирный дом, который
+                        обслуживает управляющая компания. Сделать это нужно обязательно, т.к.
+                        электросчетчик опломбирован, и самовольно сорванная пломба, может привести
+                        к большому штрафу (забыл сделать хорошее фото счетчика СО-505 с нетронутой пломбой).
+                        <div class="htmlArea__quote-author">
+                            Автор цитаты
+                        </div>
+                    </div>',
+                    author: 'Наталья Петрова',
+                    date: '28 мая 2019',
+                    category: {
+                        code: 'opinion',
+                        name: 'Мнение',
+                    },
+                    themes: [{
+                        code: 'zamena',
+                        name: 'Замена счетчиков',
+                    },{
+                        code: 'ystel',
+                        name: 'Установка электроприборов',
+                    }],
+                    commentsNumber: 20,
+                } %}
+                <h1 class="articlesPage__title">
+                    {{ article.title }}
+                </h1>
+                <div class="htmlArea">
+                    {{ article.detail_text|raw }}
+                </div>
+                <div class="articlesPage-helper articlesPage-helper_detail articlesPage-helper_mobile">
+                    <div class="articlesPage-helper-articles articlesPage-helper__block">
+                        <div class="articlesPage-helper__title">
+                            Похожие статьи
+                        </div>
+                        {% set articles = [{
+                            title: 'Замена электросчетчика',
+                            link: '?layout=articles/detail',
+                            preview_text: 'Замена электросчетчика в квартире
+                        или доме у людей далеких от электричества, может
+                        вызвать определенные сложности.....',
+                            author: 'Иван Константинов',
+                            date: '28 мая 2019',
+                            category: {
+                                code: 'opinion',
+                                name: 'Мнение',
+                            },
+                        },{
+                            title: 'Когда нужно менять счетчики?',
+                            link: '?layout=articles/detail',
+                            author: 'Наталья Петрова',
+                            date: '2 мая 2019',
+                            category: {
+                                code: 'video',
+                                name: 'Видео',
+                            },
+                        }] %}
+                        <div class="articlesPage-helper-articles-list js-articlesPage-helper-articles">
+                            {% for article in articles %}
+                                <div class="articlesPage-helper-articles-list__single" onclick="document.location.href = '{{ article.link }}'">
+                                    <a href="?layout=articles/{{ article.category.code }}"
+                                       class="button2">
+                                        {{ article.category.name }}
+                                    </a>
+                                    <div class="articlesPage-helper-articles-list__title">
+                                        <a href="{{ article.link }}" class="inhLink">
+                                            {{ article.title }}
+                                        </a>
+                                    </div>
+                                    {% if (article.preview_text and article.preview_text != '') %}
+                                        <div class="articlesPage-helper-articles-list__description">
+                                            {{ article.preview_text }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="articlesPage-helper-articles-list__author">
+                                        {{ article.author }}
+                                    </div>
+                                    <div class="articlesPage-helper-articles-list__date">
+                                        {{ article.date }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="articlesPage-comments" id="comments">
+                    <div class="articlesPage-comments-top">
+                        <div class="marketDetail__title">
+                            Комментарии
+                            <span class="marketDetail__title-accent">
+                                20
+                            </span>
+                        </div>
+                        <form action="#" class="marketDetail-reviews__comment-form articlesPage-comments__form" id="comment">
+                            <input type="hidden" name="comment-answer" id="comment-answer" class="js-comment-answer">
+                            <div class="formGroup required">
+                                <div class="formGroup-inner">
+                                    <label for="comment-text">
+                                        Ваш комментарий
+                                    </label>
+                                    <textarea name="comment-text" id="comment-text" required
+                                              class="marketDetail-reviews__comment-textarea js-textarea-sm" maxlength="2048" placeholder="Ваш комментарий"></textarea>
+                                </div>
+                            </div>
+                            <div class="formGroup formGroup__bottom disabled">
+                                <div class="formGroup-inner">
+                                    <button type="submit" name="comment-submit" disabled>
+                                        Отправить
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    {% set comments = [{
+                        id: 1,
+                        author: 'natalia_petrova',
+                        date: '28 мая 2019',
+                        text: 'В отличие от обычных ламп накаливания,
+                        различающихся только мощностью и качеством изготовления,
+                        светодиодные лампы имеют много параметров, влияющих на качество
+                        и безопасность освещения. Я расскажу об основных параметрах
+                        светодиодных ламп и порекомендую, какие лампы лучше подойдут
+                        для дома.',
+                        like: 4,
+                        dislike: 23,
+                    },{
+                        id: 2,
+                        parent_id: 1,
+                        author: 'Петровский Алексей Сергеевич',
+                        date: '28 мая 2019',
+                        text: 'Светодиодные лампы не стоит выбирать по мощности —
+                        эффективность у различных ламп разная, и лампы
+                        с одинаковой мощностью могут серьезно отличаться.',
+                        like: 45,
+                        dislike: 1,
+                    },{
+                        id: 4,
+                        author: 'natalia_petrova',
+                        date: '28 мая 2019',
+                        text: 'Большинство производителей светодиодных
+                        ламп указывает эквивалент мощности лампы накаливания.',
+                        like: 12,
+                        dislike: 0,
+                    },{
+                        id: 20,
+                        parent_id: 4,
+                        author: 'Петровский Алексей Сергеевич',
+                        date: '28 мая 2019',
+                        text: 'Светодиодные лампы не стоит выбирать по мощности —
+                        эффективность у различных ламп разная, и лампы
+                        с одинаковой мощностью могут серьезно отличаться.',
+                        like: 5,
+                        dislike: 0,
+                    },{
+                        id: 100,
+                        parent_id: 20,
+                        author: 'natalia_petrova',
+                        date: '28 мая 2019',
+                        text: 'Спасибо!',
+                        like: 0,
+                        dislike: 0,
+                    },{
+                        id: 101,
+                        author: 'natalia_petrova',
+                        date: '28 мая 2019',
+                        text: 'Например, на упаковке может быть написано, что лампа
+                        имеет мощность 6 Вт и светит, как лампа накаливания 60 Вт.
+                        Некоторые производители указывают этот эквивалент достаточно
+                        некорректно, поэтому я рекомендую всегда обращать внимание
+                        не на эквивалент мощности, а на световой поток.',
+                        like: 7,
+                        dislike: 2,
+                    }] %}
+                    <div class="marketDetail-reviews-list marketDetail-reviews-list_comments">
+                        {% set level = 0 %}
+                        {% for comment in comments %}
+                        {% if (comment.parent_id and comment.parent_id != '') %}
+                            {% if ((comments[loop.index].parent_id or comments[loop.index].parent_id != '') and
+                                (comments[loop.index].parent_id != comment.parent_id)) %}
+                                {% set level = level + 1 %}
+                            {% endif %}
+                            <div class="marketDetail-reviews-list__answer js-marketDetail-comment-single">
+                                <div class="marketDetail-reviews-list__answer-top">
+                                    <div class="marketDetail-reviews-list__author">
+                                        {{ comment.author }}
+                                    </div>
+                                    <div class="marketDetail-reviews-list__date">
+                                        {{ comment.date }}
+                                    </div>
+                                </div>
+                                <div class="marketDetail-reviews-list__answer-text">
+                                    {{ comment.text }}
+                                </div>
+                                <div class="marketDetail-reviews-list__answer-bottom js-marketDetail-reviews-list__answer-bottom">
+                                    <a href="#" class="js-marketDetail-reviews-list__answer-toggler">
+                                        Ответить
+                                    </a>
+                                    <div class="marketDetail-reviews-list__likes">
+                                        <div class="marketDetail-reviews-list__likes-single">
+                                            {% include './includes/icon.twig' with {icon: {name: 'like', class: ''}} %}
+                                            {{ comment.like }}
+                                        </div>
+                                        <div class="marketDetail-reviews-list__likes-single">
+                                            {% include './includes/icon.twig' with {icon: {name: 'dislike', class: ''}} %}
+                                            {{ comment.dislike }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="marketDetail-reviews-list__answer-form js-marketDetail-reviews-list__answer-form">
+                                    <form action="#" class="marketDetail-reviews__comment-form articlesPage-comments__form" id="comment-{{ comment.id }}">
+                                        <input type="hidden" name="comment-{{ comment.id }}-answer" id="comment-{{ comment.id }}-answer">
+                                        <div class="formGroup required">
+                                            <div class="formGroup-inner">
+                                                <label for="comment-{{ comment.id }}-text">
+                                                    Ваш комментарий
+                                                </label>
+                                                <textarea name="comment-{{ comment.id }}-text" id="comment-{{ comment.id }}-text" required
+                                                          class="marketDetail-reviews__comment-textarea js-textarea-sm" maxlength="2048"></textarea>
+                                                <a href="#" class="js-marketDetail-reviews-list__answer-toggler
+                                                marketDetail-reviews-list__answer-cancel">
+                                                    <span class="marketDetail-reviews-list__answer-cancel-line"></span>
+                                                    <span class="marketDetail-reviews-list__answer-cancel-line"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="formGroup formGroup__bottom disabled">
+                                            <div class="formGroup-inner">
+                                                <button type="submit" name="comment-{{ comment.id }}-submit" disabled>
+                                                    Отправить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            {% if ((comments[loop.index].parent_id is not defined or comments[loop.index].parent_id == '')) %}
+                                {% for i in 0..level %}
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                            {% if ((comments[loop.index].parent_id and comments[loop.index].parent_id != '')
+                                and (comments[loop.index].parent_id == comment.parent_id)) %}
+                                </div>
+                            {% endif %}
+                            {% if loop.last %}
+                                {% for i in 0..level %}
+                                    3</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                        {% if (comment.parent_id is not defined or comment.parent_id == '') %}
+                            {% set level = 0 %}
+                            {% if ((loop.index != 1) and (comment.parent_id is not defined or comment.parent_id == '')) %}
+                                </div>
+                            {% endif %}
+                            <div class="marketDetail-reviews-list__single js-marketDetail-comment-single">
+                                <div class="marketDetail-reviews-list__top">
+                                    <div class="marketDetail-reviews-list__author">
+                                        {{ comment.author }}
+                                    </div>
+                                    <div class="marketDetail-reviews-list__date">
+                                        {{ comment.date }}
+                                    </div>
+                                </div>
+                                <div class="marketDetail-reviews-list__text">
+                                    {{ comment.text }}
+                                </div>
+                                <div class="marketDetail-reviews-list__bottom js-marketDetail-reviews-list__answer-bottom">
+                                    <a href="#" class="js-marketDetail-reviews-list__answer-toggler">
+                                        Ответить
+                                    </a>
+                                    <div class="marketDetail-reviews-list__likes">
+                                        <div class="marketDetail-reviews-list__likes-single">
+                                            {% include './includes/icon.twig' with {icon: {name: 'like', class: ''}} %}
+                                            {{ comment.like }}
+                                        </div>
+                                        <div class="marketDetail-reviews-list__likes-single">
+                                            {% include './includes/icon.twig' with {icon: {name: 'dislike', class: ''}} %}
+                                            {{ comment.dislike }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="marketDetail-reviews-list__form js-marketDetail-reviews-list__answer-form">
+                                    <form action="#" class="marketDetail-reviews__comment-form articlesPage-comments__form" id="comment-{{ comment.id }}">
+                                        <div class="formGroup required">
+                                            <div class="formGroup-inner">
+                                                <label for="comment-{{ comment.id }}-text">
+                                                    Ваш комментарий
+                                                </label>
+                                                <textarea name="comment-{{ comment.id }}-text" id="comment-{{ comment.id }}-text" required
+                                                          class="marketDetail-reviews__comment-textarea js-textarea-sm" maxlength="2048">
+
+                                                </textarea>
+                                                <a href="#" class="js-marketDetail-reviews-list__answer-toggler
+                                                marketDetail-reviews-list__answer-cancel">
+                                                    <span class="marketDetail-reviews-list__answer-cancel-line"></span>
+                                                    <span class="marketDetail-reviews-list__answer-cancel-line"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="formGroup formGroup__bottom disabled">
+                                            <div class="formGroup-inner">
+                                                <button type="submit" name="comment-{{ comment.id }}-submit" disabled>
+                                                    Отправить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                {% if loop.last %}
+                                    </div>
+                                {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="articlesPage-comments-bottom">
+                        <a href="#" class="button">
+                            Показать ещё
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="articlesPage-helper articlesPage-helper_detail">
+                <div class="articlesPage-helper-category articlesPage-helper-category_detail articlesPage-helper__block">
+                    <div class="articlesPage-helper__title">
+                        Тип статьи
+                    </div>
+                    <div class="articlesPage-helper-category-list">
+                        <div class="articlesPage-helper-category-list__single">
+                            <a href="#"
+                               class="button2 articlesPage-helper-category-list__single-button">
+                                {{ article.category.name }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="articlesPage__separator"></div>
+                <div class="articlesPage-helper-themes articlesPage-helper-themes_detail articlesPage-helper__block">
+                    <div class="articlesPage-helper__title">
+                        Темы
+                    </div>
+                    <div class="articlesPage-helper-themes-list">
+                        {% for theme in article.themes %}
+                            <div class="articlesPage-helper-themes-list__single">
+                                <span class="articlesPage-helper-themes-list__single-button">
+                                    {{ theme.name }}
+                                </span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="articlesPage__separator"></div>
+                <div class="articlesPage-helper-data articlesPage-helper__block">
+                    <div class="articlesPage-helper-data__author">
+                        {{ article.author }}
+                    </div>
+                    <div class="articlesPage-helper-data__date">
+                        {{ article.date }}
+                    </div>
+                    <div class="clear articlesPage-helper-data__clear"></div>
+                    <div class="articlesPage-helper-data__comment">
+                        <a href="#comments" class="inhLink">
+                            {% include './includes/icon.twig' with {icon: {name: 'comment', class: ''}} %}
+                            {{ article.commentsNumber }} <span class="articlesPage-helper-data__comment-text">комментариев</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="articlesPage-helper-articles articlesPage-helper__block">
+                    <div class="articlesPage-helper__title">
+                        Похожие статьи
+                    </div>
+                    <div class="articlesPage-helper-articles-list">
+                        {% for article in articles %}
+                        <div class="articlesPage-helper-articles-list__single" onclick="document.location.href = '{{ article.link }}'">
+                            <a href="?layout=articles/{{ article.category.code }}"
+                               class="button2">
+                                {{ article.category.name }}
+                            </a>
+                            <div class="articlesPage-helper-articles-list__title">
+                                {{ article.title }}
+                            </div>
+                            {% if (article.preview_text and article.preview_text != '') %}
+                            <div class="articlesPage-helper-articles-list__description">
+                                {{ article.preview_text }}
+                            </div>
+                            {% endif %}
+                            <div class="articlesPage-helper-articles-list__author">
+                                {{ article.author }}
+                            </div>
+                            <div class="articlesPage-helper-articles-list__date">
+                                {{ article.date }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} {#main#}

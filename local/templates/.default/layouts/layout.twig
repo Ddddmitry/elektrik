@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="{{ getProperty('keywords') }}">
+    <meta name="description" content="{{ getProperty('description') }}">
+
+    <title>{{ showTitle() }}</title>
+
+    {{ showCSS() }}
+    {{ showHeadStrings() }}
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WT3HVHB');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{'/local/templates/.default/assets/vendor.css'|asset }}">
+    <link rel="stylesheet" type="text/css" href="{{'/local/templates/.default/assets/bundle.css'|asset }}">
+    <!-- eof CSS -->
+
+    <!-- js -->
+    <script rel="preload" src="{{'/local/templates/.default/assets/vendor.js'|asset }}" charset="utf-8" defer></script>
+    <script rel="preload" src="{{'/local/templates/.default/assets/bundle.js'|asset }}" charset="utf-8" defer></script>
+
+    <!-- eof js -->
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/local/templates/.default/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/local/templates/.default/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/local/templates/.default/favicon-96x96.png" sizes="96x96">
+
+    <link rel="icon" href="/local/templates/.default/assets/vendor.js" type="image/x-icon">
+    <link rel="shortcut icon" href="/local/templates/.default/assets/vendor.js" type="image/x-icon">
+
+    <!-- Seo meta -->
+    <meta name="yandex-verification" content="fe78db7f439ecf37" />
+    <meta name="google-site-verification" content="JGbxVu42DamM_otKtDj49Mz1m9lDUL5970CvWejoyqo" />
+    <meta name='wmail-verification' content='5943aa8320f2628e922d7cd56609fa60' />
+    <meta name="msvalidate.01" content="2D3BFA67AEC9FD308380E90ED585BE8B" />
+</head>
+
+<body>
+{{ showPanel() }}
+
+<!--[if lt IE 10]>
+<p class="browsehappy">Вы используете <strong>УСТАРЕВШИЙ Internet Explorer</strong> браузер. Пожалуйста, <a href="http://browsehappy.com/">обновите ваш Браузер</a> чтобы увидеть больше возможностей на сайтах!</p>
+<![endif]-->
+{% block all %}
+    <div class="app">
+        {% block mainMenu %}
+            <div class="mainMenu js-mainMenu">
+                <div class="mainMenu__vyal js-mainMenu-toggle"></div>
+                <div class="mainMenu__blackSide"></div>
+                <div class="mainMenu__inner typicalBlock typicalBlock_one">
+                    <div class="mainMenu-content">
+                        <a href="#" class="mainMenu-close js-mainMenu-toggle" title="Закрыть меню сайта">
+                            <span class="mainMenu-close__line"></span>
+                            <span class="mainMenu-close__line"></span>
+                        </a>
+                        <div class="mainMenu-buttons">
+                            <div class="mainMenu-buttons__single mainMenu-buttons__single--location">
+                                {{ includeComponent('electric:city.suggest', 'mainmenu', {}, {}) }}
+                            </div>
+                            <div class="mainMenu-buttons__single">
+                                <div class="js-header-person">
+                                    {{ includeComponent('electric:auth.link', {}, {}) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <nav class="mainMenu-nav">
+                            {{ includeComponent('electric:menu.main', {}, {}) }}
+                            {{ includeComponent('electric:auth.link', 'mainmenu', {}, {}) }}
+                        </nav>
+                        {% if not isUserAuthorized() %}
+                            <a href="/register/" class="mainMenu-button button button_md">
+                                Стать исполнителем
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %} {#mainMenu#}
+        <div class="app-inner js-app-inner js-menuUnder">
+            {% block header %}
+                <div class="header-helper js-header-helper"></div>
+                <header class="header js-header">
+                    <div class="header__top">
+                        <div class="typicalBlock typicalBlock_one header-topInner">
+                            {{ includeComponent('electric:city.suggest', '', {
+                                'SET_LOCATION': true,
+                            }) }}
+                            <div class="header-topInner__block header-person">
+                                {{ includeComponent('electric:auth.link', {}, {}) }}
+                                {{ includeComponent('electric:notifications', {}, {}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__bottom">
+                        <div class="typicalBlock typicalBlock_one header-bottomInner">
+                            <a href="#" class="header-burger js-mainMenu-toggle" title="Открыть меню сайта">
+                                <span class="header-burger__line"></span>
+                                <span class="header-burger__line"></span>
+                                <span class="header-burger__line"></span>
+                            </a>
+                            <div class="header-logo">
+                                <a {% if getCurPage() != "/" %}href="/"{% endif %} class="header-logoInner">
+                                    <img src="/local/templates/.default/img/logo.png"
+                                         srcset="/local/templates/.default/img/logo@2x.png 2x,
+                                             /local/templates/.default/img/logo@3x.png 3x"
+                                         alt="электрик.ру" class="header-logoInner-tag">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            {% endblock %} {#header#}
+
+            <!-- {{ includeComponent('electric:notification', {}, {}) }} -->
+
+            {% block main %}
+
+                {{ content|raw }}
+
+                {{ includeComponent('electric:static.seo', {}, {}) }}
+
+            {% endblock %} {#main#}
+        </div> {#app-inner#}
+        {% block footer %}
+            <footer class="footer js-footer  js-menuUnder">
+                <div class="footer-top">
+                    <div class="footer-top-inner typicalBlock typicalBlock_two">
+                        {{ includeComponent('electric:menu.bottom', {}, {}) }}
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-bottom-inner typicalBlock typicalBlock_two">
+                        <div class="footer-bottom__single">
+                            <a href="/terms/">
+                                Политика обработки персональных данных
+                            </a>
+                        </div>
+                        <div class="footer-bottom__single">
+                            2019 Электрик.ру
+                            &nbsp;&nbsp;
+                            <!--LiveInternet logo-->
+                            <a href="//www.liveinternet.ru/click" target="_blank" rel="nofollow"><img src="//counter.yadro.ru/logo?44.7" title="LiveInternet" alt="" border="0" width="31" height="31"/></a>
+                            <!--/LiveInternet-->
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %} {#footer#}
+    </div>
+{% endblock %} {#all#}
+<div class="upWindow js-upWindow"></div>
+{{ includeComponent('electric:form.change.name', {}, {}) }}
+{{ includeComponent('electric:form.change.password', {}, {}) }}
+{{ includeComponent('electric:form.emaster', {}, {}) }}
+{{ includeComponent('electric:form.article', {}, {}) }}
+{{ includeComponent('electric:form.change.city', {}, {}) }}
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(56492371, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/56492371" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT3HVHB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!--LiveInternet counter-->
+<script type="text/javascript">
+    new Image().src = "//counter.yadro.ru/hit?r"+
+        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+            ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+            screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+        ";h"+escape(document.title.substring(0,150))+
+        ";"+Math.random();
+</script>
+<!--/LiveInternet-->
+
+
+
+</body>
+</html>

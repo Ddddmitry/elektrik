@@ -1,0 +1,29 @@
+<div id="edit_fio" class="fancyBlock">
+    <div class="fancybox-title js-form-title">Редактировать ФИО</div>
+    <div class="js-form-text"></div>
+    <form action="/api/user.change.name/" class="js-form-content" id="edfio" data-form-change-name>
+        <div class="formGroup required">
+            <div class="formGroup-inner">
+                <label for="edfio-fio">Новые ФИО</label>
+                <input type="text"
+                       value=""
+                       id="edfio-fio"
+                       name="edfio-fio"
+                       minlength="1"
+                       maxlength="255"
+                       required>
+                <div class="formGroup__error js-errorInput"></div>
+            </div>
+        </div>
+        <div class="formGroup formGroup__bottom">
+            <div class="formGroup-inner">
+                <button type="submit" name="edpassword-submit">
+                    Отправить
+                </button>
+                <div class="formGroup__action" data-fancybox-close>
+                    Отменить
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

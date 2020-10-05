@@ -1,0 +1,21 @@
+{% set menuFirst = result["MENU_FIRST"] %}
+{% set menuSecond = result["MENU_SECOND"] %}
+
+{% for item in menuFirst %}
+    <div class="mainMenu-nav__item">
+        <a href="{{ item.link }}" class="mainMenu-nav__item-inner">
+            {{ item.name }}
+        </a>
+    </div>
+{% endfor %}
+{% if menuSecond %}
+    <div class="mainMenu-nav__separator"></div>
+    {% for item in menuSecond %}
+        <div class="mainMenu-nav__item">
+            <a href="{{ item.link }}" class="mainMenu-nav__item-inner">
+                {{ item.name }}
+            </a>
+        </div>
+    {% endfor %}
+{% endif %}
+

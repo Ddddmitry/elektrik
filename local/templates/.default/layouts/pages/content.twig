@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block main %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs breadcrumbs_padding">
+            <div class="breadcrumbs-inner typicalBlock typicalBlock_two">
+                <div class="breadcrumbs-list">
+                    <a href="/"
+                       class="breadcrumbs-list__single">
+                        {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                        <span class="breadcrumbs-list__single-text">На главную страницу</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endblock %} {#breadcrumbs#}
+
+    <div class="articlesPage articlesPage_detail">
+        <div class="articlesPage-inner typicalBlock typicalBlock_two">
+            <div class="articlesPage-main articlesPage-main--content">
+                <h1 class="articlesPage__title">
+                    {{ getTitle() }}
+                </h1>
+                <div class="htmlArea">
+                    {{ content|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %} {#main#}

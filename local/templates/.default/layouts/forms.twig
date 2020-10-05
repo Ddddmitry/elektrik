@@ -1,0 +1,29 @@
+{% extends 'layout.twig' %}
+{% block mainMenu %}
+{% endblock %} {#mainMenu#}
+{% block header %}
+{% endblock %} {#header#}
+{% block notification %}
+{% endblock %} {#notification#}
+{% block search %}
+{% endblock %} {#search#}
+{% block main %}
+    <div class="formSolo js-formSolo">
+        <div class="formSolo-inner typicalBlock typicalBlock_one">
+            {% block leftSlider %}
+            {% endblock %} {#formSoloToggler#}
+            {% block formSolo %}
+                <div class="formSolo-workarea js-formSolo-workarea">
+                    {% block formSoloToggler %}
+                    {% endblock %} {#formSoloToggler#}
+                    {% block formSoloInfo %}
+                    {% endblock %} {#formSoloInfo#}
+                    {% block formSoloMain %}
+                    {% endblock %} {#formSoloMain#}
+                </div>
+            {% endblock %} {#formSolo#}
+        </div>
+    </div>
+{% endblock %} {#main#}
+{% block footer %}
+{% endblock %} {#footer#}

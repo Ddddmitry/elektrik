@@ -1,0 +1,47 @@
+{% set preferredCities = result["PREFERRED_CITIES"] %}
+
+<div id="city_change" class="fancyBlock">
+    <div class="fancybox-title">Выбор города</div>
+
+    <form action="#" id="search_city" class="fullForm" data-form-search-city>
+        <div class="js-form-error"></div>
+
+        <div class="formGroup">
+            <div class="formGroup-inner">
+                {% include './includes/icon.twig' with {icon: {name: 'search', class: 'findIcon'}} %}
+                <label class="search__label">
+                    {% include './includes/icon.twig' with {icon: {name: 'search', class: 'findIcon'}} %}
+                    Поиск города
+                </label>
+                <input type="hidden" name="search_city-id" id="search_city-id" class="js-popupSearchResult-inputHidden">
+                <input value="" type="search" autocomplete="NoAutocomplete"
+                       name="search_city-search" id="search_city-search"
+                       data-min-length="3" data-padding-right="16.5px" placeholder="Поиск города" class="js-popupSearchResult-input">
+                <div class="popupSearchResult js-popupSearchResult"></div>
+            </div>
+        </div>
+
+        <div class="impotantTowns js-impotantTowns">
+            {% for city in preferredCities %}
+                <div class="impotantTowns__single">
+                    <a href="#" class="impotantTowns__single-link js-impotantTowns__single-link" data-id="{{ city["ID"] }}" data-path="{{ city["PATH"] }}">
+                        {{ city["NAME"] }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="formGroup formGroup__bottom">
+            <div class="formGroup-inner">
+                <button type="submit" name="city-change-submit" id="city-change-submit" disabled="disabled">
+                    Подтвердить выбор
+                </button>
+                <div class="formGroup__action" data-fancybox-close="">
+                    Отменить
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>

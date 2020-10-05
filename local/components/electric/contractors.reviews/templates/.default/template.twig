@@ -1,0 +1,140 @@
+{% set isAjax = result['IS_AJAX'] %}
+{% set reviewsData = result['REVIEWS_DATA'] %}
+{% set isLastPage = reviewsData["NAV"]["IS_LAST_PAGE"] %}
+
+{% if not isAjax %}
+<div class="marketDetail-reviews" id="master-reviews">
+    <div class="marketDetail__title">
+        Отзывы:
+        <span class="marketDetail__title-accent">
+            {{ reviewsData["NAV"]["TOTAL_COUNT"] }}
+        </span>
+    </div>
+    <div class="marketDetail-reviews-inner">
+        <div class="marketDetail-reviews__main">
+
+            {{ includeComponent('electric:form.review', '', {
+                'USER': reviewsData["CONTRACTOR"]["USER"],
+            }) }}
+
+            <div class="marketDetail-reviews-list js-reviews-list" data-page="1" data-filter-mark="" data-user="{{ reviewsData["CONTRACTOR"]["USER"] }}">
+{% endif %}
+                {% for review in reviewsData["ITEMS"] %}
+                    <div class="marketDetail-reviews-list__single">
+                        <div class="marketDetail-reviews-list__top">
+                            <div class="marketDetail-reviews-list__author">
+                                {{ review["AUTHOR_NAME"] }}
+                            </div>
+                            <div class="marketDetail-reviews-list__date">
+                                {{ review["ACTIVE_FROM"] }}
+                            </div>
+                            {% if review["CAN_EDIT"] %}
+                                <a href="#" class="marketDetail-reviews-list__edit-button js-edit-review">Редактировать</a>
+                                <a href="#" class="marketDetail-reviews-list__edit-button js-delete-review" data-id="{{ review["ID"] }}">Удалить</a>
+                            {% endif %}
+                        </div>
+
+                        <div class="marketDetail-reviews-list__text">
+                            {% include './includes/raiting.twig' with {raitNumber: review["PROPERTY_MARK_VALUE"], class: 'marketDetail-reviews-list__rait'} %}
+                            {{ review["PREVIEW_TEXT"] }}
+                        </div>
+
+                        {% if review["CAN_EDIT"] %}
+                            <div class="marketDetail-reviews-list__text marketDetail-reviews-list__text--edit">
+                                {{ includeComponent('electric:form.review.edit', '', {
+                                    'REVIEW': review["ID"],
+                                }) }}
+                            </div>
+                        {% endif %}
+
+                        {% if (review["PROPERTY_ANSWER_VALUE"]) %}
+                            <div class="marketDetail-reviews-list__answer">
+                                <div class="marketDetail-reviews-list__answer-top">
+                                    <div class="marketDetail-reviews-list__author">
+                                        {{ reviewsData["CONTRACTOR"]["NAME"] }}
+                                    </div>
+                                </div>
+
+                                <div class="marketDetail-reviews-list__answer-text">
+                                    {{ review["PROPERTY_ANSWER_VALUE"] }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+{% if not isAjax %}
+            </div>
+            {% if not isLastPage %}
+                <div class="marketDetail-reviews-bottom js-reviews-more" id="js-reviews-more-button">
+                    <a href="#" class="button">
+                        Показать ещё
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if reviewsData["NAV"]["TOTAL_COUNT"] %}
+            <div class="marketDetail-reviews__helper">
+                <div class="marketDetail-reviews__helper-top">
+                    <div class="marketDetail-reviews__helper-title">
+                        Общий рейтинг:
+                    </div>
+                    <div class="marketDetail-reviews__numbers">
+                        <div class="marketDetail-reviews__numbers-current">
+                            {{ reviewsData["CONTRACTOR"]["RATING"] }}
+                        </div>
+                        <div class="marketDetail-reviews__numbers-max">
+                            /5
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marketDetail-reviews__filter">
+                    <div class="marketDetail-reviews__filter-single">
+                        <div class="marketList__numbers-rait js-raitWr marketDetail-reviews__filter-rait"></div>
+                        <div class="marketDetail-reviews__filter-amount">
+                            <a href="#" data-rait="mark" data-filter-mark="" class="js-filter-reviews marketDetail-reviews__filter-amount-action">
+                                Все отзывы
+                            </a>
+                        </div>
+                    </div>
+                    {% for mark in 5..1 %}
+                        <div class="marketDetail-reviews__filter-single">
+                            {% include './includes/raiting.twig' with {raitNumber: mark, class: 'marketDetail-reviews__filter-rait'} %}
+                            <div class="marketDetail-reviews__filter-amount">
+                                {% if reviewsData["MARKS_SPREAD"][mark] %}
+                                    <a href="#" data-rait="mark" data-filter-mark="{{ mark }}" class="js-filter-reviews marketDetail-reviews__filter-amount-action">
+                                        {{ reviewsData["MARKS_SPREAD"][mark] }}
+                                    </a>
+                                {% else %}
+                                    <span data-rait="mark" class="marketDetail-reviews__filter-amount-action">
+                                        0 отзывов
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endif %}
+
+{% if isAjax %}
+    {% if isLastPage %}
+        {% raw %}
+            <script>
+                document.getElementById('js-reviews-more-button').style.display = "none";
+            </script>
+        {% endraw %}
+    {% else %}
+        {% raw %}
+            <script>
+                document.getElementById('js-reviews-more-button').style.display = "block";
+            </script>
+        {% endraw %}
+    {% endif %}
+{% endif %}

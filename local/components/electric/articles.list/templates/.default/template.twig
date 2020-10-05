@@ -1,0 +1,108 @@
+{% set isAjax = result['IS_AJAX'] %}
+{% set articles = result['ITEMS'] %}
+{% set search = result["SEARCH"] %}
+{% set isLastPage = result["IS_LAST_PAGE"] %}
+{% set folder = result["SEF_FOLDER"] %}
+
+{% if not isAjax %}
+<div class="articlesPage-main">
+
+    <div class="articlesPage-list js-articles-list" data-page="1">
+{% endif %}
+
+        {% if not isAjax and search["IS_SEARCH"] %}
+            <div class="articlesPage-count">Найдено {{ search["COUNT"] }} по запросу: «{{ search["PHRASE"] }}»</div>
+        {% endif %}
+        {% if isAjax and not articles %}
+            <div class="articlesPage-count">Нет статей по выбранным категориям</div>
+        {% endif %}
+
+        {% for key, article in articles %}
+
+            {% if not isAjax and key == 1 %}
+                <div class="articlesPage-list__banner">
+                    {{ includeComponent('bitrix:advertising.banner', '', {
+                        "TYPE": "ARTICLES",
+                        "CACHE_TYPE": "N",
+                        "NOINDEX": "Y",
+                        "CACHE_TIME": "3600"
+                    }) }}
+                </div>
+            {% endif %}
+
+            <div class="articlesPage-list__single" onclick="document.location.href = '{{ article["DETAIL_PAGE_LINK"] }}'">
+                <div class="articlesPage-list__single-inner">
+
+                    <div class="articlesPage-list__navigation">
+                        {% if (article["PROPERTIES"]["TYPE"]["VALUE_NAME"]) %}
+                            <a href="{{ folder }}?type={{ article["PROPERTIES"]["TYPE"]["VALUE"] }}"
+                               class="articlesPage-list__type button2">
+                                {{ article["PROPERTIES"]["TYPE"]["VALUE_NAME"] }}
+                            </a>
+                        {% endif %}
+                        {% if (article["PROPERTIES"]["TAGS"]) %}
+                            <div class="articlesPage-list-themes">
+                                {% for tag in article["PROPERTIES"]["TAGS"]["VALUE"] %}
+                                    <div class="articlesPage-list-themes__single">
+                                        {{ tag }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="articlesPage-list__title">
+                        {{ article["NAME"] }}
+                    </div>
+                    {% if (article["PREVIEW_TEXT"]) %}
+                        <div class="articlesPage-list__description">
+                            {{ article["PREVIEW_TEXT"] }}
+                        </div>
+                    {% endif %}
+                    {% if (article["PREVIEW_PICTURE"]) %}
+                        <div class="articlesPage-list__img">
+                            {% if (article.category.code == 'video') %}
+                                {% include './includes/icon.twig' with {icon: {name: 'video', class: ''}} %}
+                            {% endif %}
+                            <img src="{{ article["PREVIEW_PICTURE"]["SRC"] }}" alt="{{ article["NAME"] }}"
+                                 class="articlesPage-list__img-tag">
+                        </div>
+                    {% endif %}
+                    <div class="articlesPage-list__info">
+                        <div class="articlesPage-list__author">
+                            {{ article["PROPERTIES"]["USER"]["VALUE_NAME"] }}
+                        </div>
+                        <div class="articlesPage-list__date">
+                            {{ article["DATE"] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+{% if not isAjax %}
+    </div>
+    {% if not isLastPage %}
+        <div class="articlesPage__button" id="js-more-button">
+            <a href="#" class="button js-articles-more">
+                Показать ещё
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endif %}
+
+{% if isAjax %}
+    {% if isLastPage %}
+        {% raw %}
+            <script>
+                document.getElementById('js-more-button').style.display = "none";
+            </script>
+        {% endraw %}
+    {% else %}
+        {% raw %}
+            <script>
+                document.getElementById('js-more-button').style.display = "block";
+            </script>
+        {% endraw %}
+    {% endif %}
+{% endif %}

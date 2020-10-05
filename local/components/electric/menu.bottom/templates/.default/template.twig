@@ -1,0 +1,13 @@
+{% set menuBottom = result["MENU_BOTTOM"] %}
+
+<div class="footer-menu">
+    {% for item in menuBottom %}
+        <div class="footer-menu__single">
+            <a href="{{ item.link }}" class="footer-menu__single-inner">
+                {{ item.name }}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+

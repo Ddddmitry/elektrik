@@ -1,0 +1,27 @@
+.marketDetail__title {
+    font-size: 24px;
+    line-height: 1.25;
+    margin: 0 0 24px 0;
+}
+.marketDetail-reviews__comment-lock {
+    border-radius: 4px;
+    padding: 32px 40px;
+    font-size: 14px;
+}
+.marketDetail-reviews__comment-lock a {
+    color: #2068bc;
+    text-decoration: underline; }
+.marketDetail-reviews__comment-lock a:hover, .marketDetail-reviews__comment-lock a:focus, .marketDetail-reviews__comment-lock a:active {
+    color: #113865;
+    text-decoration: none; }
+.marketDetail-reviews__comment-lock a.inhLink {
+    color: inherit;
+    text-decoration: none; }
+.marketDetail-reviews__comment-lock a.inhLink:hover, .marketDetail-reviews__comment-lock a.inhLink:focus, .marketDetail-reviews__comment-lock a.inhLink:active {
+    color: #113865;
+    text-decoration: none; }
+
+.marketDetail__title-accent {
+    color: #7f7f7f;
+    margin: 0 0 0 4px;
+}

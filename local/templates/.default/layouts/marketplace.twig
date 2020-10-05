@@ -1,0 +1,300 @@
+{% extends 'layout.twig' %}
+
+{% block notification %}
+    <div class="notification js-notification">
+        <div class="notification-inner typicalBlock typicalBlock_two">
+            <div class="notification__text">
+                {% include './includes/icon.twig' with {icon: {name: 'notification', class: ''}} %}
+                <div class="notification__text-inner">
+                    Пройдите сертификацию Электрик.ру, чтобы появиться
+                    в каталоге специалистов и иметь возможность публиковать статьи
+                </div>
+            </div>
+            <div class="notification__button">
+                <a href="#make_sertificate_electric" data-fancybox="" data-src="#make_sertificate_electric" class="button button_white button_md">
+                    Пройти сертификацию
+                </a>
+            </div>
+            <div class="notification__close js-notification-close">
+                <a href="#" class="notification__close-inner">
+                    <span class="notification__close-inner-line"></span>
+                    <span class="notification__close-inner-line"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %} {#notification#}
+
+{% block search %}
+    {% set search = {
+        code: 'search',
+        action: '?layout=marketplace',
+        items: [{
+            title: 'Услуга и специалист',
+            name: 'servise_person',
+            type: 'select',
+            items: [{
+                value: '1',
+                title: 'Установка проводки',
+            },{
+                value: '2',
+                title: 'Ремонт проводки на заводе'
+            },{
+                value: '3',
+                title: 'Установка счётчиков'
+            }]
+        },{
+            title: 'Метро район или город',
+            name: 'place',
+            type: 'select',
+            items: [{
+                value: '1',
+                title: 'Алабинская'
+            },{
+                value: '2',
+                title: 'Победа'
+            },{
+                value: '3',
+                title: 'Безымянка'
+            }]
+        },{
+            title: 'Поиск',
+            name: 'submit',
+            type: 'submit',
+        }]
+    } %}
+    {% include './includes/search.twig' with {data: {
+        title: 'Каталог специалистов',
+        show_filter: true,
+        banner: {
+            src: '/local/templates/.default/img/trash/banner2.jpg',
+            name: 'Баннер2',
+            size: {
+                width: 1440,
+                height: 400
+            }
+        },
+        search: search,
+    }} %}
+{% endblock %} {#search#}
+{% block main %}
+    {% block breadcrumbs %}
+    {% endblock %} {#breadcrumbs#}
+    {% block marketplace %}
+        <div class="marketplace">
+            <div class="marketplace-inner typicalBlock typicalBlock_two">
+                <h1 class="marketplace__title">
+                    Все специалисты
+                </h1>
+
+                <div class="marketSort">
+                    <div class="marketSort-inner">
+                        <div class="marketSort__title">
+                            Сортировка:
+                        </div>
+                        <div class="marketSort-list">
+                            <div class="marketSort-list__single selected asc">
+                                <a href="#" class="marketSort-list__single-inner">
+                                    Рекомендуемые<div class="marketSort-list__single-inner-arrow">
+                                        <div class="marketSort-list__single-inner-arrow-inner"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marketSort-list__single">
+                                <a href="#" class="marketSort-list__single-inner">
+                                    По цене<div class="marketSort-list__single-inner-arrow">
+                                        <div class="marketSort-list__single-inner-arrow-inner"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="marketSort-list__single">
+                                <a href="#" class="marketSort-list__single-inner">
+                                    По рейтингу<div class="marketSort-list__single-inner-arrow">
+                                        <div class="marketSort-list__single-inner-arrow-inner"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marketSort marketSort_mobile">
+                    <div class="marketSort-inner">
+                        <div class="search__filter-single">
+                            <select name="marketplace-sort" id="marketplace-sort" data-placeholder="Сортировка" class="js-chosen">
+                                <option value=""></option>
+                                <option value="1">Сначала рекомендуемые</option>
+                                <option value="2">Сначала дорогие</option>
+                                <option value="3">Сначала дешевые</option>
+                                <option value="4">Сначала с хорошим рейтингом</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {% set masters = [{
+                    link: '?layout=marketplace/detail',
+                    img: {
+                        src: '/local/templates/.default/img/trash/marketplace1.jpg'
+                    },
+                    raiting: '4,7',
+                    reviews_number: 16,
+                    name: 'Электрощит',
+                    position: {
+                        adress: 'Москва, 3-я ул. Ямского Поля, 20, стр. 1',
+                    },
+                    preview_text: 'Обеспечим бесперебойную работу Ваших розеток и выключателей 365 дней в году.',
+                    service: {
+                        title: 'Монтаж лампочек',
+                        price: '3 550'
+                    },
+                    last_review: 'Работа выполнена качественно, аккуратно и быстро. Закончили раньше графика...'
+                },{
+                    link: '?layout=marketplace/detail',
+                    img: {
+                        src: '/local/templates/.default/img/trash/articles1.jpg'
+                    },
+                    raiting: '4,5',
+                    reviews_number: 16,
+                    name: 'Электрощит',
+                    position: {
+                        adress: 'Москва, 3-я ул. Ямского Поля, 20, стр. 1',
+                    },
+                    preview_text: 'Обеспечим бесперебойную работу Ваших розеток и выключателей 365 дней в году.',
+                    service: {
+                        title: 'Монтаж лампочек',
+                        price: 3550
+                    },
+                    last_review: 'Работа выполнена качественно, аккуратно и быстро. Закончили раньше графика...'
+                },{
+                    link: '?layout=marketplace/detail',
+                    img: {
+                        src: '/local/templates/.default/img/trash/articles3.jpg'
+                    },
+                    raiting: '3,9',
+                    reviews_number: 16,
+                    name: 'Электрощит',
+                    position: {
+                        adress: 'Москва, 3-я ул. Ямского Поля, 20, стр. 1',
+                    },
+                    preview_text: 'Обеспечим бесперебойную работу Ваших розеток и выключателей 365 дней в году.',
+                    service: {
+                        title: 'Монтаж лампочек',
+                        price: 3550
+                    },
+                    last_review: 'Работа выполнена качественно, аккуратно и быстро. Закончили раньше графика...'
+                },{
+                    link: '?layout=marketplace/detail',
+                    img: {
+                        src: '/local/templates/.default/img/trash/docs1.jpg'
+                    },
+                    raiting: '3,9',
+                    reviews_number: 16,
+                    name: 'Электрощит',
+                    position: {
+                        adress: 'Москва, 3-я ул. Ямского Поля, 20, стр. 1',
+                    },
+                    preview_text: 'Обеспечим бесперебойную работу Ваших розеток и выключателей 365 дней в году.',
+                    service: {
+                        title: 'Монтаж лампочек',
+                        price: 3550
+                    },
+                    last_review: 'Работа выполнена качественно, аккуратно и быстро. Закончили раньше графика...'
+                },{
+                    link: '?layout=marketplace/detail',
+                    img: {
+                        src: '/local/templates/.default/img/trash/works1.jpg'
+                    },
+                    raiting: '3,9',
+                    reviews_number: 16,
+                    name: 'Электрощит',
+                    position: {
+                        adress: 'Москва, 3-я ул. Ямского Поля, 20, стр. 1',
+                    },
+                    preview_text: 'Обеспечим бесперебойную работу Ваших розеток и выключателей 365 дней в году.',
+                    service: {
+                        title: 'Монтаж лампочек2',
+                        price: 3550
+                    },
+                    last_review: 'Работа выполнена качественно, аккуратно и быстро. Закончили раньше графика...'
+                }]%}
+                <div class="marketList">
+                    {% for master in masters %}
+                        <div class="marketList__single">
+                            <div class="marketList__single-inner" onclick="document.location.href = '{{ master.link }}'">
+                                <div class="marketList__side marketList__side_one">
+                                    <div class="marketList__img">
+                                        <img src="{{ master.img.src }}" alt="{{ master.name }}"  class="marketList__img-tag">
+                                    </div>
+                                    <div class="marketList__main">
+                                        {% if ((master.reviews_number and master.reviews_number != '') or
+                                            (master.raiting and master.raiting != '')) %}
+                                            <div class="marketList__numbers">
+                                                {% if (master.raiting and master.raiting != '') %}
+                                                    {% include './includes/raiting.twig' with {raitNumber: master.raiting} %}
+                                                    <div class="marketList__numbers-raitNumber">
+                                                        {{ master.raiting }}
+                                                    </div>
+                                                {% endif %}
+                                                {% if (master.reviews_number and master.reviews_number != '') %}
+                                                    <div class="marketList__numbers-reviews">
+                                                        <a href="?layout=marketplace/detail#master-reviews" class="button2">
+                                                            {{ master.reviews_number }} отзывов
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                        <div class="marketList__title">
+                                            {{ master.name }}
+                                        </div>
+                                        {% if (master.position and (master.position is empty) == false) %}
+                                            <a href="#" class="marketList__geo">
+                                                {% include './includes/icon.twig' with {icon: {name: 'geo', class: ''}} %}
+                                                <span>
+                                                    {{ master.position.adress }}
+                                                </span>
+                                            </a>
+                                        {% endif %}
+                                        {% if (master.preview_text and master.preview_text != '') %}
+                                            <div class="marketList__desc">
+                                                {{ master.preview_text }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="marketList__side marketList__side_two">
+                                    <div class="marketList__info">
+                                        {% if (master.service and (master.service is empty) == false) %}
+                                            <div class="marketList__servPr">
+                                                <div class="marketList__service">
+                                                    {{ master.service.title }}
+                                                </div>
+                                                <div class="marketList__price">
+                                                    от {{ master.service.price }} &nbsp;₽
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if (master.last_review and master.last_review != '') %}
+                                            <div class="marketList__review">
+                                                <div class="marketList__review-title">
+                                                    Последний отзыв:
+                                                </div>
+                                                <div class="marketList__review-text">
+                                                    {{ master.last_review }}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="marketplace__button">
+                    <a href="#" class="button js-marketList-more">
+                        Показать ещё
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endblock %} {#marketplace#}
+{% endblock %} {#main#}

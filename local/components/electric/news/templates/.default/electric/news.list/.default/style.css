@@ -1,0 +1,131 @@
+.news_list__content {
+    padding: 60px 0;
+}
+
+.news_list__holder {
+    display: flex;
+    align-items: flex-start;
+}
+
+.news_list__lside {
+    flex: 1 1 auto;
+    padding-right: 50px;
+}
+
+.news_list__rside {
+    flex: 0 0 auto;
+    width: 280px;
+}
+
+.news_list__rside-title {
+    display: block;
+}
+
+.news_list__rside-text {
+    display: block;
+    margin-top: 14px;
+}
+
+.news_list__rside-items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 12px -8px 0 -8px;
+}
+
+.news_list__rside-item {
+    flex: 0 0 auto;
+    padding: 8px;
+}
+
+.news_list__rside-box {
+    display: block;
+    margin-bottom: 50px;
+}
+
+.news_list__rside-box:last-child {
+    margin-bottom: 0;
+}
+
+.news_list__rside-holder {
+    border-radius: 4px;
+    background-color: #f5f9fa;
+    padding: 30px;
+}
+
+.news_list__rside-holder .main__list {
+    margin-top: 20px;
+}
+
+.news_list__rside-btn {
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.news_list__inners {
+    display: flex;
+    align-items: stretch;
+    margin: 35px -15px 0 -15px;
+    flex-wrap: wrap;
+}
+
+.news_list__inner {
+    flex: 0 0 33%;
+    padding: 15px;
+}
+
+.news_list__inner-container {
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #e5e5e6;
+    height: 100%;
+}
+
+.news_list__inner-image {
+    display: block;
+    height: 260px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.news_list__inner-holder {
+    display: block;
+    padding: 25px;
+    border-bottom: 1px solid #e5e5e6;
+}
+
+.news_list__inner-holder:last-child {
+    border-bottom: 0;
+}
+
+.news_list__inner-holder .news_list__inner-title {
+    display: block;
+    margin-top: 24px;
+}
+
+.news_list__inner-holder .main__text--sm {
+    margin-top: 30px;
+}
+
+.news_list__info {
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.news_list__info .main__text {
+    margin-right: 24px;
+}
+
+.news_list__action{
+
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+}
+.news_list__link{
+    color: #120d13;
+}

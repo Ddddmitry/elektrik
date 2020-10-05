@@ -1,0 +1,487 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.header {
+    $burger-width: 38px;
+    background-color: $color3;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 90;
+    &-helper {
+        width: 100%;
+        height: 110px;
+        @include respond-to(sm) {
+            height: 56px;
+        }
+    }
+    &-helper2 {
+        width: 100%;
+        height: 80px;
+        @include respond-to(md) {
+            height: 64px;
+        }
+        @include respond-to(sm) {
+            height: 57px;
+        }
+    }
+    &__top {
+        background-color: rgba(131,117,128,0.2);
+        font-size: 14px;
+        @include respond-to(md) {
+            font-size: 13px;
+        }
+        @include respond-to(sm) {
+            display: none;
+        }
+        &_backoffice {
+            padding-top: 21px;
+            padding-bottom: 19px;
+            @include respond-to(md) {
+                padding-top: 11px;
+                padding-bottom: 13px;
+            }
+            @include respond-to(sm) {
+                padding-top: 8px;
+                padding-bottom: 9px;
+                display: block;
+            }
+        }
+    }
+    &-topInner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__block {
+            display: inline-flex;
+            padding: 5px 10px 4px 10px;
+            margin: 0 -10px;
+            &_title {
+                @include respond-to(sm) {
+                    display: none;
+                }
+            }
+        }
+        &__burger {
+            width: 26px;
+            height: 24px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            padding: 3px;
+            @include respond-to(sm) {
+                display: flex;
+            }
+            &-line {
+                height: 2px;
+                width: 100%;
+                background-color: #fff;
+            }
+        }
+        &__logo {
+            display: block;
+            margin: 6px 0 0 90px;
+            @include respond-to(lg) {
+                margin-left: 76px;
+            }
+            @include respond-to(md) {
+                margin-left: -16px;
+            }
+            @include respond-to(sm) {
+                margin-left: 4px;
+            }
+            &-img {
+                width: 188px;
+                @include respond-to(sm) {
+                    width: 140px;
+                }
+            }
+        }
+    }
+    &-city {
+        &-quest {
+            position: absolute;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            visibility: hidden;
+            opacity: 0;
+            @include respond-to(sm) {
+                top: 100%;
+            }
+            &.active {
+                visibility: visible;
+                opacity: 1;
+            }
+            &-inner {
+                position: absolute;
+                top: 0;
+                left: 40px;
+                color: $color3;
+                background-color: #fff;
+                border-radius: 4px;
+                padding: 23px 40px 19px 40px;
+                font-size: 18px;
+                line-height: 1.67;
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                transition: visibility 0s .3s, opacity .3s;
+                @include respond-to(sm) {
+                    padding: 16px 20px 15px 20px;
+                    left: 20px;
+                }
+                &:before {
+                    content: '';
+                    width: 7px;
+                    height: 7px;
+                    position: absolute;
+                    top: -4px;
+                    left: 11px;
+                    background-color: #fff;
+                    transform: rotate(45deg);
+                }
+            }
+            &__title {
+                margin: 0 0 4px 0;
+                @include respond-to(sm) {
+                    margin-bottom: 14px;
+                }
+            }
+            &__buttons {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                @include respond-to(sm) {
+                    display: block;
+                }
+                &-br {
+                    display: none;
+                    @include respond-to(sm) {
+                        display: block;
+                    }
+                }
+                .button {
+                    min-width: 0px;
+                }
+                .formGroup__action {
+                    white-space: nowrap;
+                    margin-left: 21px;
+                    margin-right: 21px;
+                    @include respond-to(sm) {
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                    }
+                }
+            }
+        }
+    }
+    &-person {
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        &__block {
+            position: relative;
+            height: 31px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        &__functions {
+            margin: 0 52px 0 0;
+            @include respond-to(lg) {
+                margin-right: 38px;
+            }
+            @include respond-to(md) {
+                margin-right: 28px;
+            }
+            @include respond-to(sm) {
+                display: none;
+            }
+            &-name {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                //margin-right: 52px;
+                &-inner {
+                    flex-shrink: 0;
+                    display: inline-block;
+                }
+                .svg-icon {
+                    flex-shrink: 0;
+                    width: 16px;
+                    max-width: 16px;
+                    font-size: 16px;
+                    stroke: $color8;
+                    color: $color8;
+                    margin: 0 0 0 8px;
+                    transition: transform .3s;
+                }
+            }
+            &.selected &-name {
+                .svg-icon {
+                    transform: translateY(3px) scale(1, -1);
+                }
+            }
+        }
+        &__alert {
+            padding: 0 24px 0 0;
+            @include respond-to(lg) {
+                padding-right: 20px;
+            }
+            @include respond-to(md) {
+                padding-right: 10px;
+            }
+            @include respond-to(sm) {
+                margin-right: -6px;
+            }
+            &-bell {
+                position: relative;
+                display: block;
+                .svg-icon {
+                    font-size: 24px;
+                    stroke: $color8;
+                    color: $color8;
+                    transition: transform .3s;
+                }
+                &:hover {
+                    .svg-icon {
+                        opacity: 0.8;
+                    }
+                }
+            }
+            &:not(.selected) &-bell {
+                .svg-icon {
+                    transform: rotate(-14deg);
+                }
+            }
+            &.new &-bell {
+                .svg-icon {
+                    stroke: #fff;
+                    color: #fff;
+                }
+                &:before {
+                    content: '';
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background-color: $color5;
+                    position: absolute;
+                    top: 0px;
+                    right: 2px;
+                }
+            }
+        }
+        &-menu {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            z-index: 15;
+            top: calc(100% + 13px);
+            right: -20px;
+            min-width: 244px;
+            padding: 0 10px;
+            color: $color8;
+            transition: opacity .3s;
+            margin: 10px 0 0 0;
+
+            &--notifications {
+                right: -8px;
+            }
+
+            @include respond-to(md) {
+                top: calc(100% + 7px);
+                right: -22px;
+            }
+            @include respond-to(sm) {
+                top: calc(100% + 3px);
+                right: -14px;
+                width: 100vw;
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+            &.active {
+                visibility: visible;
+                opacity: 1;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                right: 34px;
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid #fff;
+                @include respond-to(sm) {
+                    right: 24px;
+                }
+            }
+            &-inner {
+                max-height: 80vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding: 16px 0 8px 0;
+                box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+                position: relative;
+                background-color: #fff;
+                width: 100%;
+                @include respond-to(sm) {
+                    max-height: 100vh;
+                    height: calc(100vh - 57px);
+                }
+            }
+            &__type {
+                width: 270px;
+                padding: 0 0 20px 0;
+                @include respond-to(sm) {
+                    width: 100%;
+                }
+                &:first-child {
+                    padding-top: 16px;
+                    margin-top: -16px;
+                }
+                &:last-child {
+                    padding-bottom: 0px;
+                }
+                &_new {
+                    background-color: $color16;
+                }
+                &-title {
+                    padding: 4px 32px 4px 32px;
+                    font-size: 12px;
+                    @include respond-to(sm) {
+                        font-size: 10px;
+                        line-height: 1.1;
+                        padding-bottom: 0px;
+                        padding-right: $padding4;
+                        padding-left: $padding4;
+                    }
+                }
+            }
+            &__single {
+                margin: -1px 0 0 0;
+                @include respond-to(sm) {
+                    font-size: 12px;
+                }
+                a,span {
+                    padding: 11px 32px 12px 32px;
+                    color: #000;
+                    display: block;
+                    position: relative;
+                    &:hover, &:focus, &:active {
+                        background-color: $color6;
+                        color: #000;
+                    }
+                    @include respond-to(sm) {
+                        padding-right: $padding4;
+                        padding-left: $padding4;
+                    }
+                }
+                &_logout {
+                    a {
+                        color: $color8;
+                    }
+                }
+                &_notification {
+                    a, span {
+                        padding-top: 16px;
+                        padding-bottom: 16px;
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            display: block;
+                            width: calc(100% - #{$padding4}*2);
+                            height: 1px;
+                            background-color: $color13;
+                            top: calc(100% - 1px);
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                    }
+                    &:last-child {
+                        a, span {
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            &_zak {
+                top: calc(100% - 10px);
+            }
+        }
+    }
+    &__bottom {
+        padding: 23px 0 18px 0;
+        @include respond-to(md) {
+            padding-top: 15px;
+            padding-bottom: 12px;
+        }
+        @include respond-to(sm) {
+            padding-bottom: 7px;
+        }
+    }
+    &-bottomInner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        @include respond-to(sm) {
+            justify-content: space-between;
+        }
+    }
+    &-burger {
+        width: $burger-width;
+        height: 29px;
+        padding: 5px;
+        margin: 0 0 8px 0;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        flex-direction: column;
+        cursor: pointer;
+        @include respond-to(sm) {
+            width: 28px;
+            height: 26px;
+            padding: 4px;
+        }
+        &__line {
+            background-color: #fff;
+            height: 3px;
+            width: 100%;
+            @include respond-to(sm) {
+                height: 2px;
+            }
+        }
+        &:hover &__line, &:active &__line, &:focus &__line {
+            background-color: darken(#fff, 20%);
+        }
+    }
+    &-logo {
+        margin: 0 auto;
+        @include respond-to(sm) {
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+    }
+    &-logoInner {
+        margin: 0 $burger-width 0 0;
+        display: block;
+        width: 272px;
+        @include respond-to(md) {
+            width: 188px;
+        }
+        @include respond-to(sm) {
+            width: 155px;
+            margin-right: 0px;
+        }
+        &-tag {
+            width: 100%;
+        }
+    }
+}

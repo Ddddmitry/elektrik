@@ -1,0 +1,445 @@
+{% set profile = result['PROFILE'] %}
+{% set folder = result['SEF_FOLDER'] %}
+{% set sessionID = result['SESSION_ID'] %}
+{% set isAuthorized = isUserAuthorized() %}
+{% set isCompany = (profile["PROPERTIES"]["TYPE"]["VALUE"] == constant("ENUM_VALUE_CONTRACTORS_TYPE_LEGAL")) %}
+
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner typicalBlock typicalBlock_two">
+        <div class="breadcrumbs-list">
+            <a href="{{ folder }}"
+               class="breadcrumbs-list__single">
+                {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                <span class="breadcrumbs-list__single-text">К списку исполнителей</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="marketplace">
+    <div class="marketplace-inner typicalBlock typicalBlock_two">
+        <div class="marketDetail js-contractor-detail-viewed" data-contractor-user="{{ profile["PROPERTIES"]["USER"]["VALUE"] }}" data-user-session="{{ sessionID }}">
+            <div class="marketDetail-about">
+                <div class="marketDetail-about__main">
+                    <div class="marketDetail-about__main-block marketDetail-about__main-block_top">
+                        <div class="marketDetail-about__img">
+                            {% if (profile["PREVIEW_PICTURE"]["SRC"]) %}
+                                <img src="{{ profile["PREVIEW_PICTURE"]["SRC"] }}" alt="{{ profile["NAME"] }}" class="marketDetail-about__img-tag">
+                            {% else %}
+                                <img src="/local/templates/.default/img/contractor-empty.png" alt="{{ profile["NAME"] }}" class="marketDetail-about__img-tag">
+                            {% endif %}
+                        </div>
+                        <div class="marketDetail-about__text">
+                            <h1 class="marketDetail-about__title">{{ profile["NAME"] }}</h1>
+                            <div class="marketDetail-about__properties">
+
+                                {% if (profile["PROPERTIES"]["ADDRESS"]["VALUE"] and isCompany) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Адрес:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block">
+                                            {% if (profile["PROPERTIES"]["ADDRESS"]["VALUE"]) %}
+                                                {{ profile["PROPERTIES"]["ADDRESS"]["VALUE"] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            {% endif %}
+                                            {% if profile["PROPERTIES"]["ADDRESS_COORDS"]["VALUE"] %}
+                                                <a href="#contractor_location_map" data-fancybox="" data-src="#contractor_location_map">На карте</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% if (profile["PROPERTIES"]["SKILL"]["VALUE"]) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Квалификация:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block">
+                                            {{ profile["PROPERTIES"]["SKILL"]["VALUE_NAME"] }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% if (profile["JOBS"] and not isCompany) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Опыт работы:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block_language
+                                        marketDetail-about__properties-block">
+                                            {% for job in profile["JOBS"] %}
+                                                {{ job["NAME"] }}
+                                                ({{ job["START_DATE"] }} {% if job["IS_NOW"] %} — по настроящее время{% else %} — {{ job["END_DATE"] }}{% endif %}){% if (loop.index != profile["JOBS"]|length) %},<br>{% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% if (profile["EDUCATIONS"] and not isCompany) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Образование:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block_language
+                                        marketDetail-about__properties-block">
+                                            {% for education in profile["EDUCATIONS"] %}
+                                                {{ education["NAME"] }} — {{ education["STATUS"] }}{% if (loop.index != profile["EDUCATIONS"]|length) %},<br>{% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% if (profile["COURSES"]) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Курсы:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block_language
+                                        marketDetail-about__properties-block">
+                                            {% for course in profile["COURSES"] %}
+                                                {{ course["NAME"] }}{% if (loop.index != profile["COURSES"]|length) %},<br>{% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% if (profile["LANGUAGES"]) %}
+                                    <div class="marketDetail-about__properties-single">
+                                        <div class="marketDetail-about__properties-block_title
+                                        marketDetail-about__properties-block">
+                                            Языки:
+                                        </div>
+                                        <div class="marketDetail-about__properties-block_desc
+                                        marketDetail-about__properties-block_language
+                                        marketDetail-about__properties-block">
+                                            {% for language in profile["LANGUAGES"] %}
+                                                {{ language["LANGUAGE"]["NAME"] }} ({{ language["LEVEL"]["NAME"]|lower }}){% if (loop.index != profile["LANGUAGES"]|length) %}, {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if (profile["PROPERTIES"]["PHONE"]["VALUE"] or profile["PROPERTIES"]["EMAIL"]["VALUE"]) %}
+                        <div class="marketDetail-about__helper-block_contacts marketDetail-about__helper-block marketDetail-about__helper-block_mobile">
+
+                            <div class="marketDetail-about__helper-block_contacts-inner
+                                js-marketDetail-about-helper-contacts_mobile">
+                                <div class="marketDetail__title">
+                                    Контакты:
+                                </div>
+                                <div class="marketDetail-about__contacts-info">
+                                    {% if isAuthorized %}
+                                        {% if (profile["PROPERTIES"]["PHONE"]["VALUE"]) %}
+                                            <div class="marketDetail-about__contacts-tel">
+                                                <a href="tel:{{ profile["PROPERTIES"]["PHONE"]["VALUE"] }}"
+                                                   class="marketDetail-about__contacts-tel-inner inhLink">
+                                                    {{ profile["PROPERTIES"]["PHONE"]["VALUE"] }}
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                        {% if (profile["PROPERTIES"]["EMAIL"]["VALUE"]) %}
+                                            <div class="marketDetail-about__contacts-mail">
+                                                <a href="mailto:{{ profile["PROPERTIES"]["EMAIL"]["VALUE"] }}"
+                                                   class="marketDetail-about__contacts-mail-inner">
+                                                    {{ profile["PROPERTIES"]["EMAIL"]["VALUE"] }}
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% else %}
+                                        <div>Чтобы просмотреть контакты, необходимо <a href="/register/">зарегистрироваться</a> или <a href="/auth/">войти</a></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <a href="#" class="marketDetail-about__contactsButton
+                            js-marketDetail-about-helper-contactsButton_mobile
+                            button3">
+                                Показать контакты
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if (profile["REVIEWS_COUNT"] or profile["RATING"]) %}
+                        <div class="marketDetail-about__helper-block_numbers
+                        marketDetail-about__helper-block
+                        marketDetail-about__helper-block_mobile">
+                            <div class="marketDetail-about-numbersList">
+                                {% if (profile["RATING"]) %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Рейтинг
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ profile["RATING"] }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if (profile["REVIEWS_COUNT"]) %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Отзывов
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ profile["REVIEWS_COUNT"] }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if (profile["PREVIEW_TEXT"]) %}
+                        <div class="marketDetail-about__main-block">
+                            <div class="marketDetail__title">
+                                Об исполнителе:
+                            </div>
+                            <p>
+                                {{ profile["PREVIEW_TEXT"] }}
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    {% if (profile["SERVICES"]) %}
+                        <div class="marketDetail-about__main-block">
+                            <div class="marketDetail__title">
+                                Услуги:
+                            </div>
+                            <div class="marketDetail-about-serviceList">
+                                {% for serviceGroup in profile["SERVICES"] %}
+                                    <div class="marketDetail-about-serviceList__single
+                                    js-marketDetail-about-serviceList__single">
+                                        <div class="marketDetail-about-serviceList__title">
+                                            {{ serviceGroup["NAME"] }}:
+                                        </div>
+                                        <div class="marketDetail-about-serviceList__separator"></div>
+                                        <div class="marketDetail-about-serviceList__sublist
+                                        js-marketDetail-about-serviceList__sublist">
+                                            {% for service in serviceGroup["SERVICES"] %}
+                                                <div class="marketDetail-about-serviceList__sublist-single
+                                                js-marketDetail-about-serviceList__sublist-single">
+                                                    <div class="marketDetail-about-serviceList__sublist-block_text
+                                                    marketDetail-about-serviceList__sublist-block">
+                                                        <span class="marketDetail-about-serviceList__sublist-text">
+                                                            {{ service["NAME"] }}
+                                                        </span>
+                                                        <div class="marketDetail-about-serviceList__sublist-text-line"></div>
+                                                    </div>
+                                                    <div class="marketDetail-about-serviceList__sublist-block_value
+                                                    marketDetail-about-serviceList__sublist-block">
+                                                        от {{ service["PRICE"]|number_format(0,'.',' ') }} ₽
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        {% if serviceGroup["SERVICES"]|length > 3 %}
+                                            <div class="marketDetail__more
+                                            js-marketDetail-about-serviceList__more">
+                                                Ещё
+                                                {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div class="marketDetail-about__helper">
+                    {% if (profile["PROPERTIES"]["PHONE"]["VALUE"] or profile["PROPERTIES"]["EMAIL"]["VALUE"]) %}
+                        {% if not isAuthorized %}
+                            <div class="marketDetail-reviews__comment-lock js-marketDetail-about-helper-contacts marketDetail-about__helper-block">
+                                <div class="marketDetail__title">
+                                    Контакты:
+                                </div>
+                                Чтобы просмотреть контакты, необходимо
+                                <a href="/register/">зарегистрироваться</a> или <a href="/auth/">войти</a>
+                            </div>
+                        {% else %}
+                            <div class="marketDetail-about__helper-block_contacts js-marketDetail-about-helper-contacts marketDetail-about__helper-block">
+                                <div class="marketDetail__title">
+                                    Контакты:
+                                </div>
+                                {% if (profile["PROPERTIES"]["PHONE"]["VALUE"]) %}
+                                    <div class="marketDetail-about__contacts-tel">
+                                        <a href="tel:{{ profile["PROPERTIES"]["PHONE"]["VALUE"] }}"
+                                           class="marketDetail-about__contacts-tel-inner inhLink">
+                                            {{ profile["PROPERTIES"]["PHONE"]["VALUE"] }}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                {% if (profile["PROPERTIES"]["EMAIL"]["VALUE"]) %}
+                                    <div class="marketDetail-about__contacts-mail">
+                                        <a href="mailto:{{ profile["PROPERTIES"]["EMAIL"]["VALUE"] }}"
+                                           class="marketDetail-about__contacts-mail-inner">
+                                            {{ profile["PROPERTIES"]["EMAIL"]["VALUE"] }}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        <a href="#" class="marketDetail-about__contactsButton
+                        js-marketDetail-about-helper-contactsButton
+                        button3">
+                            Показать контакты
+                        </a>
+                    {% endif %}
+
+                    {% if (profile["REVIEWS_COUNT"] or profile["RATING"]) %}
+                        <div class="marketDetail-about__helper-block_numbers
+                        marketDetail-about__helper-block">
+                            <div class="marketDetail-about-numbersList">
+                                {% if (profile["RATING"]) %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Рейтинг
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ profile["RATING"] }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% if (profile["REVIEWS_COUNT"]) %}
+                                    <div class="marketDetail-about-numbersList__single">
+                                        <div class="marketDetail-about-numbersList__title">
+                                            Отзывов
+                                        </div>
+                                        <div class="marketDetail-about-numbersList__value">
+                                            {{ profile["REVIEWS_COUNT"] }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+                    <div class="marketDetail-about__helper-block_docs
+                    marketDetail-about__helper-block">
+                        <div class="marketDetail__title">
+                            Документы<br> и сертификаты:
+                        </div>
+                        <div class="marketDetail-about-docsList">
+                            {% if (profile["PROPERTIES"]["DOCUMENTS"]) %}
+                                {% for document in profile["PROPERTIES"]["DOCUMENTS"] %}
+                                    <div class="marketDetail-about-docsList__single">
+                                        <a href="{{ document["SRC"] }}"
+                                           data-fancybox="gallery-docs"
+                                           data-fancybox-img
+                                           class="marketDetail-about-docsList__single-inner"
+                                           data-caption="{{ document["DESCRIPTION"] }}, {{ document["DATE_DISPLAY"] }}">
+                                            <img src="{{ document["SRC"] }}"
+                                                 alt="{{ document["DESCRIPTION"] }}, {{ document["DATE_DISPLAY"] }}"
+                                                 class="marketDetail-about-docsList__img">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div>Информация отсутствует</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="marketDetail-works js-marketDetail-works">
+                <div class="marketDetail__title">
+                    Примеры работ:
+                    {% if (profile["PROPERTIES"]["EXAMPLES"]) %}
+                        <span class="marketDetail__title-accent">
+                            {{ profile["PROPERTIES"]["EXAMPLES"]|length }}
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="marketDetail-works-list js-marketDetail-works-list">
+
+                    {% if (profile["PROPERTIES"]["EXAMPLES"]) %}
+
+                        {% for example in profile["PROPERTIES"]["EXAMPLES"] %}
+
+                            <div class="marketDetail-works-list__single js-marketDetail-works-list__single">
+                                <a href="{{ example["FULL"]["SRC"] }}"
+                                   class="marketDetail-works-list__single-inner"
+                                   data-fancybox="gallery-works"
+                                   data-fancybox-img
+                                   data-caption="{{ example["DESCRIPTION"] }}">
+                                    <img src="{{ example["PREVIEW"]["src"] }}"
+                                         alt="{{ example["DESCRIPTION"] }}"
+                                         class="marketDetail-works-list__img">
+                                </a>
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="marketDetail-works-list__no-data">Информация отсутствует</div>
+
+                    {% endif %}
+
+                </div>
+                {% if profile["PROPERTIES"]["EXAMPLES"]|length > 8 %}
+                    <div class="marketDetail__more js-marketDetail-works-more">
+                        Ещё примеры
+                        {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                    </div>
+                {% endif %}
+            </div>
+
+            {{ includeComponent('electric:contractors.reviews', '', {
+                'USER': profile["PROPERTIES"]["USER"]["VALUE"],
+                'PAGE_SIZE': constant('REVIEWS_PAGE_SIZE'),
+            }) }}
+
+        </div>
+    </div>
+</div>
+
+
+{% if profile["PROPERTIES"]["ADDRESS_COORDS"]["VALUE"] %}
+    <div id="contractor_location_map" class="fancyBlock">
+        <div class="fancybox-title js-form-title">Расположение исполнителя</div>
+        <div class="js-form-text"></div>
+        <div id="map" style="width: 100%; height: 400px; padding: 0; margin: 0;"></div>
+    </div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=099ac6cb-c67e-4211-9e78-51151f19a6d9" type="text/javascript"></script>
+    <script>
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map('map', {
+                    center: [{{ profile["PROPERTIES"]["ADDRESS_COORDS"]["VALUE"] }}],
+                    zoom: 16,
+                    controls: ["zoomControl"],
+
+                }, {
+                    searchControlProvider: 'yandex#search'
+                }),
+
+                myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+                    hintContent: 'Собственный значок метки',
+                    balloonContent: 'Это красивая метка'
+                }, {
+
+                });
+
+            myMap.geoObjects
+                .add(myPlacemark);
+        });
+    </script>
+{% endif %}
+
+

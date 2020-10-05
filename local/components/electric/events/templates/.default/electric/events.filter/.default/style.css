@@ -1,0 +1,13 @@
+.events__filter-sticky{
+    position: sticky;
+    top: 128px;
+}
+@media only screen and (max-width: 900px){
+    .events__filter-sticky{
+        position: relative;
+        top: inherit;
+    }
+    .events-page__rside{
+        width: 100%;
+    }
+}

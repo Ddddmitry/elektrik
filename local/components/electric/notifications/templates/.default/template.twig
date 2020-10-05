@@ -1,0 +1,58 @@
+{% set notifications = result["NOTIFICATIONS"] %}
+
+<div class="header-person__alert header-person__block js-header-person {% if notifications["NEW"] or notifications["NEW_VIEWS"] %}new{% endif %}">
+    <a href="#" class="js-header-user header-person__alert-bell js-notification-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon">
+            <g fill="none" fill-rule="evenodd" stroke="" stroke-width="2">
+                <path d="M7.186 10.698l.967-3.88a5 5 0 1 1 9.703 2.418l-.967 3.881M18.59 18.695a3 3 0 0 1-2.185-3.637l.484-1.94"/>
+                <path d="M18.59 18.695L3.065 14.824a3 3 0 0 0 3.637-2.185l.484-1.94M8.161 19.186s.627 1.187 1.699 1.455c1.072.267 2.182-.487 2.182-.487"/>
+            </g>
+        </svg>
+    </a>
+    <div class="header-person-menu header-person-menu--notifications js-header-person-menu">
+        <div class="header-person-menu-inner">
+
+            {% if notifications["NEW"] or notifications["NEW_VIEWS"]%}
+                <div class="header-person-menu__type header-person-menu__type_new">
+
+                    <div class="header-person-menu__type-title">
+                        <span>новые</span>
+                    </div>
+
+                    {% for notification in notifications["NEW"] %}
+                        <div class="header-person-menu__single header-person-menu__single_notification">
+                            <a href="{{ notification["LINK"] }}">{{ notification["TEXT"]|raw }}</a>
+                        </div>
+                    {% endfor %}
+
+                    {% if notifications["NEW_VIEWS"] %}
+                        <div class="header-person-menu__single header-person-menu__single_notification">
+                            <a href="#">
+                                {{ notifications["NEW_VIEWS"] }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endif %}
+
+            {% if notifications["VIEWED"] %}
+                <div class="header-person-menu__type">
+
+                    <div class="header-person-menu__type-title">
+                        <span>просмотренные</span>
+                    </div>
+
+                    {% for notification in notifications["VIEWED"] %}
+                        <div class="header-person-menu__single header-person-menu__single_notification">
+                            <a href="{{ notification["LINK"] }}">{{ notification["TEXT"]|raw }}</a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.footer {
+    background-color: $color9;
+    color: #fff;
+    margin: 30px 0 0 0;
+    @include respond-to(sm) {
+        margin-top: 15px;
+    }
+    &.menuActive {
+        transition: filter 0s 0.2s;
+        filter: blur(2px);
+        @include respond-to(md) {
+            filter: blur(0px);
+        }
+    }
+    &-top {
+        padding: 36px 0 71px 0;
+        border-bottom: 1px solid $color10;
+        @include respond-to(md) {
+            padding-top: 34px;
+            padding-bottom: 48px;
+        }
+        @include respond-to(sm) {
+            padding-top: 20px;
+            padding-bottom: 16px;
+        }
+        &-inner {}
+    }
+    &-bottom {
+        font-size: 14px;
+        line-height: 2.14;
+        padding: 5px 0 16px 0;
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 2.31;
+            padding-top: 4px;
+        }
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 2;
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+        &-inner {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            @include respond-to(sm) {
+                display: block;
+            }
+        }
+        &__single {
+            @include respond-to(sm) {
+                margin-bottom: 24px;
+            }
+            &:last-child {
+                margin: 0 0 0 auto;
+                @include respond-to(sm) {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+    a {
+        color: #fff;
+        text-decoration: none;
+        &:hover, &:focus, &:active {
+            color: darken(#fff, 20%);
+            text-decoration: none;
+        }
+    }
+    &-menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: 0 -20px;
+        @include respond-to(md) {
+            margin-left: -24px;
+            margin-right: -24px;
+        }
+        &__single {
+            padding: 6px 20px;
+            @include respond-to(md) {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            @include respond-to(sm) {
+                padding-bottom: 10px;
+                width: 50%;
+            }
+            &-inner {}
+        }
+    }
+    &_backoffice &-bottom {
+        //padding-top: 17px;
+        //@include respond-to(sm) {
+        //    padding-top: 24px;
+        //}
+    }
+}

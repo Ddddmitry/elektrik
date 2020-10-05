@@ -1,0 +1,66 @@
+<div id="make_sertificate_electric" class="fancyBlock">
+    <div class="popup-content">
+        <div class="fancybox-title">Сертификация Электрик.ру</div>
+        <p>
+            Чтоб появиться в каталоге специалистов, Вам нужно пройти сертификацию Электрик.ру.
+        </p>
+        <p>
+            Загрузите документы, подтверждающие вашу личность и дождитесь звонка по указанному в контактах номеру.
+            <br>
+            <br>
+        </p>
+        <form action="/api/user.emaster/" name="sertificateElectric" id="sertificateElectric" class="fullForm js-custFile-img-form" data-form-emaster novalidate>
+            <div class="formGroup required">
+                <div class="formGroup-inner">
+                    <div class="pasportList js-custFile-img-list">
+                        <div class="pasportList__single js-custFile-img-list-single">
+                            <div class="pasportList__single-delete js-custFile-img-list-single-delete">
+                                <div class="pasportList__single-delete-line"></div>
+                                <div class="pasportList__single-delete-line"></div>
+                            </div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="backofficeCustFile js-custFile-img js-custFile-img--limit">
+                    <label for="sertificateElectric-pasport" class="custLabel">
+                        {% include './includes/icon.twig' with {icon: {name: 'download', class: ''}} %}
+                        Загрузить сканы паспорта
+                    </label>
+                    <input type="file"
+                           value=""
+                           name="sertificateElectric-pasport[]"
+                           id="sertificateElectric-pasport"
+                           accept="image/jpg,image/jpeg,image/png,image/gif" multiple
+                           data-limit="4"
+                           required>
+                    <div class="custFile-note">
+                        Нужно приложить сканы всех страниц паспорта в хорошем качестве
+                    </div>
+                </div>
+                <div class="backofficeCustFile backofficeCustFile_alone js-custFile-img-alone">
+                    <label for="sertificateElectric-pasport-alone" class="custLabel">
+                        {% include './includes/icon.twig' with {icon: {name: 'add', class: ''}} %}
+                        Добавить скан
+                    </label>
+                    <div class="js-custFile-img-alone-list">
+                        <input type="file"
+                               value=""
+                               name="sertificateElectric-pasport-alone[]"
+                               id="sertificateElectric-pasport-alone"
+                               accept="image/jpg,image/jpeg,image/png,image/gif"
+                               required>
+                    </div>
+
+                </div>
+            </div>
+            <div class="formGroup required">
+                <div class="formGroup-inner">
+                    <button type="submit" name="sertificateElectric-submit">
+                        Подтвердить данные
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

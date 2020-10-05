@@ -1,0 +1,21 @@
+{% extends 'forms.twig' %}
+
+{% block leftSlider %}
+    {{ includeComponent("electric:form.banner", "", {
+        "CODE": "REGISTER",
+    }) }}
+{% endblock %} {#leftSlider#}
+
+{% block formSoloToggler %}
+    <div class="formSolo-workarea-toggle js-formSolo-workarea-toggle">
+        {#<div class="formSolo-workarea-toggle__text">#}
+            {#Уже есть аккаунт?#}
+        {#</div>#}
+        <a href="/auth/" class="formSolo-workarea-toggle__button button2">
+            Авторизация
+        </a>
+    </div>
+{% endblock %} {#formSoloToggler#}
+{% block formSoloMain %}
+    {{ content|raw }}
+{% endblock %} {#formSoloMain#}

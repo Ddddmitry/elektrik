@@ -1,0 +1,160 @@
+{% set isAjax = result['IS_AJAX'] %}
+{% set commentsData = result['COMMENTS_DATA'] %}
+{% set isLastPage = commentsData["NAV"]["IS_LAST_PAGE"] %}
+{% set markAsViewed =  result['MARK_AS_VIEWED'] %}
+
+{% if not isAjax %}
+<div class="marketDetail-reviews-list marketDetail-reviews-list_comments js-comments-list" data-article="{{ commentsData["ARTICLE"] }}" data-page="1" {% if (markAsViewed) %}mark-as-viewed="{{ commentsData["ARTICLE"] }}"{% endif %}>
+{% endif %}
+
+    {% for comment in commentsData["ITEMS"] %}
+
+        <div class="marketDetail-reviews-list__single js-marketDetail-comment-single">
+            <div class="marketDetail-reviews-list__top">
+                <div class="marketDetail-reviews-list__author">
+                    {{ comment["AUTHOR_NAME"] }}
+                </div>
+                <div class="marketDetail-reviews-list__date">
+                    {{ comment["DATE"] }}
+                </div>
+            </div>
+            <div class="marketDetail-reviews-list__text js-marketDetail-reviews-list__text">
+                {{ comment["PREVIEW_TEXT"] }}
+            </div>
+            {% if comment["CAN_EDIT"] %}
+                <div class="marketDetail-reviews-list__form js-marketDetail-reviews-list__edit-form">
+                    {{ includeComponent('electric:form.comment.edit', '', {
+                        'COMMENT': comment["ID"],
+                        'TEXT': comment["PREVIEW_TEXT"],
+                    }) }}
+                </div>
+            {% endif %}
+            <div class="marketDetail-reviews-list__bottom js-marketDetail-reviews-list__answer-bottom">
+                <a href="#" class="marketDetail-reviews-list__bottom-button js-marketDetail-reviews-list__answer-toggler">
+                    Ответить
+                </a>
+                {% if comment["CAN_EDIT"] %}
+                    <a href="#" class="marketDetail-reviews-list__bottom-button js-marketDetail-reviews-list__edit-toggler">
+                        Редактировать
+                    </a>
+                    <a href="#" class="marketDetail-reviews-list__bottom-button js-marketDetail-reviews-list__delete" data-id="{{ comment["ID"] }}">
+                        Удалить
+                    </a>
+                {% endif %}
+                <div class="marketDetail-reviews-list__likes">
+                    <div class="marketDetail-reviews-list__likes-single js-comment-like js-comment-like--like {% if comment["USER_LIKE"] == "LIKE" %}active{% endif %}" data-type="like" data-id="{{ comment["ID"] }}">
+                        <span class="svg-icon "><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#spr-like"></use></svg></span>
+                        <span class="js-likes-count">{{ comment["LIKES"]["LIKE"]|default("0") }}</span>
+                    </div>
+                    <div class="marketDetail-reviews-list__likes-single js-comment-like js-comment-like--dislike {% if comment["USER_LIKE"] == "DISLIKE" %}active{% endif %}" data-type="dislike" data-id="{{ comment["ID"] }}">
+                        <span class="svg-icon "><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#spr-dislike"></use></svg></span>
+                        <span class="js-likes-count">{{ comment["LIKES"]["DISLIKE"]|default("0") }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="marketDetail-reviews-list__form js-marketDetail-reviews-list__answer-form">
+                {{ includeComponent('electric:form.comment', '', {
+                    'ARTICLE': comment["PROPERTY_ARTICLE_VALUE"],
+                    'COMMENT': comment["ID"],
+                }) }}
+            </div>
+
+            {% macro list(answers, depth) %}
+
+                {% for answer in answers %}
+
+                    <div class="marketDetail-reviews-list__answer js-marketDetail-comment-single">
+                        <div class="marketDetail-reviews-list__answer-top">
+                            <div class="marketDetail-reviews-list__author">
+                                {{ answer["AUTHOR_NAME"] }}
+                            </div>
+                            <div class="marketDetail-reviews-list__date">
+                                {{ answer["DATE"] }}
+                            </div>
+                        </div>
+                        <div class="marketDetail-reviews-list__answer-text js-marketDetail-reviews-list__text">
+                            {{ answer["PREVIEW_TEXT"] }}
+                        </div>
+                        {% if answer["CAN_EDIT"] %}
+                            <div class="marketDetail-reviews-list__form js-marketDetail-reviews-list__edit-form">
+                                {{ includeComponent('electric:form.comment.edit', '', {
+                                    'COMMENT': answer["ID"],
+                                    'TEXT': answer["PREVIEW_TEXT"],
+                                }) }}
+                            </div>
+                        {% endif %}
+                        <div class="marketDetail-reviews-list__answer-bottom js-marketDetail-reviews-list__answer-bottom">
+                            {% if (depth < constant('ARTICLE_COMMENTS_MAX_DEPTH') - 1) %}
+                                <a href="#" class="marketDetail-reviews-list__bottom-button js-marketDetail-reviews-list__answer-toggler">
+                                    Ответить
+                                </a>
+                            {% endif %}
+                            {% if answer["CAN_EDIT"] %}
+                                <a href="#" class="marketDetail-reviews-list__bottom-button js-marketDetail-reviews-list__edit-toggler">
+                                    Редактировать
+                                </a>
+                                <a href="#" class="marketDetail-reviews-list__bottom-button js-marketDetail-reviews-list__delete" data-id="{{ answer["ID"] }}">
+                                    Удалить
+                                </a>
+                            {% endif %}
+                            <div class="marketDetail-reviews-list__likes">
+                                <div class="marketDetail-reviews-list__likes-single js-comment-like js-comment-like--like {% if answer["USER_LIKE"] == "LIKE" %}active{% endif %}" data-type="like" data-id="{{ answer["ID"] }}">
+                                    <span class="svg-icon "><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#spr-like"></use></svg></span>
+                                    <span class="js-likes-count">{{ answer["LIKES"]["LIKE"]|default("0") }}</span>
+                                </div>
+                                <div class="marketDetail-reviews-list__likes-single js-comment-like js-comment-like--dislike {% if answer["USER_LIKE"] == "DISLIKE" %}active{% endif %}" data-type="dislike" data-id="{{ answer["ID"] }}">
+                                    <span class="svg-icon "><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#spr-dislike"></use></svg></span>
+                                    <span class="js-likes-count">{{ answer["LIKES"]["DISLIKE"]|default("0") }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if (depth < constant('ARTICLE_COMMENTS_MAX_DEPTH') - 1) %}
+                            <div class="marketDetail-reviews-list__answer-form js-marketDetail-reviews-list__answer-form">
+                                {{ includeComponent('electric:form.comment', '', {
+                                    'ARTICLE': answer["PROPERTY_ARTICLE_VALUE"],
+                                    'COMMENT': answer["ID"],
+                                }) }}
+                            </div>
+                        {% endif %}
+
+                        {% if answer["ANSWERS"] %}
+                            {% import _self as recursive %}
+                            {{ recursive.list(answer["ANSWERS"], depth + 1) }}
+                        {% endif %}
+
+                    </div>
+                {% endfor %}
+
+            {% endmacro %}
+
+            {% import _self as answersTree %}
+            {{ answersTree.list(comment["ANSWERS"], 1) }}
+
+        </div>
+    {% endfor %}
+
+{% if not isAjax %}
+</div>
+
+<div class="articlesPage-comments-bottom js-comments-more" id="js-comments-more-button">
+    <a href="#" class="button">
+        Показать ещё
+    </a>
+</div>
+{% endif %}
+
+{% if isLastPage %}
+    {% raw %}
+        <script>
+            document.getElementById('js-comments-more-button').style.display = "none";
+        </script>
+    {% endraw %}
+{% else %}
+    {% raw %}
+        <script>
+            document.getElementById('js-comments-more-button').style.display = "block";
+        </script>
+    {% endraw %}
+{% endif %}

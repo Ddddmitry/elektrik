@@ -1,0 +1,40 @@
+{% set popularSections = result['ITEMS'] %}
+{% set title = result['TITLE'] %}
+{% set showAllButton = result['SHOW_ALL_BUTTON'] %}
+
+<div class="types">
+    <div class="types-inner typicalBlock typicalBlock_two">
+        {% if title %}
+        <h1 class="types__title">
+            {{ title }}
+        </h1>
+        {% endif %}
+        <div class="types__list">
+            {% for section in popularSections %}
+                <div class="types__list-single">
+                    <div class="types__list-title">
+                        {{ section["NAME"] }}
+                    </div>
+                    <div class="types__list-subTypes">
+                        {% for service in section["ITEMS"] %}
+                            <div class="types__list-subTypes-single">
+                                <a href="{{ service["LINK"] }}">
+                                    {{ service["NAME"] }}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if showAllButton %}
+            <div class="types__bottom">
+                <a href="/services/" class="types__bottom-button button">
+                    Все услуги
+                    {% include './includes/icon.twig' with {icon: {name: 'arrow-down', class: ''}} %}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+

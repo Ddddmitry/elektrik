@@ -1,0 +1,46 @@
+{% set id = result["ID"] %}
+{% set text = result["TEXT"] %}
+{% set mark = result["MARK"] %}
+
+<div class="marketDetail-reviews__comment js-form-comment">
+    <form action="/api/reviews.edit/" class="marketDetail-reviews__comment-form" data-form-review-edit>
+        <input hidden name="review-id" value="{{ id }}">
+        <div class="js-form-error"></div>
+        <div class="formGroup formGroup_raiting">
+            <div class="formGroup-inner formGroup-inner_line">
+                <div class="formGroup-inner-title">
+                    Оценка работы мастера:
+                </div>
+                <div class="raitRadio js-raitRadio">
+                    {% include './includes/raiting.twig' with {raitNumber: mark, class: 'raitRadio__raiting'} %}
+                    <div class="raitRadio__radio js-review-edit-rate-radio" data-checked="{{ mark }}">
+                        <input type="radio" name="review-mark" value="1" class="js-raitRadio__radio-tag">
+                        <input type="radio" name="review-mark" value="2" class="js-raitRadio__radio-tag">
+                        <input type="radio" name="review-mark" value="3" class="js-raitRadio__radio-tag">
+                        <input type="radio" name="review-mark" value="4" class="js-raitRadio__radio-tag">
+                        <input type="radio" name="review-mark" value="5" class="js-raitRadio__radio-tag">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formGroup required">
+            <div class="formGroup-inner">
+                <label for="review-text">
+                    Ваш отзыв
+                </label>
+                <textarea name="review-text" required
+                          class="marketDetail-reviews__comment-textarea js-textarea-sm" maxlength="2048" placeholder="Ваш отзыв">{{ text }}</textarea>
+            </div>
+        </div>
+        <div class="formGroup formGroup__bottom">
+            <div class="formGroup-inner">
+                <button type="submit" name="review-submit">
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

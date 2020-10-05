@@ -1,0 +1,49 @@
+.mb30{
+    margin-bottom: 30px;
+}
+.mb15{
+    margin-bottom: 15px;
+}
+.order__form-item{
+    position: relative;
+}
+.js-popupSearchResult-input-wrap .popupSearchResult{
+    top: unset;
+    left: unset;
+}
+.order__content.slick-initialized .slick-slide{
+    padding: 0 15px;
+}
+.order__form-message{
+    padding: 15px 0 0 0;
+}
+.order__warning.error{
+    display: none;
+    border: 1px solid #d70926;
+    background-color: rgba(215, 9, 38, 0.1);
+}
+.disabled{
+    pointer-events: none;
+    opacity: 0.4;
+}
+.transLabel label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0px 16.5px 0px 15.5px;
+    height: auto;
+    display: block;
+    cursor: text;
+    transition: all .2s;
+    white-space: nowrap;
+    color: #7f7f7f;
+    z-index: 10;
+    width: auto;
+    line-height: 1.67;
+    opacity: 0;
+    font-size: 14px;
+}
+.transLabel label.active {
+    transform: translateY(-50%);
+    opacity: 1;
+}

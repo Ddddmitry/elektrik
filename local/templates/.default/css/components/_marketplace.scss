@@ -1,0 +1,1643 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.marketplace {
+    padding: 16px 0 50px 0;
+    @include respond-to(lg) {
+        padding-top: 0px;
+    }
+    @include respond-to(md) {
+        padding-top: 13px;
+    }
+    &-inner {}
+    &__title {
+        @include respond-to(md) {
+            margin-top: 15px;
+        }
+    }
+    &__button {
+        text-align: center;
+    }
+}
+.marketSort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    $sortSingleMarginLeft: 18px;
+    $sortSingleMarginRight: 18px;
+    @include respond-to(md) {
+        padding: 11px 0 12px 0;
+    }
+    @include respond-to(sm) {
+        display: none;
+        padding-top: 0px;
+    }
+    &-inner {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 $sortSingleMarginRight 0 $sortSingleMarginLeft;
+        padding: 0 3px 0 0;
+        @include respond-to(sm) {
+            display: flex;
+        }
+        .search__filter-single {
+            .chosen-container, select {
+                max-width: 300px;
+                padding-top: 5px;
+            }
+        }
+    }
+    &__title {
+        margin: 0 $sortSingleMarginRight 10px $sortSingleMarginLeft;
+    }
+    &-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &__single {
+            margin: 0 $sortSingleMarginRight 10px $sortSingleMarginLeft;
+            white-space: nowrap;
+            a {
+                color: $color8;
+                text-decoration: none;
+                &:hover, &:focus, &:active {
+                    color: darken($color8, 20%);
+                    text-decoration: none;
+                }
+            }
+            &-inner {
+                display: inline-flex;
+                align-items: center;
+                justify-content: flex-start;
+                position: relative;
+                &-arrow {
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 6px 0 0 0;
+                    width: 22px;
+                    transition: padding .2s;
+                    &-inner {
+                        width: 7px;
+                        height: 7px;
+                        border: 2px solid $color3;
+                        border-top-width: 0px;
+                        border-right-width: 0px;
+                        transform: rotate(135deg);
+                        transition: transform .2s;
+                    }
+                }
+                &:hover &-arrow-inner, &:focus &-arrow-inner, &:active &-arrow-inner {
+                    border-color: lighten($color3, 20%);
+                }
+            }
+            &.selected {
+                font-weight: 600;
+                a {
+                    color: $color3;
+                    &:hover, &:focus, &:active {
+                        color: lighten($color3, 20%);
+                    }
+                }
+            }
+            &.selected &-inner-arrow {
+                display: flex;
+            }
+            &.desc &-inner-arrow {
+                padding: 0 0 4px 0;
+            }
+            &.desc &-inner-arrow-inner {
+                transform: scale(1, -1) rotate(135deg);
+            }
+        }
+    }
+    &_mobile {
+        display: none;
+        @include respond-to(sm) {
+            display: block;
+        }
+    }
+}
+.marketList {
+    padding: 10px 0 24px 0;
+    @include respond-to(sm) {
+        margin-left: -$padding4;
+        margin-right: -$padding4;
+        width: calc(100% + #{$padding4*2});
+        padding-bottom: 48px;
+    }
+    &__count {
+        font-size: 18px;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+    &__single {
+        padding: 0 0 40px 0;
+        @include respond-to(md) {
+            padding-bottom: 23px;
+        }
+        @include respond-to(sm) {
+            padding-bottom: 0px;
+        }
+        &-inner {
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-start;
+            border: 1px solid $color13;
+            border-radius: 4px;
+            text-decoration: none;
+            color: $color3;
+            @include respond-to(md) {
+                display: block;
+            }
+            @include respond-to(sm) {
+                padding-left: $padding4;
+                padding-right: $padding4;
+                border-radius: 0px;
+                border-left-width: 0px;
+                border-right-width: 0px;
+                border-bottom-width: 0px;
+                padding-bottom: 23px;
+            }
+            &:hover, &:focus, &:active {
+                box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.1);
+                text-decoration: none;
+                color: $color3;
+            }
+        }
+        &:last-child &-inner {
+            border-bottom-width: 1px;
+        }
+    }
+    &__side {
+        padding: 40px 41px 38px 41px;
+        @include respond-to(sm) {
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 32px;
+        }
+        &_one {
+            width: 73.5%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            @include respond-to(md) {
+                width: 100%;
+                padding-bottom: 24px;
+            }
+            @include respond-to(sm) {
+                display: block;
+            }
+        }
+        &_two {
+            width: 26.5%;
+            border: 1px solid $color13;
+            border-width: 0px;
+            border-left-width: 1px;
+            padding-left: 39px;
+            @include respond-to(lg) {
+                padding-left: 31px;
+                padding-right: 31px;
+            }
+            @include respond-to(md) {
+                width: 100%;
+                border-left-width: 0px;
+                border-top-width: 1px;
+                padding-top: 31px;
+                padding-left: 41px;
+                padding-right: 41px;
+                padding-bottom: 32px;
+            }
+            @include respond-to(sm) {
+                padding-left: 0px;
+                padding-right: 0px;
+                border-top-width: 0px;
+                padding-top: 6px;
+                padding-bottom: 3px;
+            }
+        }
+    }
+    &__img {
+        width: 200px;
+        height: 200px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 0 55px 0 0;
+        flex-shrink: 0;
+        @include respond-to(lg) {
+            width: 168px;
+            height: 168px;
+            margin-right: 39px;
+        }
+        @include respond-to(sm) {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            float: left;
+        }
+        &-tag {
+            width: 100%;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+    &__main {}
+    &__numbers {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: -2px 0 0 0;
+        padding: 0 0 23px 0;
+        @include respond-to(sm) {
+            padding-bottom: 13px;
+        }
+        &-rait {
+            margin: -3px 15px 0 -2px;
+            position: relative;
+            width: 96px;
+            @include respond-to(sm) {
+                width: 62px;
+                margin-right: 10px;
+                line-height: 12px;
+            }
+            .svg-icon {
+                width: 96px;
+                max-width: 96px;
+                height: 18px;
+                line-height: 18px;
+                @include respond-to(sm) {
+                    width: 62px;
+                    max-width: 62px;
+                    height: 12px;
+                    line-height: 12px;
+                }
+            }
+            &-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                overflow: hidden;
+            }
+        }
+        &-raitNumber {
+            color: #000;
+            font-weight: 600;
+            margin: 0 24px 0 0;
+            @include respond-to(sm) {
+                margin-right: 10px;
+            }
+        }
+        &-reviews {
+            margin: 1px 0 0 0;
+            @include respond-to(sm) {
+                margin-left: auto;
+            }
+            .button2 {
+                @include respond-to(sm) {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+    &__title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.25;
+        padding: 0 0 15px 0;
+        @include respond-to(md) {
+            font-size: 20px;
+            line-height: 1.5;
+            padding-bottom: 10px;
+        }
+        @include respond-to(md) {
+            padding-bottom: 29px;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+            &:hover, &:focus, &:active {
+                color: lighten(#000, 20%);
+            }
+        }
+    }
+    &__geo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: $color8;
+        font-size: 14px;
+        line-height: 1.71;
+        text-decoration: none;
+        padding: 0 0 24px 0;
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 1.85;
+            padding-bottom: 20px;
+        }
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 1.67;
+        }
+        &:hover, &:focus, &:active {
+            color: darken($color8, 20%);
+            text-decoration: none;
+        }
+        .svg-icon {
+            margin: 0 8px 2px 0;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        span {
+            width: 100%;
+        }
+    }
+    &__desc {
+        width: 86%;
+        @include respond-to(lg) {
+            width: 100%;
+        }
+    }
+    &__info {
+        font-size: 14px;
+        line-height: 1.71;
+        color: #000;
+        @include respond-to(md) {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+    }
+    &__servPr {
+        flex-shrink: 0;
+        @include respond-to(md) {
+            width: 168px;
+            margin-right: 39px;
+        }
+        @include respond-to(sm) {
+            width: 100%;
+            margin-right: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    &__service {
+        line-height: 2.14;
+        padding: 0 0 8px 0;
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 1.85;
+        }
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 1.67;
+            padding-bottom: 0px;
+        }
+    }
+    &__price {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.33;
+        color: $color5;
+        padding: 0 0 34px 0;
+        @include respond-to(md) {
+            font-size: 20px;
+            line-height: 1.6;
+            padding-bottom: 0px;
+        }
+    }
+    &__review {
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 1.85;
+        }
+        @include respond-to(sm) {
+            display: none;
+        }
+        &-title {
+            padding: 0 0 4px 0;
+        }
+        &-text {
+            color: $color8;
+            line-height: 1.73;
+            @include respond-to(md) {
+                line-height: 1.85;
+            }
+        }
+    }
+}
+.marketDetail {
+    padding: 24px 0 24px 0;
+    $marketDetailColumn1: 74.4%;
+    $marketDetailColumn2: 23%;
+    @include respond-to(lg) {
+        padding-top: 40px;
+    }
+    @include respond-to(md) {
+        padding-top: 26px;
+    }
+    @include respond-to(sm) {
+        margin-left: -$padding4;
+        margin-right: -$padding4;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    &__title {
+        font-size: 24px;
+        line-height: 1.25;
+        margin: 0 0 24px 0;
+        @include respond-to(md) {
+            font-weight: 500;
+        }
+        @include respond-to(sm) {
+            margin-bottom: 10px;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        &-accent {
+            color: $color8;
+            margin: 0 0 0 4px;
+        }
+    }
+    &__more {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        cursor: pointer;
+        font-weight: 600;
+        color: $color8;
+        @include respond-to(md) {
+            margin-top: 4px;
+        }
+        @include respond-to(sm) {
+            margin-top: 1px;
+        }
+        &:hover, &:focus, &:active {
+            color: darken($color8, 20%);
+            text-decoration: none;
+        }
+        &:hover .svg-icon, &:focus .svg-icon, &:active .svg-icon {
+            fill: darken($color8, 20%);
+            stroke: darken($color8, 20%);
+            transition: transform .3s;
+        }
+        &.active {
+            .svg-icon {
+                transform: translateY(3px) scale(1, -1);;
+            }
+        }
+        .svg-icon {
+            stroke: currentColor;
+            margin: 0 0 0 7px;
+            font-size: 16px;
+            @include respond-to(md) {
+                margin-top: -2px;
+                margin-left: 9px;
+            }
+        }
+    }
+    &-about {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0 0 64px 0;
+        @include respond-to(md) {
+            padding-bottom: 40px;
+        }
+        @include respond-to(md) {
+            padding-bottom: 29px;
+        }
+        &__main {
+            width: $marketDetailColumn1;
+            padding: 39px 39px 0px 40px;
+            border-radius: 4px;
+            border: 1px solid $color13;
+            @include respond-to(md) {
+                width: 100%;
+                padding: 0;
+                border-width: 0px;
+                display: flex;
+                align-items: stretch;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                border-radius: 0px;
+            }
+            &-block {
+                padding: 0 0 54px 0;
+                @include respond-to(md) {
+                    padding: 39px 39px 39px 40px;
+                    border-radius: 4px;
+                    border: 1px solid $color13;
+                    margin-bottom: 24px;
+                    width: 100%;
+                }
+                @include respond-to(sm) {
+                    border-left-width: 0px;
+                    border-right-width: 0px;
+                    border-radius: 0px;
+                    padding-left: $padding4;
+                    padding-right: $padding4;
+                    padding-top: 32px;
+                    margin-bottom: 0px;
+                    margin-top: -1px;
+                }
+                &:last-child {
+                    padding-bottom: 0px;
+                    @include respond-to(sm) {
+                        padding-bottom: 12px;
+                    }
+                }
+                &_top {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    @include respond-to(lg) {
+                        padding-bottom: 57px;
+                    }
+                    @include respond-to(md) {
+                        padding-bottom: 30px;
+                    }
+                    @include respond-to(sm) {
+                        display: block;
+                        padding-bottom: 24px;
+                    }
+                }
+                &_master {
+                    @include respond-to(md) {
+                        border-radius: 4px 4px 0 0;
+                        margin-bottom: 0px;
+                        padding-bottom: 0px;
+                        border-bottom-width: 0px;
+                        padding-top: 30px;
+                    }
+                    .marketDetail__title {
+                        @include respond-to(md) {
+                            font-size: 20px;
+                            line-height: 1.5;
+                        }
+                        @include respond-to(sm) {
+                            margin-bottom: 16px;
+                        }
+                    }
+                }
+                &_services {
+                    @include respond-to(md) {
+                        border-top-width: 0px;
+                        border-radius: 0 0 4px 4px;
+                    }
+                    @include respond-to(sm) {
+                        padding-top: 20px;
+                    }
+                    .marketDetail__title {
+                        @include respond-to(md) {
+                            font-size: 20px;
+                            line-height: 1.5;
+                        }
+                        @include respond-to(sm) {
+                            margin-bottom: 16px;
+                        }
+                    }
+                }
+                &_mobile {
+                    display: none;
+                    @include respond-to(md) {
+                        display: block;
+                    }
+                }
+            }
+        }
+        &__img {
+            width: 204px;
+            height: 204px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 56px 10px 0;
+            @include respond-to(lg) {
+                width: 166px;
+                height: 166px;
+                margin-right: 40px;
+            }
+            @include respond-to(md) {
+                width: 168px;
+                height: 168px;
+            }
+            @include respond-to(sm) {
+                width: 80px;
+                height: 80px;
+                margin-right: 16px;
+                float: left;
+                margin-bottom: 12px;
+            }
+            &-tag {
+                width: 100%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &__text {
+            width: calc(100% - 204px - 56px);
+            @include respond-to(lg) {
+                width: calc(100% - 166px - 40px);
+            }
+            @include respond-to(md) {
+                width: calc(100% - 168px - 40px);
+            }
+            @include respond-to(sm) {
+                width: auto;
+            }
+        }
+        &__properties {
+            display: table;
+            font-size: 14px;
+            line-height: 1.71;
+            @include respond-to(md) {
+                font-size: 13px;
+                line-height: 1.85;
+            }
+            @include respond-to(sm) {
+                font-size: 12px;
+                line-height: 1.67;
+                width: 100%;
+            }
+            &-single {
+                display: table-row;
+            }
+            &-block {
+                display: table-cell;
+                padding: 8px 31px 9px 0;
+                @include respond-to(md) {
+                    padding-bottom: 8px;
+                }
+                &:last-child {
+                    padding-left: 0px;
+                }
+                &_title {
+                    @include respond-to(md) {
+                        padding-right: 39px;
+                    }
+                    @include respond-to(sm) {
+                        padding-right: 10px;
+                    }
+                }
+                &_desc {
+                    color: $color8;
+                    @include respond-to(lg) {
+                        padding-right: 20px;
+                    }
+                    @include respond-to(md) {
+                        padding-right: 30px;
+                    }
+                    @include respond-to(sm) {
+                        padding-right: 0;
+                    }
+                }
+                &_language {
+                    &:first-letter {
+                        text-transform: uppercase;
+                    }
+                }
+                &-br {
+                    display: none;
+                    @include respond-to(sm) {
+                        display: block;
+                    }
+                }
+                &-link {
+                    display: inline-block;
+                    @include respond-to(sm) {
+                        padding-top: 8px;
+                    }
+                }
+            }
+        }
+        &-serviceList {
+            padding-bottom: 40px;
+            @include respond-to(sm) {
+                padding-top: 2px;
+                padding-bottom: 23px;
+            }
+            &__single {
+                padding: 0 0 40px 0;
+                @include respond-to(sm) {
+                    padding: 0 0 23px 0;
+                }
+                &:last-child {
+                    padding-bottom: 0px;
+                }
+            }
+            &__single:last-child &__sublist {
+                @include respond-to(sm) {
+                    margin-bottom: 3px;
+                }
+            }
+            &__title {
+                font-weight: 600;
+                margin: 0 0 15px 0;
+                @include respond-to(sm) {
+                    margin-bottom: 9px;
+                }
+            }
+            &__separator {
+                width: 116px;
+                height: 5px;
+                border-radius: 4px;
+                border: 1px solid $color5;
+                margin: 0 0 17px 0;
+                @include respond-to(md) {
+                    margin-bottom: 16px;
+                }
+                @include respond-to(md) {
+                    margin-bottom: 7px;
+                }
+            }
+            &__sublist {
+                $serviceListTextPadding: 12px;
+                font-size: 14px;
+                line-height: 2.14;
+                color: #000;
+                overflow: hidden;
+                transition: height .3s;
+                margin: 0 0 7px 0;
+                width: 100%;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                }
+                @include respond-to(sm) {
+                    font-size: 12px;
+                    line-height: 1.67;
+                }
+                &-single {
+                    display: table-row;
+                }
+                &-block {
+                    display: table-cell;
+                    padding: 8px 0 9px 0;
+                    @include respond-to(md) {
+                        padding-bottom: 7px;
+                    }
+                    @include respond-to(sm) {
+                        padding-bottom: 8px;
+                    }
+                    &_text {
+                        position: relative;
+                        padding-right: $serviceListTextPadding;
+                        width: 100%;
+                        @include respond-to(md) {
+                            padding-right: 16px;
+                        }
+                        @include respond-to(sm) {
+                            padding-right: 19px;
+                        }
+                    }
+                    &_value {
+                        color: $color8;
+                        white-space: nowrap;
+                        vertical-align: bottom;
+                        text-align: right;
+                    }
+                }
+                &-text {
+                    position: relative;
+                    z-index: 10;
+                    background-color: #fff;
+                    padding: 0 10px 0 0;
+                    &-line {
+                        position: absolute;
+                        bottom: 19px;
+                        left: 0;
+                        z-index: 5;
+                        width: calc(100% - #{$serviceListTextPadding});
+                        height: 1px;
+                        border-radius: 1px;
+                        background-color: $color14;
+                        @include respond-to(md) {
+                            bottom: 14px;
+                        }
+                        @include respond-to(md) {
+                            bottom: 12px;
+                        }
+                    }
+                }
+            }
+            &_backoffice {
+                padding-top: 7px;
+                padding-bottom: 0px;
+                @include respond-to(sm) {
+                    padding-top: 0px;
+                }
+            }
+            &_backoffice &__title {
+                font-weight: 400;
+                margin-bottom: 17px;
+                @include respond-to(md) {
+                    margin-bottom: 11px;
+                }
+                @include respond-to(sm) {
+                    font-weight: 600;
+                    margin-bottom: 7px;
+                }
+            }
+            &_backoffice &__single {
+                padding-bottom: 24px;
+                @include respond-to(md) {
+                    padding-bottom: 20px;
+                }
+                &:last-child {
+                    padding-bottom: 0px;
+                }
+            }
+        }
+        &__title {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 0.94;
+            text-align: left;
+            color: $color3;
+            margin: 16px 0 25px 0;
+            @include respond-to(md) {
+                max-width: 100%;
+                margin-top: 0px;
+                font-size: 28px;
+                line-height: 1.07;
+                margin-bottom: 17px;
+            }
+            @include respond-to(sm) {
+                font-size: 24px;
+                line-height: 1.25;
+            }
+        }
+        &__helper {
+            width: $marketDetailColumn2;
+            @include respond-to(lg) {
+                width: 23.3%;
+            }
+            @include respond-to(md) {
+                width: 100%;
+            }
+            .marketDetail__title{
+                margin-bottom: 16px;
+                @include respond-to(sm) {
+                    margin-bottom: 10px;
+                }
+            }
+            &-block {
+                padding: 31px 39px 39px 38px;
+                border-radius: 4px;
+                border: 1px solid $color13;
+                margin: 0 0 32px 0;
+                @include respond-to(lg) {
+                    padding-left: 31px;
+                    padding-right: 31px;
+                }
+                @include respond-to(md) {
+                    width: 48.3%;
+                    padding-left: 39px;
+                    padding-right: 39px;
+                    padding-top: 24px;
+                    padding-bottom: 24px;
+                    margin-bottom: 24px;
+                }
+                @include respond-to(sm) {
+                    width: 100%;
+                    padding-left: $padding4;
+                    padding-right: $padding4;
+                    padding-top: 32px;
+                    padding-bottom: 32px;
+                    margin-bottom: 0;
+                    border-radius: 0px;
+                    border-left-width: 0px;
+                    border-right-width: 0px;
+                    margin-top: -1px;
+                }
+                &.marketDetail-reviews__comment-lock {
+                    display: none;
+                }
+                &_mobile {
+                    display: none;
+                    @include respond-to(md) {
+                        display: block;
+                    }
+                }
+                &_contacts {
+                    display: none;
+                    @include respond-to(md) {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: center;
+                        flex-direction: column;
+                    }
+                    &-inner {
+                        @include respond-to(md) {
+                            display: none;
+                            width: 100%;
+                        }
+                    }
+                    .marketDetail__title {
+                        @include respond-to(md) {
+                            float: left;
+                            padding-right: 21px;
+                            width: 121px;
+                            font-size: 20px;
+                            line-height: 1.5;
+                        }
+                        @include respond-to(sm) {
+                            float: none;
+                            padding-right: 0;
+                            width: auto;
+                        }
+                    }
+                }
+                &_numbers {}
+                &_docs {
+                    @include respond-to(md) {
+                        width: 100%;
+                        padding-top: 29px;
+                        padding-bottom: 22px;
+                    }
+                    @include respond-to(sm) {
+                        padding-bottom: 18px;
+                    }
+                }
+            }
+            & &-block {
+                @include respond-to(md) {
+                    display: none;
+                }
+            }
+            & &-block_docs {
+                @include respond-to(md) {
+                    display: block;
+                }
+            }
+            & .marketDetail-about__contactsButton {
+                @include respond-to(md) {
+                    display: none;
+                }
+            }
+        }
+        &__contacts {
+            &-info {
+                word-break: break-word;
+                @include respond-to(md) {
+                    float: right;
+                    padding-top: 4px;
+                    width: calc(100% - 121px);
+                }
+                @include respond-to(sm) {
+                    float: none;
+                    padding-top: 4px;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+            }
+            &-tel {
+                font-weight: bold;
+                margin: 0 0 17px 0;
+                @include respond-to(sm) {
+                    margin-bottom: 0px;
+                    margin-right: 14px;
+                }
+                &-inner {}
+            }
+            &-mail {
+                font-size: 14px;
+                line-height: 1.71;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                }
+                @include respond-to(sm) {
+                    font-size: 12px;
+                    line-height: 1.67;
+                }
+                &-inner {}
+            }
+        }
+        &__contactsButton {
+            width: 100%;
+            margin: 0 0 32px 0;
+            @include respond-to(md) {
+                width: 96%;
+                max-width: 238px;
+                margin-bottom: 0px;
+            }
+            @include respond-to(sm) {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        &-numbersList {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            @include respond-to(md) {
+                justify-content: flex-start;
+            }
+            &__single {
+                padding: 8px 4px 0 1px;
+                @include respond-to(lg) {
+                    padding-right: 0px;
+                    padding-left: 0px;
+                }
+                @include respond-to(md) {
+                    padding-top: 0px;
+                    padding-right: 20px;
+                    width: 50%;
+                    max-width: 122px;
+                }
+                @include respond-to(sm) {
+                    max-width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    width: auto;
+                    padding-right: 51px;
+                }
+            }
+            &__title {
+                margin: 0 0 8px 0;
+                @include respond-to(sm) {
+                    margin-bottom: 0px;
+                    margin-right: 17px;
+                }
+            }
+            &__value {
+                font-size: 43px;
+                font-weight: 600;
+                line-height: 1.12;
+                color: $color5;
+                @include respond-to(lg) {
+                    font-size: 40px;
+                    line-height: 1.2;
+                }
+                @include respond-to(sm) {
+                    font-size: 28px;
+                    line-height: 1.14;
+                }
+            }
+        }
+        &-docsList {
+            @include respond-to(md) {
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                padding-top: 6px;
+                margin-right: -24px;
+            }
+            @include respond-to(sm) {
+                margin-right: -20px;
+            }
+            &__single {
+                margin: 0 0 24px 0;
+                @include respond-to(md) {
+                    width: 140px;
+                    margin-right: 24px;
+                    margin-bottom: 14px;
+                }
+                @include respond-to(sm) {
+                    width: 80px;
+                    margin-right: 20px;
+                    margin-bottom: 10px;
+                }
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+                &-inner {}
+            }
+            &__img {
+                width: 100%;
+            }
+        }
+    }
+    &-works {
+        padding: 0 0 64px 0;
+        @include respond-to(sm) {
+            padding-left: $padding4;
+            padding-right: $padding4;
+            padding-bottom: 26px;
+        }
+        &-list {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+            overflow: hidden;
+            transition: height .3s;
+            @include respond-to(lg) {
+                margin-left: -11px;
+                margin-right: -11px;
+                margin-bottom: 12px;
+            }
+            @include respond-to(md) {
+                margin-left: -10px;
+                margin-right: -10px;
+                margin-bottom: 8px;
+            }
+            @include respond-to(sm) {
+                padding-top: 7px;
+                margin-bottom: 0px;
+            }
+            &__single {
+                padding: 0px 15px 32px 15px;
+                width: 25%;
+                @include respond-to(lg) {
+                    width: 33.333333333%;
+                    padding-left: 11px;
+                    padding-right: 11px;
+                    padding-bottom: 22px;
+                }
+                @include respond-to(md) {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding-bottom: 20px;
+                }
+                @include respond-to(sm) {
+                    width: 50%;
+                }
+                &-inner {
+                    overflow: hidden;
+                    width: 100%;
+                    height: 170px;
+                    @include respond-to(lg) {
+                        height: 192px;
+                    }
+                    @include respond-to(md) {
+                        height: 144px;
+                    }
+                    @include respond-to(sm) {
+                        height: 82px;
+                    }
+                }
+            }
+            &__no-data {
+                padding: 0px 15px 32px 15px;
+            }
+            &__img {
+                min-width: 100%;
+                min-height: 100%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .marketDetail__more {
+            @include respond-to(md) {
+                font-size: 18px;
+                line-height: 1.67;
+            }
+            @include respond-to(sm) {
+                font-size: 14px;
+                line-height: 2.14;
+            }
+            .svg-icon {
+                @include respond-to(md) {
+                    margin-top: 0px;
+                }
+            }
+        }
+    }
+    &-reviews {
+        @include respond-to(sm) {
+            padding-right: $padding4;
+            padding-left: $padding4;
+        }
+        &-inner {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            @include respond-to(md) {
+                flex-direction: column-reverse;
+            }
+        }
+        &__main {
+            width: $marketDetailColumn1;
+            padding: 0 34px 0 0;
+            @include respond-to(lg) {
+                padding-right: 22px;
+                width: 77%;
+            }
+            @include respond-to(md) {
+                width: 100%;
+                padding-right: 0px;
+                clear: both;
+            }
+        }
+        &__helper {
+            width: $marketDetailColumn2;
+            @include respond-to(md) {
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+            &-top {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                padding: 0 0 28px 0;
+                @include respond-to(md) {
+                    display: block;
+                    margin-right: 127px;
+                }
+                @include respond-to(sm) {
+                    margin-right: 0px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    padding-top: 6px;
+                    padding-bottom: 0px;
+                }
+            }
+            &-title {
+                @include respond-to(md) {
+                    margin-bottom: 8px;
+                    white-space: nowrap;
+                }
+                @include respond-to(sm) {
+                    margin-bottom: 0px;
+                    margin-right: 8px;
+                }
+            }
+        }
+        &__numbers {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 24px;
+            line-height: 1.25;
+            margin: 0 0 0 12px;
+            @include respond-to(md) {
+                font-size: 20px;
+                line-height: 1.6;
+                margin-left: 0px;
+            }
+            &-current {
+                font-weight: 600;
+                color: $color5;
+            }
+            &-max {
+                font-weight: 500;
+                color: $color3;
+                opacity: 0.3;
+            }
+        }
+        &__filter {
+            @include respond-to(md) {
+                margin-top: -13px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                flex-wrap: wrap;
+                height: 144px;
+                width: 100%;
+                margin-bottom: 29px;
+            }
+            @include respond-to(sm) {
+                display: none;
+            }
+            &-single {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 11px 0 10px 0;
+                @include respond-to(md) {
+                    margin-right: 58px;
+                }
+            }
+            &-rait {
+                margin-right: 40px;
+                @include respond-to(md) {
+                    margin-right: 32px;
+                }
+            }
+            &-amount {
+                font-size: 14px;
+                line-height: 1.71;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                }
+                &-action {}
+            }
+        }
+        &__comment {
+            &-lock {
+                border-radius: 4px;
+                padding: 32px 40px;
+                font-size: 14px;
+                @include respond-to(sm) {
+                    padding: $padding4;
+                }
+            }
+            &-unlock {
+                padding: 10px 40px 0px 40px;
+                border-radius: 4px;
+                border: 1px solid $color7;
+                @include respond-to(sm) {
+                    margin-left: -$padding4;
+                    margin-right: -$padding4;
+                    padding-right: $padding4;
+                    padding-left: $padding4;
+                    border-radius: 0px;
+                    border-left-width: 0px;
+                    border-right-width: 0px;
+                    padding-top: 23px;
+                }
+                .marketList__numbers-rait {
+                    @include respond-to(sm) {
+                        width: 96px;
+                    }
+                    .svg-icon {
+                        @include respond-to(sm) {
+                            width: 96px;
+                            max-width: 96px;
+                            height: 18px;
+                            line-height: 18px;
+                        }
+                    }
+                }
+            }
+            &-form {
+                @include respond-to(sm) {
+                    margin-top: 0px;
+                }
+                .formGroup {
+                    padding-top: 0;
+                    padding-bottom: 20px;
+                    @include respond-to(sm) {
+                        padding-bottom: 14px;
+                    }
+                    &_raiting {
+                        padding-top: 0;
+                        padding-bottom: 16px;
+                    }
+                    &.disabled {
+                        display: none;
+                    }
+                }
+            }
+            &-textarea {
+                height: 300px;
+                transition: height .3s;
+                @include respond-to(md) {
+                    height: 200px;
+                }
+                &.notValid {
+                    height: 54px;
+                    @include respond-to(md) {
+                        height: 48px;
+                    }
+                }
+            }
+        }
+        &-list {
+            padding: 32px 0;
+            @include respond-to(sm) {
+                padding-top: 16px;
+            }
+            &_comments {
+                padding-top: 11px;
+                @include respond-to(sm) {
+                    padding-top: 0px;
+                }
+            }
+            &__single {
+                padding: 33px 0 33px 0;
+                @include respond-to(sm) {
+                    padding-bottom: 9px;
+                }
+            }
+            &__top {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                padding: 0 0 8px 0;
+            }
+            &__author {
+                padding: 0 16px 0 0;
+                font-weight: 600;
+            }
+            &__date {
+                font-size: 14px;
+                line-height: 1.71;
+                color: $color8;
+                white-space: nowrap;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                }
+                @include respond-to(sm) {
+                    font-size: 12px;
+                    line-height: 1.67;
+                }
+            }
+            &__rait {
+                margin-bottom: 7px;
+                margin-top: -6px;
+            }
+            &__text {
+
+                &--edit {
+                  display: none;
+                }
+            }
+            &__answer {
+                padding: 32px 0 0 40px;
+                position: relative;
+                @include respond-to(sm) {
+                    padding-top: 12px;
+                    padding-left: 19px;
+                }
+                &-edit {
+                    position: absolute;
+                    top: 24px;
+                    right: -3px;
+                    font-size: 24px;
+                    display: block;
+                    padding: 0 5px;
+                }
+                &-top {
+                    border-left: 1px solid $color14;
+                    padding: 28px 0 8px 40px;
+                    margin: -28px 0 0 -40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    @include respond-to(sm) {
+                        padding-top: 12px;
+                        padding-left: 19px;
+                        margin-top: -12px;
+                        margin-left: -19px;
+                        display: block;
+                    }
+                    .marketDetail-reviews-list__author {
+                        @include respond-to(sm) {
+                            padding-bottom: 3px;
+                        }
+                    }
+                }
+                &-text {
+                    border-left: 1px solid $color14;
+                    margin: 0 0 0 -40px;
+                    padding: 0 0 0 40px;
+                    @include respond-to(sm) {
+                        padding-left: 19px;
+                        margin-left: -19px;
+                    }
+                }
+                &-bottom {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-left: 1px solid $color14;
+                    margin: 0 0 0 -40px;
+                    padding: 23px 0 0 40px;
+                    @include respond-to(sm) {
+                        padding-left: 19px;
+                        margin-left: -19px;
+                        padding-top: 17px;
+                    }
+                }
+                &-form {
+                    display: none;
+                    padding: 23px 54px 0 40px;
+                    margin-top: 0;
+                    margin-left: -40px;
+                    border-left: 1px solid $color14;
+                    @include respond-to(sm) {
+                        padding-left: 19px;
+                        margin-left: -19px;
+                        padding-top: 17px;
+                    }
+                    form {
+                        margin-top: 0;
+                        padding-top: 0;
+                    }
+                }
+                &-cancel {
+                    width: 54px;
+                    height: 54px;
+                    cursor: pointer;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: calc(100% + 12px);
+                    @include respond-to(sm) {
+                        left: calc(100% + 2px);
+                    }
+                    &-line {
+                        width: 26px;
+                        height: 2px;
+                        background-color: $color11;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                        @include respond-to(sm) {
+                            width: 20px;
+                        }
+                        &:first-child {
+                            transform: translate(-50%, -50%) rotate(45deg);
+                        }
+                    }
+                    &:hover &-line, &:focus &-line, &:active &-line {
+                        background-color: darken($color11, 20%);
+                    }
+                }
+            }
+            &__bottom {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0 0 0 -42px;
+                padding: 18px 0 0 42px;
+                @include respond-to(sm) {
+                    padding-top: 10px;
+                }
+            }
+            &__bottom-button {
+                margin-right: 10px;
+            }
+            &__form {
+                display: none;
+                margin: 0 0 0 -42px;
+                padding: 18px 54px 0 42px;
+                @include respond-to(sm) {
+                    padding-top: 10px;
+                    padding-right: 44px;
+                }
+                form {
+                    margin-top: 0;
+                    padding-top: 0;
+                }
+            }
+            &__likes {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin: 2px -9px 0 -9px;
+                margin-left: auto;
+                @include respond-to(sm) {
+                    margin-right: -4px;
+                }
+                &-single {
+                    cursor: pointer;
+                    font-size: 14px;
+                    line-height: 1.71;
+                    font-weight: 600;
+                    opacity: 0.5;
+                    padding: 9px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    @include respond-to(sm) {
+                        font-size: 12px;
+                        line-height: 2;
+                    }
+                    .svg-icon {
+                        stroke: $color8;
+                        font-size: 24px;
+                        margin: 0 4px 0 0;
+                    }
+                    &:hover, &.active {
+                        color: $color5;
+                        opacity: 1;
+                        .svg-icon {
+                            stroke: $color5;
+                        }
+                    }
+                }
+            }
+
+          &__edit-button {
+            margin-left: 10px;
+          }
+
+        }
+        &-bottom {
+            text-align: center;
+        }
+
+    }
+}

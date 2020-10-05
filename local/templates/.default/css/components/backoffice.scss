@@ -1,0 +1,2583 @@
+@import '../variables';
+@import '../mixins';
+@import '../functions';
+
+.backoffice {
+    padding: 64px 0 3px 0;
+    @include respond-to(lg) {
+        padding-top: 48px;
+    }
+    @include respond-to(md) {
+        padding-top: 32px;
+    }
+    @include respond-to(sm) {
+        padding-top: 22px;
+    }
+    &-inner {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &__mobileTitle {
+        display: none;
+        font-size: 14px;
+        line-height: 1.71;
+        font-weight: 600;
+        border-bottom: 1px solid $color13;
+        padding: 0 $padding4 20px $padding4;
+        margin: 0 -#{$padding4};
+        width: calc(100% + #{$padding4}*2);
+        @include respond-to(sm) {
+            display: block;
+        }
+    }
+    &__title {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.25;
+        margin: 0 0 24px 0;
+        @include respond-to(md) {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        @include respond-to(sm) {
+            margin-bottom: 13px;
+            line-height: 1.2;
+        }
+        &_typetwo {
+            @include respond-to(md) {
+                margin-bottom: 18px;
+            }
+            @include respond-to(sm) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+.personMenu {
+    width: 11%;
+    margin: 0 3.7% 0 0;
+    @include respond-to(lg) {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 18px;
+    }
+    @include respond-to(md) {
+        margin-bottom: 2px;
+        font-size: 16px;
+        line-height: 1.88;
+        order: 0;
+    }
+    @include respond-to(sm) {
+        width: calc(100% + #{$padding4*2});
+        font-size: 14px;
+        line-height: 1.71;
+        border-bottom: 1px solid $color13;
+        margin-left: -$padding4;
+        margin-right: -$padding4;
+        padding-left: $padding4;
+        padding-right: $padding4;
+        display: none;
+    }
+    &-inner {
+        @include respond-to(lg) {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        @include respond-to(md) {
+            justify-content: space-between;
+        }
+    }
+    &__single {
+        font-weight: 600;
+        margin: 0 0 30px 0;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: $color3;
+        @include respond-to(sm) {
+            display: none;
+            margin-bottom: 20px;
+        }
+        &.router-link-active {
+            color: $color5;
+            cursor: default;
+            @include respond-to(sm) {
+                color: $color3;
+            }
+        }
+    }
+    &__number {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: $color5;
+        font-size: 12px;
+        font-weight: 600;
+        color: #ffffff;
+        text-align: center;
+        margin: 0 0 0 6px;
+        @include respond-to(md) {
+            width: 16px;
+            height: 16px;
+            font-size: 9px;
+        }
+    }
+    &_edit {
+        @include respond-to(md) {
+            display: none;
+        }
+    }
+}
+.backofficeMain {
+    width: 83%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include respond-to(lg) {
+        width: 100%;
+    }
+    &-inner {
+        width: 100%;
+    }
+    input:not([type=submit]):not([type=checkbox]):not([type=radio]),
+    textarea,
+    select,
+    .selectWrapper-placeholder,
+    .multiselect__single,
+    .multiselect__placeholder {
+        font-size: 14px;
+        line-height: 2.14;
+        width: 100%;
+        padding: 13px 16px 12px 16px;
+        background-color: $color16;
+        border: 1px solid $color7;
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 1.85;
+            padding-top: 12px;
+        }
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 1.67;
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+    }
+    .selectWrapper-placeholder,
+    .multiselect__single,
+    .multiselect__placeholder {
+        display: block;
+        padding-right: 38px;
+    }
+    textarea {
+        min-height: 120px;
+        @include respond-to(sm) {
+            min-height: 148px;
+        }
+    }
+    .multiselect {
+        font-size: 14px;
+        line-height: 2.14;
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 1.85;
+        }
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 1.67;
+        }
+        &--active {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        &--disabled {
+            opacity: 0.3;
+        }
+        &__single, &__placeholder {
+            cursor: default;
+        }
+        &__placeholder {
+            color: lighten($color3, 30%);
+        }
+    }
+    .multiselect__content-wrapper {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        margin-top: 0;
+        border-radius: 0 0 4px 4px;
+        border-width: 0px;
+        background-color: $color16;
+        overflow-y: auto;
+        width: 100%;
+        min-width: 150px;
+        z-index: 1010;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    .multiselect__content {
+        display: block !important;
+    }
+    .multiselect__content li > span {
+        padding: 8px 16px 8px 16px;
+        display: block;
+        cursor: pointer;
+    }
+    .multiselect__option--selected {
+        background-color: darken($color16, 20%);
+    }
+    .multiselect__option--highlight {
+        background-color: darken($color16, 10%);
+    }
+    .articlesPage-list {
+        @include respond-to(sm) {
+            padding-left: $padding4;
+            padding-right: $padding4;
+            margin-bottom: 0px;
+        }
+        &__single {
+            padding-bottom: 0px;
+            &:last-child {
+                .articlesPage-list__single-inner {
+                    padding-bottom: 0px;
+                    border-bottom-width: 0px;
+                }
+            }
+        }
+        &__single-inner {
+            cursor: default;
+            border: 1px solid $color13;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            margin-left: -40px;
+            margin-right: -40px;
+            padding-right: 40px;
+            padding-left: 40px;
+            margin-top: -1px;
+            border-radius: 0px;
+            &:hover {
+                box-shadow: none;
+            }
+            @include respond-to(sm) {
+                padding-bottom: 33px;
+            }
+        }
+        .articlesPage-helper-data__comment {
+            margin-bottom: 0px;
+            margin-right: 16px;
+            &-new {
+                color: $color5;
+            }
+            &-text {
+                @include respond-to(sm) {
+                    display: inline;
+                }
+            }
+        }
+    }
+    .marketDetail-reviews-list {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        &__new {
+          color: #d70926;
+        }
+        &__single {
+            border: 1px solid $color13;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            margin-left: -40px;
+            margin-right: -40px;
+            padding-right: 40px;
+            padding-left: 40px;
+            margin-top: -1px;
+            @include respond-to(sm) {
+                padding-bottom: 33px;
+            }
+            &:last-child {
+                border-bottom-width: 0px;
+                padding-bottom: 0px;
+            }
+        }
+    }
+    .marketDetail-reviews-list__answer {
+        padding-right: 32px;
+    }
+    .marketDetail-reviews__comment-textarea.notValid {
+        min-height: 54px;
+        @include respond-to(sm) {
+            min-height: 48px;
+        }
+    }
+    &-block {
+        width: 100%;
+        padding: 0 0 40px 0;
+        @include respond-to(md) {
+            padding-bottom: 32px;
+        }
+        @include respond-to(sm) {
+            padding-bottom: 0px;
+        }
+        &-inner {
+            padding: 32px 40px 41px 40px;
+            border: 1px solid $color13;
+            border-radius: 4px;
+            position: relative;
+            @include respond-to(md) {
+                padding-top: 23px;
+                padding-bottom: 32px;
+            }
+            @include respond-to(sm) {
+                padding-top: 32px;
+                padding-left: $padding4;
+                padding-right: $padding4;
+                margin-left: -$padding4;
+                margin-right: -$padding4;
+                border-width: 0px;
+                border-bottom-width: 1px;
+            }
+        }
+        &:first-child &-inner {
+            @include respond-to(sm) {
+                padding-top: 10px;
+            }
+        }
+        &__edit {
+            position: absolute;
+            top: 30px;
+            right: 36px;
+            cursor: pointer;
+            padding: 0 4px;
+            @include respond-to(md) {
+                top: 21px;
+            }
+            @include respond-to(md) {
+                top: 30px;
+                right: 16px;
+            }
+            .svg-icon {
+                font-size: 24px;
+                fill: $color8;
+                stroke: $color8;
+                @include respond-to(md) {
+                    font-size: 20px;
+                }
+            }
+            &:hover, &:focus, &:active {
+                .svg-icon {
+                    fill: darken($color8, 20%);
+                    stroke: darken($color8, 20%);
+                }
+            }
+        }
+        &:first-child &__edit {
+            @include respond-to(sm) {
+                top: 8px;
+            }
+        }
+        &__note {
+            font-size: 14px;
+            line-height: 1.71;
+            color: $color8;
+            padding: 6px 0 0 0;
+            @include respond-to(sm) {
+                font-size: 12px;
+                line-height: 1.67;
+                padding-top: 0px;
+            }
+        }
+        &__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0 32px 0;
+            @include respond-to(md) {
+                padding-bottom: 23px;
+            }
+            @include respond-to(sm) {
+                display: block;
+            }
+            .button3 {
+                margin-top: -12px;
+                margin-bottom: -12px;
+                @include respond-to(md) {
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+            }
+            .backoffice__title {
+                margin-bottom: 0px;
+                @include respond-to(sm) {
+                    margin-bottom: 16px;
+                }
+            }
+            &-sort {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin-right: -14px;
+                &-text {
+                    margin: 0 20px 0 0;
+                }
+                .multiselect {
+                    &:after {
+                        border-color: #000;
+                    }
+                    &__single, &__placeholder {
+                        padding-top: 0;
+                        padding-bottom: 0px;
+                        background-color: transparent;
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 1.67;
+                        @include respond-to(md) {
+                            font-size: 16px;
+                            line-height: 1.88;
+                        }
+                    }
+                    &__content li > span {
+                        line-height: 1.5;
+                        padding-top: 4px;
+                        padding-bottom: 4px;
+                    }
+                }
+            }
+        }
+    }
+    &-hr {
+        display: block;
+        height: 1px;
+        background-color: $color13;
+        margin: 7px -40px 41px -40px;
+        width: calc(100% + 80px);
+        border-width: 0px;
+        @include respond-to(sm) {
+            margin: 0px -#{$padding4} 32px -#{$padding4};
+        }
+    }
+    &_faq {
+        p {
+            font-size: 14px;
+            line-height: 2.14;
+            color: #000;
+        }
+    }
+}
+.masterService {
+    &-inner {
+        .masterEducation-main {
+            border-bottom-width: 0px;
+            position: relative;
+            .backoffice__title {
+                margin-top: 20px;
+                margin-bottom: 14px;
+            }
+        }
+        .backofficeServices-cityList {
+            margin-top: 16px;
+        }
+        .masterEducation__single_speial .masterEducation__single-block {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+    }
+}
+.masterEducation {
+    &-inner {}
+    &-main {
+        display: table;
+        width: calc(100% + 80px);
+        margin: 31px -40px 21px -40px;
+        padding: 20px 40px;
+        border: 1px solid $color13;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        @include respond-to(md) {
+            margin-top: 25px;
+            margin-bottom: 18px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+        @include respond-to(sm) {
+            border-top-width: 0px;
+            border-bottom-width: 0px;
+            display: block;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-top: 12px;
+            padding-bottom: 32px;
+            padding-left: 0px;
+            padding-right: 0px;
+            width: auto;
+        }
+    }
+    &-helper {
+        display: table;
+        width: 100%;
+        @include respond-to(sm) {
+            display: block;
+        }
+    }
+    &__single {
+        display: table-row;
+        @include respond-to(sm) {
+            display: block;
+            padding-bottom: 32px;
+        }
+        &:last-child {
+            @include respond-to(sm) {
+                padding-bottom: 0px;
+            }
+        }
+        &-block {
+            display: table-cell;
+            padding: 20px 20px 20px 0;
+            @include respond-to(md) {
+                padding-top: 16px;
+                padding-bottom: 16px;
+            }
+            @include respond-to(sm) {
+                display: block;
+                padding-bottom: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+            }
+        }
+        &-title {
+            white-space: nowrap;
+            @include respond-to(sm) {
+                padding-bottom: 10px;
+                font-weight: 600;
+            }
+        }
+        &-value {
+            width: 100%;
+            font-size: 14px;
+            line-height: 2.2;
+            color: #000;
+            @include respond-to(md) {
+                font-size: 13px;
+                line-height: 1.85;
+            }
+            @include respond-to(md) {
+                font-size: 12px;
+                line-height: 1.67;
+            }
+            .button {
+                margin-right: 32px;
+                @include respond-to(sm) {
+                    margin-right: 0px;
+                }
+            }
+            &-link {
+                font-size: 18px;
+                line-height: 1.67;
+                @include respond-to(md) {
+                    font-size: 16px;
+                    line-height: 1.88;
+                }
+                @include respond-to(sm) {
+                    font-size: 14px;
+                    line-height: 2.14;
+                    padding-top: 10px;
+                    display: block;
+                }
+            }
+        }
+    }
+    &-main &__single-block {
+        vertical-align: middle;
+    }
+    &-main &__single-title {
+        padding-right: 48px;
+        @include respond-to(md) {
+            padding-right: 27px;
+        }
+    }
+    &-helper &__single:last-child &__single-block  {
+        padding-bottom: 0px;
+    }
+    &-helper &__single-title {
+        padding-right: 83px;
+        @include respond-to(md) {
+            padding-right: 39px;
+        }
+    }
+    &-sertificate {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: -8px 0 0 -8px;
+        @include respond-to(sm) {
+            margin: -20px -10px 0 -10px;
+        }
+        &__single {
+            width: 116px;
+            padding: 8px 8px 6px 8px;
+            @include respond-to(sm) {
+                padding: 20px 10px 0 10px;
+                width: 80px;
+            }
+        }
+        &__inner {
+            display: block;
+            width: 100%;
+        }
+        &__img {
+            width: 100%;
+        }
+    }
+}
+.masterNotification {
+    &-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 30px;
+        @include respond-to(md) {
+            padding-bottom: 22px;
+        }
+        @include respond-to(sm) {
+            display: block;
+            padding-bottom: 32px;
+        }
+        .button {
+            margin-left: 83px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            @include respond-to(sm) {
+                margin-left: 0px;
+                margin-top: 16px;
+            }
+        }
+    }
+    &__text {
+        @include respond-to(sm) {
+            display: block;
+        }
+    }
+}
+.masterWorks {
+    &-inner {
+        @include respond-to(sm) {
+            padding-bottom: 12px;
+        }
+    }
+    &-content {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: -5px -5px 0 -5px;
+        @include respond-to(md) {
+            margin-right: -6px;
+            margin-left: -6px;
+        }
+        @include respond-to(sm) {
+            margin-top: 0px;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+        &__single {
+            width: 20%;
+            padding: 10px 5px 0 5px;
+            @include respond-to(md) {
+                width: 33.333333333%;
+                padding-right: 6px;
+                padding-left: 6px;
+            }
+            @include respond-to(sm) {
+                width: 50%;
+                padding-right: 10px;
+                padding-left: 10px;
+                padding-top: 0;
+                padding-bottom: 20px;
+            }
+            &-inner {
+                height: 107px;
+                display: block;
+                width: 100%;
+                overflow: hidden;
+                @include respond-to(md) {
+                    height: 130px;
+                }
+                @include respond-to(md) {
+                    height: 82px;
+                }
+            }
+            &-img {
+                min-width: 100%;
+                min-height: 100%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+.masterData {
+    &-inner {
+        padding-bottom: 52px;
+        @include respond-to(md) {
+            padding-bottom: 33px;
+        }
+        @include respond-to(sm) {
+            padding-bottom: 32px;
+        }
+    }
+    &-content {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 7px 0 0 0;
+        @include respond-to(md) {
+            padding-top: 6px;
+        }
+        @include respond-to(sm) {
+            padding-top: 0px;
+            display: block;
+        }
+    }
+    &-img {
+        width: 204px;
+        height: 204px;
+        margin: 0 56px 0 0;
+        flex-shrink: 0;
+        overflow: hidden;
+        @include respond-to(md) {
+            width: 176px;
+            height: 176px;
+            margin-right: 32px;
+        }
+        @include respond-to(sm) {
+            width: 80px;
+            height: 80px;
+            margin-right: 0px;
+            margin-bottom: 20px;
+        }
+        &-tag {
+            width: 100%;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    &-info {
+        display: table;
+        margin: -4px 0 0 0;
+        @include respond-to(sm) {
+            margin-top: 0px;
+            display: block;
+        }
+        &__single {
+            display: table-row;
+            @include respond-to(sm) {
+                display: block;
+                padding-bottom: 20px;
+            }
+            &-block {
+                display: table-cell;
+                padding: 4px 24px 19px 0px;
+                @include respond-to(sm) {
+                    display: block;
+                    padding: 0;
+                }
+            }
+            &-title {
+                padding-right: 56px;
+                white-space: nowrap;
+                @include respond-to(md) {
+                    padding-right: 36px;
+                }
+                @include respond-to(sm) {
+                    padding-right: 0px;
+                    padding-bottom: 10px;
+                    font-weight: 600;
+                }
+            }
+            &-value {
+                font-size: 14px;
+                line-height: 2.2;
+                color: #000;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                    padding-right: 0px;
+                }
+                @include respond-to(sm) {
+                    font-size: 12px;
+                    line-height: 1.67;
+                }
+            }
+            &:last-child {
+                @include respond-to(sm) {
+                    padding-bottom: 0px;
+                }
+            }
+            &:last-child &-block {
+                padding-bottom: 0px;
+            }
+            &:last-child &-title {
+                @include respond-to(sm) {
+                    padding-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+.masterInfo {
+    &-inner {}
+    &-content {
+        display: table;
+        @include respond-to(sm) {
+            display: block;
+        }
+        &__single {
+            display: table-row;
+            @include respond-to(sm) {
+                display: block;
+                padding-bottom: 32px;
+            }
+            &-block {
+                display: table-cell;
+                padding: 7px 34px 33px 0px;
+                @include respond-to(md) {
+                    padding-bottom: 25px;
+                }
+                @include respond-to(sm) {
+                    padding-top: 0px;
+                    padding-right: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    display: block;
+                }
+            }
+            &:last-child {
+                @include respond-to(sm) {
+                    padding-bottom: 0px;
+                }
+            }
+            &:last-child &-block {
+                padding-bottom: 0px;
+            }
+            &-title {
+                white-space: nowrap;
+                padding-right: 78px;
+                @include respond-to(md) {
+                    padding-right: 29px;
+                }
+                @include respond-to(sm) {
+                    padding-bottom: 10px;
+                    padding-right: 0px;
+                    font-weight: 600;
+                }
+            }
+            &:last-child &-title {
+                @include respond-to(sm) {
+                    padding-bottom: 10px;
+                }
+            }
+            &-value {
+                font-size: 14px;
+                line-height: 2.2;
+                color: #000;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                    padding-right: 0px;
+                }
+                @include respond-to(sm) {
+                    font-size: 12px;
+                    line-height: 1.67;
+                }
+            }
+            &-experience {
+                display: table-row;
+                &-block {
+                    display: table-cell;
+                    padding: 0 34px 14px 0;
+                    @include respond-to(md) {
+                        padding-right: 30px;
+                        padding-bottom: 22px;
+                    }
+                    @include respond-to(sm) {
+                        padding-right: 38px;
+                        padding-bottom: 10px;
+                    }
+                }
+                &-date {
+                    color: $color8;
+                    text-transform: lowercase;
+                }
+                &-place {
+                    @include respond-to(md) {
+                        padding-right: 0;
+                    }
+                }
+                &:last-child &-block {
+                    padding-bottom: 0px;
+                }
+            }
+            &-language {
+                padding: 0 0 12px 0;
+                text-transform: lowercase;
+                &:first-letter {
+                    text-transform: uppercase;
+                }
+                @include respond-to(md) {
+                    padding-bottom: 22px;
+                }
+                @include respond-to(sm) {
+                    padding-bottom: 10px;
+                }
+                &:last-child {
+                    padding-bottom: 0px;
+                }
+            }
+        }
+    }
+}
+.backofficeNews {
+    width: 58.9%;
+    margin: 0 0 32px 0;
+    @include respond-to(lg) {
+        width: 57.4%;
+    }
+    @include respond-to(md) {
+        width: 100%;
+        order: 10;
+    }
+    @include respond-to(sm) {
+        margin-left: -$padding4;
+        margin-right: -$padding4;
+        width: calc(100% + #{$padding4*2});
+        margin-bottom: 24px;
+    }
+    &-inner {
+        padding: 31px 38px;
+        border-radius: 4px;
+        border: 1px solid $color13;
+        @include respond-to(sm) {
+            border-width: 0px;
+            border-bottom-width: 1px;
+            border-radius: 0px;
+            padding-left: $padding4;
+            padding-right: $padding4;
+            padding-top: 29px;
+        }
+    }
+    &-list {
+        &__single {
+            padding: 1px 0 24px 0;
+            margin: 0 0 24px 0;
+            border-bottom: 1px solid $color13;
+            @include respond-to(sm) {
+                padding-bottom: 16px;
+                margin-bottom: 15px;
+            }
+            &:last-child {
+                border-bottom-width: 0px;
+                margin-bottom: 0px;
+                padding-bottom: 0px;
+            }
+            &-date {
+                font-size: 14px;
+                line-height: 1.71;
+                color: $color8;
+                margin: 0 0 8px 0;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                }
+                @include respond-to(sm) {
+                    font-size: 12px;
+                    line-height: 1.67;
+                }
+            }
+            &-title {
+                font-size: 14px;
+                line-height: 2.18;
+                @include respond-to(md) {
+                    font-size: 13px;
+                    line-height: 1.85;
+                }
+                @include respond-to(sm) {
+                    font-size: 12px;
+                    line-height: 1.67;
+                }
+                &-link {
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+.personStats {
+    width: 38%;
+    margin: 0 0 32px 0;
+    @include respond-to(lg) {
+        width: 40.2%;
+    }
+    @include respond-to(md) {
+        width: 100%;
+        order: 5;
+    }
+    @include respond-to(sm) {
+        margin-left: -$padding4;
+        margin-right: -$padding4;
+        width: calc(100% + #{$padding4*2});
+        margin-bottom: 0px;
+    }
+    &-inner {
+        padding: 31px 38px;
+        border-radius: 4px;
+        border: 1px solid $color13;
+        @include respond-to(sm) {
+            border-width: 0px;
+            border-bottom-width: 1px;
+            border-radius: 0px;
+            padding-left: $padding4;
+            padding-right: $padding4;
+            padding-top: 28px;
+        }
+    }
+    &-types {
+        &-toggler {
+            padding: 0 0 40px 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-start;
+            @include respond-to(md) {
+                padding-bottom: 33px;
+            }
+            @include respond-to(sm) {
+                padding-bottom: 25px;
+            }
+            &__single {
+                &-inner {
+                    padding-left: 26px;
+                    padding-right: 24px;
+                    @include respond-to(sm) {
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+        &-list {
+            &__single {
+                display: flex;
+                align-items: stretch;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                @include respond-to(md) {
+                    justify-content: space-between;
+                }
+                &.slick-slide {
+                    display: flex;
+                }
+            }
+            &__block {
+                width: 45.5%;
+                padding: 0 20px 40px 0;
+                margin: 0 9% 0 0;
+                @include respond-to(md) {
+                    width: auto;
+                    margin-right: 13px;
+                    padding-bottom: 0;
+                    padding-right: 0px;
+                }
+                @include respond-to(sm) {
+                    width: 45.5%;
+                    margin: 0 9% 0 0;
+                    padding-bottom: 26px;
+                }
+                &:nth-child(2n+2) {
+                    margin-right: 0px;
+                    @include respond-to(md) {
+                        margin-right: 13px;
+                    }
+                    @include respond-to(sm) {
+                        margin-right: 0;
+                    }
+                }
+                &:nth-last-child(2) {
+                    padding-bottom: 10px;
+                    @include respond-to(sm) {
+                        padding-bottom: 0px;
+                    }
+                }
+                &:last-child {
+                    padding-bottom: 10px;
+                    @include respond-to(sm) {
+                        padding-bottom: 0px;
+                    }
+                }
+            }
+            &__title {
+                margin: 0 0 8px 0;
+                font-size: 16px;
+                line-height: 1.88;
+                @include respond-to(sm) {
+                    font-size: 14px;
+                    line-height: 1.71;
+                    margin-bottom: 9px;
+                }
+            }
+            &__number {
+                font-weight: 600;
+                @include respond-to(sm) {
+                    font-size: 14px;
+                    line-height: 1.71;
+                }
+                &_important {
+                    font-size: 43px;
+                    line-height: 1.12;
+                    color: $color5;
+                    @include respond-to(md) {
+                        font-size: 40px;
+                        line-height: 1.2;
+                    }
+                    @include respond-to(sm) {
+                        font-size: 28px;
+                        line-height: 1.14;
+                    }
+                }
+                &-note {
+                    font-size: 14px;
+                    line-height: 1.71;
+                    color: $color8;
+                    font-weight: 400;
+                    @include respond-to(md) {
+                        line-height: 1.6;
+                    }
+                    @include respond-to(sm) {
+                        font-size: 12px;
+                        line-height: 1.67;
+                    }
+                }
+            }
+        }
+    }
+}
+.backofficeMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 95;
+    margin: 0 0 0 -100%;
+    transition: transform .3s;
+    &.menuActive {
+        transform: translateX(100%);
+    }
+    &-inner {
+        padding: 16px 20px 36px 20px;
+        position: relative;
+        background-color: $color4;
+        min-height: 100vh;
+        min-width: $size2;
+        max-width: $size4;
+        display: inline-block;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 40;
+    }
+    &__vyal {
+        background-color: rgba(242,242,242,0.5);
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: translateX(100%);
+        transition: opacity .3s, transform .3s;
+        &.menuActive {
+            z-index: 35;
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    &__close {
+        width: 34px;
+        height: 34px;
+        margin: -5px 0 0 -5px;
+        position: relative;
+        display: block;
+        &-line {
+            height: 2px;
+            width: 25px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%) rotate(45deg);
+            background-color: #fff;
+            &:first-child {
+                transform: translate(-50%,-50%) rotate(-45deg);
+            }
+        }
+        &:hover &-line, &:active &-line, &:focus &-line {
+            background-color: darken(#fff, 20%);
+        }
+    }
+    &-person {
+        margin: 8px 0 10px 0;
+        &__single {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.71;
+            &-link {
+                color: #fff;
+                text-decoration: none;
+                padding: 12px 0 13px 0;
+                display: inline-block;
+                &:hover, &:active, &:focus {
+                    color: darken(#fff, 20%);
+                }
+            }
+        }
+    }
+    &__separator {
+        width: 60%;
+        height: 4px;
+        border-radius: 4px;
+        border: solid 1px $color5;
+        margin: 10px 0 13px 0;
+    }
+    &-functions {
+        margin: 8px 0 10px 0;
+        &__single {
+            font-size: 12px;
+            line-height: 1.67;
+            &-link {
+                color: #fff;
+                text-decoration: none;
+                padding: 12px 0 12px 0;
+                display: inline-block;
+                &:hover, &:active, &:focus {
+                    color: darken(#fff, 20%);
+                }
+            }
+            &_logout &-link {
+                color: $color8;
+            }
+        }
+    }
+}
+.backofficeEditMenu {
+    overflow-x: auto;
+    margin: 0 0 40px 0;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    @include respond-to(md) {
+        margin-bottom: 32px;
+    }
+    @include respond-to(sm) {
+        width: calc(100% + #{$padding4}*2);
+        margin-left: -$padding4;
+        margin-right: -$padding4;
+        padding-right: $padding4;
+        padding-left: $padding4;
+    }
+    &-inner {
+        white-space: nowrap;
+        display: flex;
+        align-items: stretch;
+        justify-content: stretch;
+        border-radius: 4px;
+        width: 100%;
+        margin-left: -1px;
+        @include respond-to(sm) {
+            width: auto;
+        }
+    }
+    &__helper {
+        display: none;
+        @include respond-to(sm) {
+            display: block;
+            width: $padding4;
+            flex-shrink: 0;
+        }
+    }
+    &__single {
+        flex-shrink: 0;
+        flex-basis: auto;
+        flex-grow: 1;
+        border: 1px solid $color7;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        overflow: hidden;
+        &:first-child {
+            border-left-width: 1px;
+            border-radius: 4px 0 0 4px;
+            margin-left: 1px;
+        }
+        &:nth-last-child(2) {
+            border-right-width: 1px;
+            border-radius: 0 4px 4px 0;
+        }
+        &-link {
+            padding: 8px 15px 8px 15px;
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+            @include respond-to(md) {
+                padding-top: 9px;
+            }
+            &:hover, &:focus {
+                background-color: lighten($color3, 90%);
+            }
+        }
+        &:first-child &-link {
+            border-radius: 4px 0 0 4px;
+        }
+        &:last-child &-link {
+            border-radius: 0 4px 4px 0;
+        }
+        .router-link-active {
+            color: #fff;
+            background-color: $color3;
+            &:hover, &:focus, &:active {
+                color: #fff;
+            }
+        }
+    }
+}
+.backofficeEdit {
+    width: 100%;
+    padding: 0 0 50px 0;
+    @include respond-to(md) {
+        padding-bottom: 30px;
+    }
+    &-form {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    &-block {
+        @include respond-to(sm) {
+            padding-bottom: 29px;
+        }
+        &-inner {
+            padding: 39px 56px 40px 56px;
+            border-radius: 4px;
+            border: 1px solid $color13;
+            margin: 0 0 40px 0;
+            @include respond-to(md) {
+                padding: 32px 40px 40px 40px;
+                margin-bottom: 34px;
+            }
+            @include respond-to(sm) {
+                padding: 31px $padding4 32px $padding4;
+                margin-bottom: 0px;
+                margin-left: -$padding4;
+                margin-right: -$padding4;
+                border-left-width: 0px;
+                border-right-width: 0px;
+                border-radius: 0px;
+            }
+        }
+    }
+    &-hr {
+        display: block;
+        height: 1px;
+        background-color: $color13;
+        margin: 7px -56px 41px -56px;
+        width: calc(100% + 112px);
+        border-width: 0px;
+        @include respond-to(md) {
+            margin: 0px -40px 32px -40px;
+            width: calc(100% + 80px);
+        }
+        @include respond-to(sm) {
+            margin: 0px -#{$padding4} 32px -#{$padding4};
+        }
+    }
+    &_info &-block-inner {
+        @include respond-to(md) {
+            padding-right: 70px;
+        }
+        @include respond-to(sm) {
+            padding-right: $padding4;
+        }
+    }
+    &_info &-hr {
+        @include respond-to(md) {
+            margin-right: -70px;
+            width: calc(100% + 40px + 70px);
+        }
+    }
+}
+.backofficeFormGroup {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    @include respond-to(sm) {
+        display: block;
+        padding-bottom: 32px;
+    }
+    &:last-child {
+        padding-bottom: 0px;
+    }
+    &:last-child &__block {
+        margin-bottom: 0px;
+    }
+    &__block {
+        margin: 0 40px 30px 0;
+        @include respond-to(md) {
+            margin: 0 10px 32px 0;
+        }
+        @include respond-to(sm) {
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+        &_flexCheckbox {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            .custCheckbox {
+                padding-top: 12px;
+                padding-bottom: 24px;
+                width: 50%;
+                @include respond-to(sm) {
+                    width: 100%;
+                }
+                label {
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+                }
+            }
+        }
+    }
+    &:last-child &__block {
+        padding-bottom: 0px;
+    }
+    &__label {
+        width: 206px;
+        flex-shrink: 0;
+        @include respond-to(md) {
+            width: 136px;
+        }
+        @include respond-to(sm) {
+            width: 100%;
+            font-weight: 600;
+        }
+        &_big {
+            width: 216px;
+            margin-right: 28px;
+            @include respond-to(md) {
+                margin-right: 10px;
+            }
+        }
+        &-inner {
+            padding: 13px 0;
+            display: block;
+            @include respond-to(md) {
+                padding: 9px 0;
+            }
+            @include respond-to(sm) {
+                padding-bottom: 10px;
+                padding-top: 0px;
+            }
+        }
+    }
+    &__field {
+        width: calc(100% - 204px - 40px);
+        position: relative;
+        @include respond-to(md) {
+            width: calc(100% - 136px - 10px);
+            padding-right: 0px;
+        }
+        @include respond-to(sm) {
+            width: 100%;
+        }
+        &-inner {
+            padding: 13px 0;
+            display: block;
+            @include respond-to(md) {
+                padding: 9px 0;
+            }
+            @include respond-to(sm) {
+                padding-bottom: 10px;
+                padding-top: 0px;
+            }
+            .button {
+                margin-top: -6px;
+                margin-bottom: -6px;
+                margin-right: 32px;
+            }
+        }
+        &-text {
+            font-size: 14px;
+            line-height: 2.2;
+        }
+    }
+    &__error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        font-size: 13px;
+        line-height: 1.85;
+        color: $color5;
+        padding: 0 16px;
+        @include respond-to(md) {
+            font-size: 12px;
+            line-height: 1.67;
+        }
+    }
+    &__logo {
+        padding-bottom: 37px;
+        &--article-cover {
+            padding-bottom: 0;
+        }
+        @include respond-to(md) {
+            padding-bottom: 32px;
+        }
+        @include respond-to(sm) {
+            padding-bottom: 0px;
+        }
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        &-img {
+            float: left;
+            width: 204px;
+            height: 204px;
+            overflow: hidden;
+            border-radius: 4px;
+            @include respond-to(md) {
+                width: 176px;
+                height: 176px;
+            }
+            @include respond-to(sm) {
+                width: 80px;
+                height: 80px;
+            }
+            .svg-icon {
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                line-height: auto;
+                fill: $color5;
+                stroke: $color5;
+            }
+        }
+        &-tag {
+            width: 100%;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &-file {
+            float: right;
+            width: calc(100% - 204px - 32px);
+            @include respond-to(md) {
+                width: calc(100% - 176px - 32px);
+            }
+            @include respond-to(sm) {
+                width: calc(100% - 80px - 16px);
+                padding-top: 4px;
+            }
+        }
+        &-note {
+            font-size: 14px;
+            line-height: 1.78;
+            color: $color8;
+            @include respond-to(md) {
+                font-size: 13px;
+                line-height: 1.85;
+            }
+            @include respond-to(sm) {
+                font-size: 12px;
+                line-height: 1.67;
+            }
+        }
+    }
+    &_empty {
+        input, select, textarea {
+            box-shadow: inset 0 0 3px $color5;
+        }
+    }
+}
+.backofficeCustFile {
+    &-hiddenMd {
+        @include respond-to(md) {
+            display: none;
+        }
+    }
+    &-visionMd {
+        display: none;
+        @include respond-to(md) {
+            display: inline;
+        }
+    }
+    &_alone {
+        display: none;
+    }
+    label {
+        display: inline-block;
+        color: $color8;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+        cursor: pointer;
+        &:hover, &:focus, &:active {
+            color: darken($color8, 10%);
+            .svg-icon {
+                color: darken($color8, 10%);
+                stroke: darken($color8, 10%);
+            }
+        }
+        @include respond-to(sm) {
+            margin-bottom: 11px;
+        }
+        .svg-icon {
+            color: $color8;
+            stroke: $color8;
+            font-size: 24px;
+            margin: -4px 4px 0 0;
+            @include respond-to(sm) {
+                font-size: 20px;
+            }
+        }
+    }
+    input[type=file] {
+        display: none;
+    }
+    &-response {
+        color: $color5;
+        padding-bottom: 14px;
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 1.67;
+        }
+    }
+}
+.backofficeExperience {
+    &__new {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: $color8;
+        font-weight: 600;
+        margin: 13px 0 29px 0;
+        cursor: pointer;
+        text-decoration: none;
+        @include respond-to(md) {
+            margin-bottom: 21px;
+        }
+        &:last-child {
+            margin-bottom: 0px;
+        }
+        &:hover, &:focus, &:active {
+            color: darken($color8, 10%);
+            .svg-icon {
+                color: darken($color8, 10%);
+                stroke: darken($color8, 10%);
+            }
+        }
+        .svg-icon {
+            font-size: 24px;
+            color: $color8;
+            stroke: $color8;
+            margin: 0 8px 0 0;
+            flex-shrink: 0;
+            @include respond-to(sm) {
+                font-size: 20px;
+            }
+        }
+        &-inner {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+    }
+    &-list {
+        padding: 11px 0 11px 0;
+        @include respond-to(sm) {
+            margin-right: 40px;
+        }
+        &__single {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 0 0 41px 0;
+            position: relative;
+            @include respond-to(md) {
+                padding-bottom: 31px;
+            }
+            &:last-child {
+                padding-bottom: 0px;
+            }
+            &_start {
+                align-items: flex-start;
+            }
+            &-dash {
+                width: 14px;
+                height: 2px;
+                background-color: $color3;
+                margin: 0 20px;
+                @include respond-to(md) {
+                    margin-right: 8px;
+                    margin-left: 8px;
+                    width: 10px;
+                }
+                @include respond-to(sm) {
+                    width: 100%;
+                    background-color: transparent;
+                    height: 0px;
+                    margin-bottom: 13px;
+                }
+            }
+        }
+        &__extralarge {
+            width: 62.3%;
+            flex-shrink: 0;
+            @include respond-to(sm) {
+                width: 100%;
+            }
+        }
+        &__large {
+            width: 34.8%;
+            flex-shrink: 0;
+            @include respond-to(sm) {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+        }
+        &__medium {
+            width: 24.3%;
+            flex-shrink: 0;
+            @include respond-to(sm) {
+                width: 46%;
+            }
+            &_sert {
+                width: 36.1% !important;
+                @include respond-to(sm) {
+                    width: calc(100% - 50px) !important;
+                    margin-left: auto;
+                    flex-shrink: unset;
+                }
+            }
+        }
+        &__small {
+            width: 17.4%;
+            flex-shrink: 0;
+            @include respond-to(sm) {
+                width: 41%;
+            }
+
+        }
+        &__currentPlace {
+            width: 100%;
+            margin: 12px 0 21px 0;
+            padding-left: calc(100% - 250px);
+            @include respond-to(md) {
+                margin-bottom: 19px;
+                padding-left: calc(100% - 197px);
+            }
+            @include respond-to(sm) {
+                padding-left: calc(4.4% + 20px);
+            }
+        }
+        &__place {
+            width: 100%;
+        }
+        &__delete {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 7px;
+            left: calc(100% + 9px);
+            cursor: pointer;
+            display: block;
+            @include respond-to(sm) {
+                position: absolute;
+                top: 7px;
+                left: calc(100% + 6px);
+            }
+            &-line {
+                width: 26px;
+                height: 2px;
+                background-color: $color11;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                @include respond-to(sm) {
+                    width: 20px;
+                }
+                &:first-child {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+            &:hover &-line, &:focus &-line, &:active &-line {
+                background-color: darken($color11, 20%);
+            }
+            &_emulation {
+                cursor: default;
+            }
+        }
+        &__text {
+            display: none;
+            width: 20px;
+            font-size: 12px;
+            line-height: 1.67;
+            @include respond-to(sm) {
+                display: inline-block;
+            }
+        }
+        &__img {
+            width: 100px;
+            margin: 0 24px 0 0;
+            min-height: 100px;
+            @include respond-to(sm) {
+                width: 64px;
+            }
+            &-link {
+                width: 100%;
+                display: block;
+            }
+            &-tag {
+                width: 100%;
+            }
+            .svg-icon {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                line-height: auto;
+                fill: $color5;
+                stroke: $color5;
+            }
+        }
+        &__fields {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            width: calc(100% - 100px - 24px);
+            @include respond-to(sm) {
+                width: calc(100% - 64px - 24px);
+            }
+            .backofficeCustFile {
+                margin-bottom: 16px;
+            }
+            .backofficeCustFile label {
+                margin-top: 13px;
+                margin-bottom: 12px;
+            }
+        }
+        &__label {
+            display: inline-block;
+            margin: 0 24px 0 0;
+            font-size: 14px;
+            line-height: 2.14;
+            color: #000;
+            @include respond-to(sm) {
+                margin-right: 10px;
+                font-size: 12px;
+                line-height: 1.67;
+            }
+        }
+        &__space {
+            width: 100%;
+            height: 16px;
+        }
+    }
+    .slideToggler {
+        font-size: 14px;
+        line-height: 2.2;
+        label {
+            padding-left: 66px;
+        }
+    }
+}
+.selectWrapper, .multiselect {
+    position: relative;
+    &.disabled {
+        opacity: 0.3;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 46%;
+        right: 16px;
+        width: 8px;
+        height: 8px;
+        border: 2px solid $color8;
+        border-right-width: 0px;
+        border-top-width: 0px;
+        pointer-events: none;
+        transform: translateY(-50%) rotate(-45deg);
+    }
+    &-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+    }
+    select {
+        width: 100%;
+    }
+    &_loc {
+        &:after {
+            display: none;
+        }
+        @include respond-to(md) {
+            width: calc(100% - 30px);
+        }
+        @include respond-to(md) {
+            width: calc(100% - 50px);
+        }
+    }
+}
+.backofficeServices {
+    &__add {}
+    &-list {
+        padding: 40px 0;
+        @include respond-to(md) {
+            padding-top: 31px;
+        }
+        @include respond-to(sm) {
+            padding-top: 32px;
+        }
+        &__single {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        &__block {
+            padding: 0 16px 12px 0;
+        }
+        &__title {
+            width: calc(100% - 100px - 40px);
+            @include respond-to(md) {
+                padding-bottom: 15px;
+            }
+            @include respond-to(sm) {
+                width: calc(100% - 40px);
+                font-weight: 600;
+            }
+        }
+        &__comment {
+            width: 100px;
+            flex-shrink: 0;
+            font-size: 14px;
+            line-height: 1.71;
+            color: $color8;
+            padding-right: 0px;
+            text-align: right;
+            @include respond-to(md) {
+                font-size: 13px;
+                line-height: 1.85;
+            }
+            @include respond-to(sm) {
+                display: none;
+            }
+        }
+        &__delete {
+            width: 40px;
+            flex-shrink: 0;
+            padding-right: 0px;
+            @include respond-to(sm) {
+                position: absolute;
+                top: -9px;
+                right: 0;
+            }
+        }
+        .custCheckbox label {
+            max-width: 100%;
+            color: #000;
+            font-size: 14px;
+            line-height: 2.18;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            margin-top: 0;
+            @include respond-to(md) {
+                font-size: 13px;
+                line-height: 1.85;
+                padding-top: 0px;
+                min-height: 48px;
+            }
+            @include respond-to(sm) {
+                min-height: auto;
+                padding-bottom: 9px;
+            }
+            &:before {
+                top: 12px;
+                @include respond-to(md) {
+                    top: 0;
+                }
+            }
+            &:after {
+                top: 25.5px;
+                @include respond-to(md) {
+                    top: 13.5px;
+                }
+                @include respond-to(sm) {
+                    top: 9.5px;
+                }
+            }
+        }
+        input:not([type=submit]):not([type=checkbox]):not([type=radio]) {
+            background-color: #f8f7f7;
+        }
+        &_add {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+        &_add &__single:first-child {
+            padding-top: 17px;
+        }
+        &_add &__block {
+            padding-bottom: 13px;
+        }
+        &_add &__title {
+            width: calc(100% - 100px);
+            font-weight: 600;
+            @include respond-to(sm) {
+                width: 100%;
+                padding-bottom: 15px;
+            }
+        }
+        &_add .backofficeServices-sublist__single {
+            @include respond-to(sm) {
+                margin-bottom: 0px;
+            }
+        }
+        &_add .backofficeServices-sublist__title {
+            width: calc(100% - 100px);
+            @include respond-to(md) {
+                padding-bottom: 11px;
+            }
+            @include respond-to(sm) {
+                width: 100%;
+                padding-bottom: 0px;
+            }
+        }
+        &_add .backofficeServices-sublist__price {
+            @include respond-to(md) {
+                padding-bottom: 11px;
+            }
+            @include respond-to(sm) {
+                position: relative;
+                top: 0;
+                left: 0;
+                padding-left: 40px;
+            }
+        }
+        &_add .backofficeServices-sublist__input {
+            @include respond-to(sm) {
+                margin-bottom: 19px;
+            }
+        }
+        &_add .backofficeServices-sublist__money {
+            @include respond-to(sm) {
+                margin-bottom: 19px;
+            }
+        }
+        &_add .backofficeServices-sublist__text {
+            @include respond-to(sm) {
+                left: calc(40px + 16px);
+                top: 15px;
+                transform: translateY(0);
+            }
+        }
+    }
+    &-sublist {
+        font-size: 14px;
+        line-height: 2.14;
+        width: 100%;
+        padding: 0 0 23px 0;
+        @include respond-to(md) {
+            font-size: 13px;
+            line-height: 1.85;
+            padding-bottom: 15px;
+        }
+        @include respond-to(sm) {
+            font-size: 12px;
+            line-height: 1.67;
+            padding-bottom: 0px;
+        }
+        &__single {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            padding: 0 0 4px 0;
+            @include respond-to(sm) {
+                position: relative;
+                padding-bottom: 0px;
+                margin-bottom: 20px;
+                align-items: flex-start;
+            }
+        }
+        &__title {
+            width: calc(100% - 100px - 40px);
+            @include respond-to(sm) {
+                width: calc(100% - 40px);
+                padding-bottom: 10px;
+            }
+        }
+        &__price {
+            width: 100px;
+            flex-shrink: 0;
+            position: relative;
+            padding-right: 0px;
+            @include respond-to(sm) {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+        }
+        &__money {
+            display: none;
+            padding: 0 0 0 16px;
+            @include respond-to(sm) {
+                display: block;
+            }
+        }
+        &__text {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translateY(-50%);
+        }
+        &__input {
+            width: 100px !important;
+            padding-left: 34px !important;
+        }
+        &__deleteBlock {
+            width: calc(100% - 40px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 21px 12px 24px;
+            border: 1px solid $color7;
+            font-size: 14px;
+            line-height: 2.14;
+            margin: 0 0 12px 0;
+            @include respond-to(md) {
+                font-size: 13px;
+                line-height: 1.85;
+                padding-bottom: 11px;
+            }
+            &-text {
+                color: $color8;
+            }
+            &-return {}
+        }
+    }
+    &__delete {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        cursor: pointer;
+        right: - 8px;
+        display: block;
+        &-line {
+            width: 26px;
+            height: 2px;
+            background-color: $color11;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            @include respond-to(sm) {
+                width: 20px;
+            }
+            &:first-child {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+        }
+        &:hover &-line, &:focus &-line, &:active &-line {
+            background-color: darken($color11, 20%);
+        }
+        &_loc {
+            position: absolute;
+            top: 8px;
+            right: -50px;
+            @include respond-to(md) {
+                right: -20px;
+            }
+            @include respond-to(sm) {
+                right: -4px;
+            }
+        }
+    }
+    &-list__single:last-child &-sublist {
+        padding-bottom: 0px;
+    }
+    &-list__single:last-child &-sublist:last-child &-sublist__single {
+        padding-bottom: 0px;
+    }
+    &-list__single:last-child &-sublist:last-child &-sublist__single:last-child &-list__block {
+        padding-bottom: 0px;
+        @include respond-to(sm) {
+            padding-bottom: 10px;
+        }
+    }
+    &-list__single:last-child &-sublist:last-child &-sublist__single:last-child &-sublist__deleteBlock {
+        margin-bottom: 0px;
+    }
+    &-cityList {
+        font-size: 13px;
+        line-height: 1.85;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: 32px 0 0 0;
+        &__single {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: #000;
+            margin: 0 16px 16px 0;
+            padding: 4px 15px 4px 19px;
+            border: solid 1px $color7;
+            border-radius: 4px;
+            &:hover, &:focus, &:active {
+                color: lighten(#000, 20%);
+            }
+            &:hover &__delete-line, &:focus &__delete-line, &:active &__delete-line {
+                background-color: lighten(#000, 20%);
+            }
+        }
+        &__name {
+            margin: 0 10px 0 0;
+        }
+        &__delete {
+            width: 14px;
+            height: 14px;
+            position: relative;
+            &-line {
+                width: 10px;
+                height: 1px;
+                background-color: #000;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                &:first-child {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+    }
+}
+//.duoMob {
+//    @include respond-to(sm) {
+//        min-height: 68px;
+//    }
+//}
+.backofficeFaq {
+    margin: 49px -40px 0 -40px;
+    border-top: 1px solid $color7;
+    padding: 40px 40px 0 40px;
+    &-list {
+        &__single {
+            padding: 8px 0 32px 0;
+        }
+        &__title {
+            &-inner {
+                display: inline-flex;
+                align-items: center;
+                justify-content: flex-start;
+                color: #000000;
+                text-decoration: none;
+                &:after {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    border: 2px solid #7f7f7f;
+                    border-right-width: 0px;
+                    border-top-width: 0px;
+                    pointer-events: none;
+                    margin: -4px 0 0 10px;
+                    transition: transform .3s, margin .3s;
+                    transform: rotate(-45deg);
+                }
+                &:focus {
+                  color: #000000;
+                }
+                &.active {
+                    font-weight: 600;
+                    &:after {
+                        transform: rotate(45deg) scale(1,-1);
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+        &__content {
+            display: none;
+        }
+    }
+}
+.tpQuestions {
+    padding: 0 0 24px 0;
+    &__single {
+        padding: 0 0 24px 0;
+    }
+    &__title {
+        padding: 0 0 8px 0;
+        &-inner {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: #000000;
+            text-decoration: none;
+            &:after {
+                content: '';
+                width: 10px;
+                height: 10px;
+                border: 2px solid #7f7f7f;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                pointer-events: none;
+                margin: -4px 0 0 10px;
+                transition: transform .3s, margin .3s;
+                transform: rotate(-45deg);
+                display: inline-block;
+            }
+            &:focus {
+                color: #000000;
+            }
+            &.active {
+                font-weight: 600;
+                &:after {
+                    transform: rotate(45deg) scale(1,-1);
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+    &__text {
+        font-size: 14px;
+        line-height: 2.14;
+        color: $color8;
+        height: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        &.active {
+            height: auto;
+            white-space: normal;
+        }
+    }
+    &__answer {
+        border-left: 1px solid $color14;
+        padding: 24px 0 0 33px;
+        margin: 16px 0 0 0;
+        display: none;
+        &.active {
+            display: block;
+        }
+        &-top {
+
+        }
+        &-author {
+            display: inline-block;
+            font-weight: 600;
+        }
+        &-date {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 1.71;
+            color: $color8;
+        }
+        &-text {
+            font-size: 14px;
+            line-height: 2.14;
+            color: #000;
+        }
+    }
+}
+.backofficeWorks {
+    .backofficeExperience__new {
+        margin-top: 0px;
+    }
+    &__add {}
+    &-list {
+        padding: 34px 0 0 0;
+        &__single {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 0 0 24px 0;
+            position: relative;
+            @include respond-to(sm) {
+                display: block;
+            }
+        }
+        &__img {
+            width: 270px;
+            height: 170px;
+            margin: 0 24px 0 0;
+            overflow: hidden;
+            position: relative;
+            @include respond-to(md) {
+                width: 130px;
+                height: 82px;
+                margin-right: 16px;
+            }
+            @include respond-to(sm) {
+                width: 202px;
+                height: 127px;
+                margin-right: 0px;
+                margin-bottom: 16px;
+            }
+            &-note {
+                font-size: 14px;
+                line-height: 1.71;
+                color: $color8;
+                @include respond-to(md) {
+                    display: none;
+                }
+            }
+            &-file {
+                width: 100%;
+                height: 100%;
+                border: 1px solid $color7;
+                padding: 16px 24px 14px 24px;
+                .backofficeCustFile {
+                    @include respond-to(md) {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    label {
+                        @include respond-to(md) {
+                            margin-bottom: 0px;
+                        }
+                    }
+                }
+
+            }
+            &-link {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            &-tag {
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &__text {
+            width: calc(100% - 270px - 24px - 40px);
+            @include respond-to(md) {
+                width: calc(100% - 130px - 16px - 40px);
+            }
+            @include respond-to(sm) {
+                width: 100%;
+            }
+            &-group {
+                padding: 0 0 16px 0;
+                @include respond-to(sm) {
+                    padding-bottom: 10px;
+                }
+                textarea {
+                    min-height: 100px;
+                    @include respond-to(md) {
+                        min-height: 72px;
+                    }
+                    @include respond-to(sm) {
+                        min-height: 48px;
+                    }
+                }
+            }
+            &-input {}
+            &-textarea {}
+        }
+        &__delete {
+            width: 40px;
+            flex-shrink: 0;
+            padding: 8px 0 0 0;
+            @include respond-to(sm) {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding-top: 0px;
+            }
+        }
+    }
+}
+.typePlace {
+    &-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        &__single {
+            width: 50%;
+            padding: 4px 0 4px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            @include respond-to(sm) {
+                width: 100%;
+            }
+        }
+        &__ok {
+            width: 14px;
+            height: 6px;
+            border-left: 2px solid $color3;
+            border-bottom: 2px solid $color3;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            margin-right: 4px;
+        }
+        &__not {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            margin: 0 10px 0 -12px;
+            display: block;
+            &-line {
+                width: 12px;
+                height: 2px;
+                background-color: #bfbfbf;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                &:first-child {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+        &__name {}
+    }
+}
+
+.button-article-edit {
+    margin: 0 10px 10px 0;
+}

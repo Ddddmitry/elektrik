@@ -1,0 +1,204 @@
+{% set isAjax = result['IS_AJAX'] %}
+{% set contractorSections = result['ITEMS'] %}
+{% set sort = result["SORT"] %}
+{% set searchTitle = result["SEARCH_TITLE"] %}
+{% set isLastPage = result["IS_LAST_PAGE"] %}
+{% set notFound = result["NOT_FOUND"] %}
+
+{% if not isAjax %}
+
+<div class="marketplace">
+    <div class="marketplace-inner typicalBlock typicalBlock_two">
+        <h1 class="marketplace__title" id="js-search-title">
+            {{ searchTitle }}
+        </h1>
+        <div class="marketSort">
+            <div class="marketSort-inner">
+                <div class="marketSort__title">
+                    Сортировка:
+                </div>
+                <div class="marketSort-list">
+
+                    <div class="{% if sort["BY"] == "recommend" %}selected {{ sort["ORDER"]|lower }}{% endif %} marketSort-list__single js-sort" data-by="recommend" data-order="{{ sort["ORDER"]|lower }}">
+                        <a href="#" class="marketSort-list__single-inner">
+                            Рекомендуемые
+                            <div class="marketSort-list__single-inner-arrow">
+                                <div class="marketSort-list__single-inner-arrow-inner"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="{% if sort["BY"]|lower == "price" %}selected {{ sort["ORDER"]|lower }}{% endif %} marketSort-list__single js-sort" data-by="price" data-order="{{ sort["ORDER"]|lower }}">
+                        <a href="#" class="marketSort-list__single-inner">
+                            По цене
+                            <div class="marketSort-list__single-inner-arrow">
+                                <div class="marketSort-list__single-inner-arrow-inner"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="{% if sort["BY"]|lower == "rating" %}selected {{ sort["ORDER"]|lower }}{% endif %} marketSort-list__single js-sort" data-by="rating" data-order="{{ sort["ORDER"]|lower }}">
+                        <a href="#" class="marketSort-list__single-inner">
+                            По рейтингу
+                            <div class="marketSort-list__single-inner-arrow">
+                                <div class="marketSort-list__single-inner-arrow-inner"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="marketSort marketSort_mobile">
+            <div class="marketSort-inner">
+                <div class="search__filter-single">
+                    <select name="marketplace-sort" id="marketplace-sort" data-placeholder="Сортировка" class="js-sort-mobile">
+                        <option value=""></option>
+                        <option data-by="recommend" data-order="desc" value="1" {% if sort["BY"] == "RECOMMEND" %}selected{% endif %}>Сначала рекомендуемые</option>
+                        <option data-by="price" data-order="desc" value="2" {% if sort["BY"] == "PRICE" and sort["ORDER"] == "DESC" %}selected{% endif %}>Сначала дорогие</option>
+                        <option data-by="price" data-order="asc" value="3" {% if sort["BY"] == "PRICE" and sort["ORDER"] == "ASC" %}selected{% endif %}>Сначала дешевые</option>
+                        <option data-by="rating" data-order="desc" value="4" {% if sort["BY"] == "RATING" %}selected{% endif %}>Сначала с хорошим рейтингом</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="marketList js-marketplace-list" data-page="1">
+
+{% endif %}
+
+            {% if notFound %}
+                <div class="marketList__count">Не найдены исполнители по выбранным параметрам</div>
+            {% else %}
+
+                {% for profile in contractorSections %}
+
+                    <div class="marketList__single">
+                        <div class="marketList__single-inner">
+                            <div class="marketList__side marketList__side_one">
+                                <div class="marketList__img">
+                                    {% if (profile["PREVIEW_PICTURE"]["SRC"]) %}
+                                        <img src="{{ profile["PREVIEW_PICTURE"]["SRC"] }}" alt="{{ profile["NAME"] }}" class="marketList__img-tag">
+                                    {% else %}
+                                        <img src="/local/templates/.default/img/contractor-empty.png" alt="{{ profile["NAME"] }}" class="marketList__img-tag">
+                                    {% endif %}
+                                </div>
+                                <div class="marketList__main">
+                                    {% if (profile["REVIEWS"]["COUNT"] or profile["RATING"]) %}
+                                        <div class="marketList__numbers">
+                                            {% if profile["RATING"] %}
+                                                {% include './includes/raiting.twig' with {raitNumber: profile["RATING"]} %}
+                                                <div class="marketList__numbers-raitNumber">
+                                                    {{ profile["RATING"] }}
+                                                </div>
+                                            {% endif %}
+                                            {% if profile["REVIEWS"]["COUNT"] %}
+                                                <div class="marketList__numbers-reviews">
+                                                    <a href="{{ profile["DETAIL_PAGE_LINK"] }}#master-reviews" class="button2">
+                                                        {{ profile["REVIEWS"]["COUNT_TEXT"] }}
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    <div class="marketList__title">
+                                        <a href="{{ profile["DETAIL_PAGE_LINK"] }}">{{ profile["NAME"] }}</a>
+                                    </div>
+                                    {% if (profile["PROPERTIES"]["ADDRESS"]["VALUE"] and (profile["PROPERTIES"]["TYPE"]["VALUE"] == constant("ENUM_VALUE_CONTRACTORS_TYPE_LEGAL"))) %}
+                                        <a class="marketList__geo">
+                                            {% include './includes/icon.twig' with {icon: {name: 'geo', class: ''}} %}
+                                            <span>
+                                                {{ profile["PROPERTIES"]["ADDRESS"]["VALUE"] }}
+                                            </span>
+                                        </a>
+                                    {% endif %}
+                                    {% if profile["PREVIEW_TEXT"] %}
+                                        <div class="marketList__desc">
+                                            {{ profile["PREVIEW_TEXT"] }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="marketList__side marketList__side_two">
+                                <div class="marketList__info">
+
+                                    <div class="marketList__servPr">
+                                        <div class="marketList__service">
+                                            {% if profile["SERVICE"] %}
+                                                {{ profile["SERVICE"]["NAME"] }}
+                                            {% elseif profile["FOUND_SERVICES"] %}
+                                                {% for service in profile["FOUND_SERVICES"] %}
+                                                    {{ service }}<br>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="marketList__price">
+                                            {% if not profile["SERVICE"] %}
+                                                от
+                                            {% endif %}
+                                            {{ profile["PRICE"]|number_format(0,'.',' ') }} &nbsp;₽
+                                        </div>
+                                    </div>
+
+                                    {% if (profile["REVIEWS"]["COUNT"] and profile["REVIEWS"]["LAST"]) %}
+                                        <div class="marketList__review">
+                                            <div class="marketList__review-title">
+                                                Последний отзыв:
+                                            </div>
+                                            <div class="marketList__review-text">
+                                                {% set review_text = profile["REVIEWS"]["LAST"]["PREVIEW_TEXT"] %}
+                                                {% if review_text|length > constant('MARKETPLACE_LIST_REVIEW_TEXT_LIMIT') %}
+                                                    {% set review_text_array = review_text|split(' ') %}
+                                                    {% set review_text_word_count = 0 %}
+                                                    {% for ta in review_text_array %}
+                                                        {% set word_count = ta|length %}
+                                                        {% if review_text_word_count < constant('MARKETPLACE_LIST_REVIEW_TEXT_LIMIT') %}
+                                                            {% set review_text_word_count = review_text_word_count + word_count %}
+                                                            {{ ta }}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    ...
+                                                {% else %}
+                                                    {{ review_text }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+{% if not isAjax %}
+        </div>
+
+        <div class="marketplace__button" id="js-more-button">
+            <a href="#" class="button js-marketList-more">
+                Показать ещё
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endif %}
+<div class="upWindow js-upWindow"></div>
+
+{% if isAjax %}
+    <script>
+        document.getElementById('js-search-title').innerHTML = '{{ searchTitle }}';
+    </script>
+{% endif %}
+{% if isLastPage %}
+    <script>
+        document.getElementById('js-more-button').style.display = "none";
+        document.getElementById('js-more-button').disabled = true;
+    </script>
+{% else %}
+    <script>
+        document.getElementById('js-more-button').style.display = "block";
+        document.getElementById('js-more-button').disabled = false;
+    </script>
+{% endif %}

@@ -1,0 +1,11 @@
+/* ==========================================================================
+   fonts
+   ========================================================================== */
+
+//Gilroy
+@include font-face('Gilroy-Regular', Gilroy, 400, normal);
+@include font-face('Gilroy-Medium', Gilroy, 500, normal);
+@include font-face('Gilroy-Bold', Gilroy, 600, normal);
+@include font-face('Gilroy-Italic', Gilroy, 400, italic);
+
+/* eof fonts */
