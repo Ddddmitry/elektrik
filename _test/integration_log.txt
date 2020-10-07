@@ -1,0 +1,7 @@
+Host: elektrik.ru
+Date: 2020-10-06 17:06:04
+Module: Event OnAfterUserAddHandler
+UserHandler : 
+    AddMessage2Log
+	/var/www/u0826334/data/www/prod/_test/add2mess.php:4
+----------

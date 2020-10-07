@@ -1,0 +1,154 @@
+Host: elektrik.ru
+Date: 2020-10-06 17:12:36
+Module: checkUser
+phone: +7 (915) 887-80-08
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:12:36
+Module: checkUser
+Дистр: Электроград
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:49:27
+Module: checkUser
+phone: +7 (915) 887-80-08
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:49:27
+Module: checkUser
+Дистр: Электроград
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:51:15
+Module: checkUser
+phone: +7 (915) 887-80-08
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:51:15
+Module: checkUser
+Дистр: Электроград
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:51:16
+Module: checkUser
+Дистр: ЗАО "Кристалл"
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:51:17
+Module: checkUser
+Дистр: Толедо
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 17:51:18
+Module: checkUser
+Дистр: ЭКС
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 18:01:18
+Module: checkUser
+phone: +7 (919) 516-12-02
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 18:01:18
+Module: checkUser
+Дистр: Электроград
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 18:01:18
+Module: checkUser
+Дистр: ЗАО "Кристалл"
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 18:01:18
+Module: checkUser
+Дистр: Толедо
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-06 18:01:19
+Module: checkUser
+Дистр: ЭКС
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------

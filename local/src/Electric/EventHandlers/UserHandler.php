@@ -21,7 +21,6 @@ class UserHandler
      */
     function OnAfterUserAddHandler($arFields)
     {
-
         if ($arFields["ID"] > 0) {
             \CModule::IncludeModule('iblock');
             foreach ($arFields["GROUP_ID"] as $arGroup) {
@@ -112,45 +111,8 @@ class UserHandler
                         \CIBlockElement::SetPropertyValuesEx($clientID, false, $arClientProperties);
                     }
                 }
-                /** Если пользователь создается в групе исполнители, то отправляем его Дистру, чтобы проверить */
-                if ($arGroup["GROUP_ID"] == USER_GROUP_CONTRACTORS) {
 
-                    $obContractor = new Contractor();
-                    $obContractor->checkUserFromDistributor($arFields["LOGIN"], $arFields["ID"]);
-                }
             }
-
-
-            /*
-
-            $arIntPartners = DataHelper::getAllIntegrationPartners();
-
-
-            $rest = new Rest("","","https://electrograd.pro/local/interface/electricru/");
-            $arData = [
-                "action" => "checkUser",
-                "phone" => "89090528720",
-            ];
-            foreach ($arIntPartners as $arIntPartner) {
-                $rest->setHost($arIntPartner["URL"]);
-                $rest->execute($arData);
-                $arResult = $rest->getResult();
-                $status = $rest->getStatusCode();
-                if($status == 200):
-                    if($arResult['exist']):
-                        // Если пользователь существует у партнера - получаем его баллы
-                        $arData = [
-                            "action" => "getPoints",
-                            "phone" => "89090528720",
-                        ];
-                        $rest->execute($arData);
-                        $arResult = $rest->getResult();
-                        var_dump($arResult);
-                    endif;
-                endif;
-            }*/
-
         }
-
     }
 }

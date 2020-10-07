@@ -1688,7 +1688,8 @@ class Contractor
      */
     public function checkUserFromDistributor($phone = false, $userID = false){
         if(!$phone) return;
-
+        define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/_test/checkUserFromDistributor_log.txt");
+        AddMessage2Log("phone: ".$phone, "checkUser");
         $arIntPartners = DataHelper::getAllIntegrationPartners();
         $parsedPhone = Parser::getInstance()->parse($phone);
         $phone = $parsedPhone->format(Format::E164); //+79101234567
@@ -1699,6 +1700,7 @@ class Contractor
         $obDistr = new Distributor();
         foreach ($arIntPartners as $arIntPartner) {
             if (!$arIntPartner["URL"]) continue;
+            AddMessage2Log("Дистр: ".$arIntPartner["NAME"], "checkUser");
 
             $UID_DIST = $arIntPartner["UID"];
             $distUserId = $obDistr->getUserIdByUID($UID_DIST);
@@ -1723,7 +1725,7 @@ class Contractor
 
             if($arResult["exist"]){
                 if(intval($arResult["points"]) > 0){
-                    $arResult = false;
+                    $status = false;
                     $arFilter = [
                         'UF_CONTACTOR_USER' => $userID,
                         'UF_PARTNER_ID' => $distUserId
@@ -1738,24 +1740,24 @@ class Contractor
                     ));
                     if($el = $rsData->fetch()){
                         $diffPoints = $arResult["points"] - $el["UF_POINTS"];
-                        $arResult = $arHLDataClasses["CONTRACTOR_POINTS"]::update($el["ID"],["UF_POINTS" => $arResult["points"]]);
+                        $status = $arHLDataClasses["CONTRACTOR_POINTS"]::update($el["ID"],["UF_POINTS" => $arResult["points"]]);
 
                     }else{
                         $diffPoints = $arResult["points"];
-                        $arResult = $arHLDataClasses["CONTRACTOR_POINTS"]::add(
+                        $status = $arHLDataClasses["CONTRACTOR_POINTS"]::add(
                             [
                                 'UF_CONTACTOR_USER' => $userID,
-                                'UF_PARTNER_ID' => $UID_DIST,
+                                'UF_PARTNER_ID' => $distUserId,
                                 "UF_POINTS" => $arResult["points"]
                             ]
                         );
                     }
-                    if($arResult->isSuccess()){
+                    if($status->isSuccess()){
                         if($diffPoints !== 0){
                             $arHLDataClasses["CONTRACTOR_POINTS_HISTORY"]::add(
                                 [
                                     "UF_USER_ID" => $userID,
-                                    "UF_PARTNER_ID" => $UID_DIST,
+                                    "UF_PARTNER_ID" => $distUserId,
                                     "UF_POINTS" => $diffPoints,
                                     "UF_DATE" => date("d.m.Y")
                                 ]

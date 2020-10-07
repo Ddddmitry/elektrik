@@ -327,6 +327,9 @@ class ApiUserRegisterRequest extends AjaxComponent
             throw new \Exception($obElement->LAST_ERROR);
         }
 
+        $obContractor = new Contractor();
+        $obContractor->checkUserFromDistributor($this->input["registration-info-phone"],$userID);
+
         return $arRegisterInfoResult;
     }
 

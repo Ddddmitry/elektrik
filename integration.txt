@@ -54,6 +54,6 @@
 Массив ($arParameters) данных который будет отправляться:
 [
     "phone" => "49fee5c575d6a428d4eb1180a33c0d01"
-]; 
+];
 
 Результат работы метода  CheckUser() возвращать в объектом CheckUserResult с полями: exist и points

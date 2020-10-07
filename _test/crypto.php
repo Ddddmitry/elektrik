@@ -6,6 +6,7 @@ $str=  "Привет здесь какая-то строка с данными, 
 $UID = "a8abb4bb284b5b27aa7cb790dc20f80b";
 
 echo SODIUM_CRYPTO_SECRETBOX_NONCEBYTES;
+echo "<br>";
 /**
  * Encrypt a message
  *
@@ -68,6 +69,11 @@ $key = $UID;
 $enc = safeEncrypt($str, $key); //generates random  encrypted string (Base64 related)
 echo $enc;
 echo '<br>';
+
+$dec = safeDecrypt($enc, $key); //decrypts encoded string generated via safeEncrypt function
+echo $dec;
+echo "<br>";
+$enc = "ZVkBaH2H4Lb6Q43pZQlpk0Buafyp6Vhb0fiFmnq8tYQ3ryIab/vzH5RpeXf7O/E1/ncL6BnZcbQgljz8varN72k/GzStQrMimBT3diPRJO0VQyi0Yz5egOuHBtTOzS3YVgh1p6SsOUZqJHj1o0q7VzlqQrFyxp4NYdzQb1JOiCKVoAFxzXghuHnChPxq2hWbp91oQiq4/jQg96gr8mL7";
 $dec = safeDecrypt($enc, $key); //decrypts encoded string generated via safeEncrypt function
 echo $dec;
 ?>
