@@ -47,16 +47,27 @@ catch (SoapFault $exception)
 }
 
 die();*/
-ini_set('soap.wsdl_cache_enabled', '0');
-$client = new SoapClient(   "http://212.49.107.36:3508/elektrik/ws/Electrik_EM.1cws?wsdl",
-    array(
-        //"soap_version"   => SOAP_1_2,
-        ));
 
+try {
+$ph = md5("79158878008"."a8abb4bb284b5b27aa7cb790dc20f80b");
+ini_set('soap.wsdl_cache_enabled', '0');
+$client = new SoapClient(   "http://api-electrik.toledo24.ru:8081/ka/ws/Electrik_check.1cws?wsdl",
+    array(
+        "soap_version"   => SOAP_1_2,
+        ));
+$client->__setLocation("http://api-electrik.toledo24.ru:8081/ka/ws/Electrik_check.1cws");
 var_dump($client->__getFunctions());
-$arResult = $client->CheckUser(["TelHeh"=>"69D90433542668CF39D74983C8FA1427"]);
-var_dump(json_decode($arResult->return,true));
-//var_dump($client->__soapCall('CheckUser', ["69D90433542668CF39D74983C8FA1427"]));
+//$arResult = $client->CheckPhone(["massPhone"=>$ph]);
+//var_dump(json_decode($arResult->return,true));
+//$obResult = $client->__soapCall('CheckPhone', [["massPhone"=>json_encode(["action"=>"user.check","phone"=>$ph])]]);
+$obResult = $client->__soapCall('CheckPhone', [["phone"=>$ph]]);
+$arResult = json_decode($obResult->return,true);
+var_dump($arResult);
+}
+catch (SoapFault $exception)
+{
+        echo $exception->getMessage();
+}
 die();
 
 echo "</pre>";
