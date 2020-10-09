@@ -4,6 +4,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 use Electric\Request;
 
 use \Bitrix\Main\Loader;
+use Electric\RequestSoap;
+
 ?>
 
 <?
@@ -50,6 +52,17 @@ die();*/
 
 try {
 $ph = md5("79158878008"."a8abb4bb284b5b27aa7cb790dc20f80b");
+        $arData = [["massPhone"=>$ph]];
+
+        $requestSoap = new RequestSoap();
+        $requestSoap->setHost("http://api-electrik.toledo24.ru:8081/ka/ws/Electrik_check.1cws?wsdl");
+        $requestSoap->execute($arData,["soap_version" => SOAP_1_2]);
+        $arResult = $requestSoap->getResult();
+        var_dump($arResult);
+        die();
+
+
+
 ini_set('soap.wsdl_cache_enabled', '0');
 $client = new SoapClient(   "http://api-electrik.toledo24.ru:8081/ka/ws/Electrik_check.1cws?wsdl",
     array(
@@ -60,7 +73,7 @@ var_dump($client->__getFunctions());
 //$arResult = $client->CheckPhone(["massPhone"=>$ph]);
 //var_dump(json_decode($arResult->return,true));
 //$obResult = $client->__soapCall('CheckPhone', [["massPhone"=>json_encode(["action"=>"user.check","phone"=>$ph])]]);
-$obResult = $client->__soapCall('CheckPhone', [["phone"=>$ph]]);
+$obResult = $client->__soapCall('CheckPhone', [["massPhone"=>$ph]]);
 $arResult = json_decode($obResult->return,true);
 var_dump($arResult);
 }

@@ -80,8 +80,10 @@ class RequestSoap
      */
     public function executeRequest($request,$parameters=[])
     {
+        //var_dump($parameters);die();
         $jsonParameters = json_encode($parameters);
-        $body = $request->CheckPhone(["massPhone" => $jsonParameters]);
+        $body = $request->__soapCall('CheckPhone', $parameters);
+        //$body = $request->CheckPhone(["phone" => $parameters]);
         return $this->build($body->return);
     }
 
@@ -91,7 +93,6 @@ class RequestSoap
     public function build($body)
     {
         $this->result = json_decode($body, true);
-
     }
 
     /**

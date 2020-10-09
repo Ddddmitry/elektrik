@@ -1700,7 +1700,6 @@ class Contractor
         $obDistr = new Distributor();
         foreach ($arIntPartners as $arIntPartner) {
             if (!$arIntPartner["URL"]) continue;
-            AddMessage2Log("Дистр: ".$arIntPartner["NAME"], "checkUser");
 
             $UID_DIST = $arIntPartner["UID"];
             $distUserId = $obDistr->getUserIdByUID($UID_DIST);
@@ -1708,6 +1707,7 @@ class Contractor
             $arData = [
                 "action" => "user.check",
                 "phone" => $phone_new,
+                "massPhone" => $phone_new,
             ];
             if($arIntPartner["TYPE"] == CONNECTION_TYPE_CURL){
                 $rest->setHost($arIntPartner["URL"]);
@@ -1716,11 +1716,10 @@ class Contractor
                 $status = $rest->getStatusCode();
             }
             if($arIntPartner["TYPE"] == CONNECTION_TYPE_SOAP){
-
+                $arData = [$arData];
                 $requestSoap->setHost($arIntPartner["URL"]);
-                $requestSoap->execute($arData);
+                $requestSoap->execute($arData,["soap_version" => SOAP_1_2]);
                 $arResult = $requestSoap->getResult();
-                $status = "200";
             }
 
             if($arResult["exist"]){
