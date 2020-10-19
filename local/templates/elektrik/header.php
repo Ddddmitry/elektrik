@@ -2,23 +2,8 @@
 <?
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Page\Asset;
-global $is404;
-global $USER;
-global $IS_MAIN;
-global $IS_MARKETPLACE;
-global $IS_ARTICLES;
-global $IS_EDUCATION;
-global $IS_AUTH;
-global $IS_REG;
-$IS_MAIN = $APPLICATION->GetCurPage(false) === '/';
-$IS_MARKETPLACE = $APPLICATION->GetCurPage(false) === PATH_MARKETPLACE;
-$IS_ARTICLES = $APPLICATION->GetCurPage(false) === '/articles/';
-$IS_EDUCATION = $APPLICATION->GetCurPage(false) === '/education/';
-$IS_AUTH = CSite::InDir('/auth/');
-$IS_REG = $APPLICATION->GetCurPage(false) === '/register/';
-$is404 = (defined("ERROR_404") && ERROR_404 === "Y");
-Loc::loadMessages(__FILE__);
 
+Loc::loadMessages(__FILE__);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +14,7 @@ Loc::loadMessages(__FILE__);
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-
+    <meta name="theme-color" content="#d70926">
     <title><?$APPLICATION->ShowTitle()?></title>
     <?$APPLICATION->ShowHead();?>
     <?Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/css/style.css");?>
@@ -39,7 +24,7 @@ Loc::loadMessages(__FILE__);
     <?Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/css/vendor/datepicker.min.css");?>
 
     <?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/js/main.js");?>
-    <?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/js/service-worker.js");?>
+    <?Asset::getInstance()->addJs( "/service-worker.js");?>
     <?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/js/custom.js");?>
 
     <link rel="icon" type="image/png" href="<?=SITE_TEMPLATE_PATH?>/favicon-16x16.png" sizes="16x16">
@@ -85,7 +70,7 @@ Loc::loadMessages(__FILE__);
 
 <body>
 <?//$APPLICATION->ShowPanel();?>
-
+<?include_once('defines.php');?>
 <?if(!$IS_AUTH && !$IS_REG):?>
 <main class="main">
     <div class="scroll-top" id="top"></div>

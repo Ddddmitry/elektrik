@@ -52,10 +52,11 @@ die();*/
 
 try {
 $ph = md5("79158878008"."a8abb4bb284b5b27aa7cb790dc20f80b");
-        $arData = [["massPhone"=>$ph]];
+        $arData = ["massPhone"=>$ph];
 
         $requestSoap = new RequestSoap();
         $requestSoap->setHost("http://api-electrik.toledo24.ru:8081/ka/ws/Electrik_check.1cws?wsdl");
+        $requestSoap->setHost("https://es.elektro.ru/elektrikservice/elektrikservice.svc?wsdl");
         $requestSoap->execute($arData,["soap_version" => SOAP_1_2]);
         $arResult = $requestSoap->getResult();
         var_dump($arResult);

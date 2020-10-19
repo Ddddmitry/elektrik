@@ -7,13 +7,13 @@ $aMenuLinks = Array(
         Array(),
         ""
     ),
-	/*Array(
-        "Партнерские предложения",
-        "/poffers/",
+	Array(
+        "Сервисы",
+        "/service/",
         Array(),
         Array(),
         ""
-	),*/
+	),
     Array(
         "Обучение",
         "/education/",

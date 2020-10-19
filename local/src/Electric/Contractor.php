@@ -12,6 +12,7 @@ use Bitrix\Main\PhoneNumber\Parser;
 use Bitrix\Main\PhoneNumber\Format;
 use Electric\Request;
 use Electric\RequestSoap;
+use mysql_xdevapi\Exception;
 
 
 /**
@@ -1689,7 +1690,7 @@ class Contractor
     public function checkUserFromDistributor($phone = false, $userID = false){
         if(!$phone) return;
         define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/_test/checkUserFromDistributor_log.txt");
-        AddMessage2Log("phone: ".$phone, "checkUser");
+
         $arIntPartners = DataHelper::getAllIntegrationPartners();
         $parsedPhone = Parser::getInstance()->parse($phone);
         $phone = $parsedPhone->format(Format::E164); //+79101234567
@@ -1717,9 +1718,13 @@ class Contractor
             }
             if($arIntPartner["TYPE"] == CONNECTION_TYPE_SOAP){
                 $arData = [$arData];
-                $requestSoap->setHost($arIntPartner["URL"]);
-                $requestSoap->execute($arData,["soap_version" => SOAP_1_2]);
-                $arResult = $requestSoap->getResult();
+                try {
+                    $requestSoap->setHost($arIntPartner["URL"]);
+                    $requestSoap->execute($arData,["soap_version" => SOAP_1_2]);
+                    $arResult = $requestSoap->getResult();
+                }catch (Exception $e){
+                    $arResult = false;
+                }
             }
 
             if($arResult["exist"]){

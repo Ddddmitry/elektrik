@@ -10,7 +10,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 ]);*/
 $APPLICATION->IncludeComponent('electric:contractors.detail', '', [
     "SEF_FOLDER" => $arParams['SEF_FOLDER'],
-    "CACHE_TYPE" => $arParams['CACHE_TYPE'],
+    "CACHE_TYPE" => "N",//$arParams['CACHE_TYPE'],
     "CACHE_TIME" => $arParams['CACHE_TIME'],
     "ID" => $arResult['VARIABLES']['ELEMENT_ID'],
     "CODE" => $arResult['VARIABLES']['ELEMENT_CODE'],

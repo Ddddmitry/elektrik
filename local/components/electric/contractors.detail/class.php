@@ -89,6 +89,8 @@ class ContractorsDetail extends BaseComponent
         }
 
         $this->arResult['SESSION_ID'] = bitrix_sessid();
+        global $USER;
+        $this->arResult['IS_AUTH'] = $USER->IsAuthorized();
 
         if ($this->StartResultCache()) {
             if ($this->getContractor() !== false) {

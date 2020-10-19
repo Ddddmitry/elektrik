@@ -14,7 +14,18 @@
                     <span class="field-checkbox-on__mark"></span>
                 </label>
                 <div class="main__text main__text--sm">Занят</div>
-                <div class="cabinet__info-question"></div>
+                <div class="cabinet__info-question">
+                    <div class="tooltip">
+                        <div class="tooltip__content">
+                            <div class="tooltip__maintext">
+                                Поддерживайте ваш статус актуальным, чтобы избежать блокировки на портале
+                            </div>
+                            <div class="tooltip__mainlink">
+                                <a href="#">Правила портала</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="cabinet__info-inner">

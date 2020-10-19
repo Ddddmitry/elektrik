@@ -1546,3 +1546,6 @@ input[type="search"]::-webkit-search-results-decoration {
     display: inline-block;
     margin-left: 25px;
 }
+.modal{
+    display: none;
+}

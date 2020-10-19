@@ -20,3 +20,58 @@ phone: +7 (915) 887-80-08
 	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
 	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
 ----------
+Host: elektrik.ru
+Date: 2020-10-10 16:12:10
+Module: checkUser
+phone: +7 (980) 534-28-30
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-12 18:45:29
+Module: checkUser
+phone: +7 (900) 955-12-66
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-13 11:10:03
+Module: checkUser
+phone: +7 (922) 030-03-90
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-13 11:21:01
+Module: checkUser
+phone: +7 (922) 187-95-70
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------
+Host: elektrik.ru
+Date: 2020-10-13 17:58:50
+Module: checkUser
+phone: +7 (915) 887-80-08
+    Electric\Contractor::checkUserFromDistributor < Api\Components\ApiUserRegisterRequest::registerContractorRequest < Api\Components\ApiUserRegisterRequest::executeAjaxComponent < Electric\Component\AjaxComponent::executeComponent < CBitrixComponent::includeComponent
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:331
+	/var/www/u0826334/data/www/prod/local/components/api/api.user.register.request/class.php:376
+	/var/www/u0826334/data/www/prod/local/src/Electric/Component/AjaxComponent.php:47
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/component.php:638
+	/var/www/u0826334/data/www/prod/bitrix/modules/main/classes/general/main.php:1038
+----------

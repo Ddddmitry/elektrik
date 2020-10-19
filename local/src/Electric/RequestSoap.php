@@ -69,7 +69,11 @@ class RequestSoap
      */
     public function prepareRequest($url, array $options = [])
     {
-        $request = new SoapClient($url, $options);
+        try {
+            $request = new SoapClient($url, $options);
+        } catch (\Exception $e) {
+            return false;
+        }
 
         return $request;
     }
@@ -80,10 +84,16 @@ class RequestSoap
      */
     public function executeRequest($request,$parameters=[])
     {
-        //var_dump($parameters);die();
-        $jsonParameters = json_encode($parameters);
-        $body = $request->__soapCall('CheckPhone', $parameters);
-        //$body = $request->CheckPhone(["phone" => $parameters]);
+        if(!$request) return false;
+
+        try {
+            $jsonParameters = json_encode($parameters);
+            $body = $request->__soapCall('CheckPhone', $parameters);
+            //$body = $request->CheckPhone(["phone" => $parameters]);
+        } catch (\Exception $e) {
+            return false;
+        }
+
         return $this->build($body->return);
     }
 

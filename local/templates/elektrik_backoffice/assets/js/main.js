@@ -294,4 +294,51 @@ $(document).ready(function () {
     return false;
   });
 
+  /*Igor's code*/
+  $('.cardoo .cabinet__tabs .cabinet__tabs-btn').click(function(){
+    var openEl = $('[data-tab-content="' + $(this).attr('data-tab') + '"]');
+    if($(openEl).hasClass('is-open')){} else {
+      $('[data-tab-content]').removeClass('is-open');
+      $(openEl).addClass('is-open');
+    }
+  });
+  if($(window).width() < 414){
+    $('.changeWorkSliderText .popup__gallery-prev').text('Предыдущая');
+    $('.changeWorkSliderText .popup__gallery-next').text('Следующая');
+  } else {
+    $('.changeWorkSliderText .popup__gallery-prev').text('Предыдущая работа');
+    $('.changeWorkSliderText .popup__gallery-next').text('Следующая работа');
+  }
+  $(window).resize(function(){
+    if($(window).width() < 414){
+      $('.changeWorkSliderText .popup__gallery-prev').text('Предыдущая');
+      $('.changeWorkSliderText .popup__gallery-next').text('Следующая');
+    } else {
+      $('.changeWorkSliderText .popup__gallery-prev').text('Предыдущая работа');
+      $('.changeWorkSliderText .popup__gallery-next').text('Следующая работа');
+    }
+  });
+  if($('.tooltip').length > 0){
+    $(document).click(function(e){
+      if($('.tooltip').attr('style') == 'display: block;' && $(e.target).closest('.tooltip').length == 0){
+        $('.tooltip').fadeOut();
+      }
+    })
+  }
+
+  $('.cabinet__info-question').click(function(){
+    $('.tooltip').fadeIn();
+  });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode === 27 && $('.tooltip').length > 0){
+      $('.tooltip').fadeOut();
+    }
+  });
+
+  /*Demonstrates popup for distr*/
+  $('.pushMeVoyak button').click(function(){
+    $('.popup__distr').fadeIn(400);
+  });
+
 });

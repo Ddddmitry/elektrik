@@ -9,6 +9,7 @@ use Electric\Contractor;
 use Electric\Order;
 use \Electric\Helpers\FileHelper;
 use Electric\Comagic;
+use Electric\User;
 
 
 class ApiCall extends AjaxComponent
@@ -53,16 +54,36 @@ class ApiCall extends AjaxComponent
         } else {
             throw new \Exception('authorization_required');
         }
+        $phoneFrom = "";
+        $obUser = new User();
+        switch ($obUser->getType($userID)){
+            case "client":
+                $obClient = new Client();
+                $arClient = $obClient->getClientData(["PROPERTY_USER" => $userID]);
+                $phoneFrom = $arClient["PROPERTIES"]["PHONE"]["VALUE"];
+                unset($arClient);
+                unset($obClient);
+                break;
+            case "contractor":
+                $obContractor = new Contractor();
+                $arContractor = $obContractor->getContractorData(["PROPERTY_USER" => $userID]);
+                $phoneFrom = $arContractor["PROPERTIES"]["PHONE"]["VALUE"];
+                unset($arContractor);
+                unset($obContractor);
+                break;
+        }
 
-        $obClient = new Client();
-        $arClient = $obClient->getClientData();
         $obContractor = new Contractor();
         $arContractor = $obContractor->getContractorData(["ID" => $this->input["contractor"]]);
 
 
-        $phoneContact = str_replace(["+"," ","(",")","-"],"", $arClient["PROPERTIES"]["PHONE"]["VALUE"]);
+        $phoneContact = str_replace(["+"," ","(",")","-"],"", $phoneFrom);
         $phoneOperator = str_replace(["+"," ","(",")","-"],"", $arContractor["PROPERTIES"]["PHONE"]["VALUE"]);
         
+
+        if(!$phoneContact || !$phoneOperator)
+            return false;
+
         $comagic = new \Electric\Comagic();
         $result = $comagic->makeCall($this->input["contact"],$phoneContact,$phoneOperator);
         if($result->call_session_id){

@@ -1,11 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<?
-$APPLICATION->IncludeComponent('electric:contractors.reviews', '', [
-    "USER" =>$arResult["PROFILE"]["PROPERTIES"]["USER"]["VALUE"],
-    "PAGE_SIZE" => REVIEWS_PAGE_SIZE,
-]);
-?>
+
 
 <?if($_GET["contacts"] == "Y"):?>
 <?$APPLICATION->AddHeadString('<metaname="googlebot" content="noindex">',true);?>

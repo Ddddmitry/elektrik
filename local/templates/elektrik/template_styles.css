@@ -892,7 +892,7 @@ SLICK slider
         line-height: 1.85; } }
 @media (max-width: 767px) {
     .formSolo-workarea-toggle {
-        justify-content: flex-start;
+        justify-content: flex-end;
         padding-bottom: 10px;
         font-size: 12px;
         line-height: 1.67; } }

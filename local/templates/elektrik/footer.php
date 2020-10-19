@@ -2,12 +2,6 @@
 <?
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Page\Asset;
-global $IS_MAIN;
-global $IS_MARKETPLACE;
-global $IS_ARTICLES;
-global $IS_EDUCATION;
-global $IS_AUTH;
-global $IS_REG;
 ?>
 <?if(!$IS_AUTH && !$IS_REG):?>
 <?if(!$IS_MAIN && !$IS_MARKETPLACE && !$IS_ARTICLES && !$IS_EDUCATION):?>

@@ -3,37 +3,32 @@
 //todo: Надо не выводить блоки с данными клиента, если они не нужны для показа
 ?>
 <div class="cabinet__sorting">
-    <div class="cabinet__sorting-item is-active js-cabinet__sorting-item">
-        <div class="main__text main__text--sm" data-sort="all">Все</div>
-    </div>
-    <?
-    //var_dump($arResult["PROFILE"]["ORDERS"]);die();
-    ?>
-
-    <?foreach ($arResult["PROFILE"]["STATUS"] as $index => $arStatus):?>
-        <?if(in_array($index,LIST_STATUS_CONTRACTOR)):?>
-            <div class="cabinet__sorting-item js-cabinet__sorting-item">
-                <div class="main__text main__text--sm" data-sort="<?=$index?>"><?=$arStatus["VALUE"]?></div>
-                <div class="number"><?=count($arResult["PROFILE"]["ORDERS"][$index])?></div>
+    <div class="btn-filter">Фильтр заказов</div>
+    <div class="cabinet__sorting-drop">
+        <div class="cabinet__sorting-items">
+            <div class="cabinet__sorting-item is-active js-cabinet__sorting-item">
+                <div class="main__text main__text--sm" data-sort="all">Все</div>
             </div>
-        <?endif;?>
-    <?endforeach;?>
 
-    <?/*foreach ($arResult["PROFILE"]["ORDERS"] as $index => $arStatus):?>
-        <?//if(count($arStatus) > 0):?>
-        <div class="cabinet__sorting-item js-cabinet__sorting-item">
-            <div class="main__text main__text--sm" data-sort="<?=$arResult["PROFILE"]["STATUS"][$index]["XML_ID"]?>"><?=$arResult["PROFILE"]["STATUS"][$index]["VALUE"]?></div>
-            <div class="number"><?=count($arStatus)?></div>
+            <?foreach ($arResult["PROFILE"]["STATUS"] as $index => $arStatus):?>
+                <?if(in_array($index,LIST_STATUS_CONTRACTOR)):?>
+                    <div class="cabinet__sorting-item js-cabinet__sorting-item">
+                        <div class="main__text main__text--sm" data-sort="<?=$index?>"><?=$arStatus["VALUE"]?></div>
+                        <div class="number"><?=count($arResult["PROFILE"]["ORDERS"][$index])?></div>
+                    </div>
+                <?endif;?>
+            <?endforeach;?>
+
+
         </div>
-        <?//endif;?>
-    <?endforeach;*/?>
+    </div>
 </div>
+
 
 <?if($arResult["PROFILE"]["ORDERS"]):?>
 <div class="cabinet__orders">
     <?foreach ($arResult["PROFILE"]["ORDERS"] as $index => $arStatus):?>
         <?foreach ($arStatus as $arOrder):?>
-            <?//var_dump($arOrder);die();?>
             <div class="cabinet__order <?if($arOrder["PROPERTIES"]["STATUS"]["VALUE_XML_ID"]=="completed"):?>is-order-complete<?endif;?>" data-all data-<?=$index?> data-order="<?=$arOrder["ID"]?>">
                 <div class="cabinet__order-lside">
                     <div class="cabinet__order-title main__text main__text--md"><?=$arOrder["NAME"]?></div>
